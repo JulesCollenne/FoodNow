@@ -1,3 +1,4 @@
+//
 package com.dunno.myapplication.ui.loginregister;
 
 import android.app.AlertDialog;
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                    }
+                    }//
                 };
 
                 LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
