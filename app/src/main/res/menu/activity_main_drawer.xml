@@ -7,7 +7,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_accueil"
-            android:icon="@drawable/ic_food"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/menu_accueil" />
         <item
             android:id="@+id/nav_frigo"
@@ -19,11 +19,11 @@
             android:title="@string/menu_gallery" />
         <item
             android:id="@+id/nav_roucette"
-            android:icon="@drawable/ic_food"
+            android:icon="@drawable/ic_nature_black_24dp"
             android:title="@string/menu_roucette" />
         <item
             android:id="@+id/nav_favoris"
-            android:icon="@drawable/ic_food"
+            android:icon="@drawable/ic_star_black_24dp"
             android:title="@string/menu_favoris" />
         <item
             android:id="@+id/nav_account"

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.loginregister.RegisterActivity"></activity>
+        <activity android:name=".Roucette"></activity>
+        <activity android:name=".ui.loginregister.RegisterActivity" />
         <activity
             android:name=".ui.loginregister.LoginActivity"
             android:label="@string/title_activity_login" />
