@@ -15,30 +15,43 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import com.dunno.myapplication.R;
+import com.dunno.myapplication.RoucetteFragment;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new AccueilFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_accueil);
+        }
+
+        //Initialiser à l'accueil
+        //getSupportFragmentManager().beginTransaction().replace(R.id.nav_roucette,
+          //      new ()).commit();
+        navigationView.setCheckedItem(R.id.nav_accueil);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -79,17 +92,26 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_frigo) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        switch(item.getItemId()) {
+            case R.id.nav_frigo:
+                // Handle the camera action
+                break;
+            case R.id.nav_gallery:
 
-        } else if (id == R.id.nav_contact) {
+            break;
+            case R.id.nav_contact:
 
+                break;
+            case R.id.nav_roucette :
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new RoucetteFragment()).commit();
+                break;
+            case R.id.nav_accueil:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AccueilFragment()).commit();
+                break;
         }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
