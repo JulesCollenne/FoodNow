@@ -1,8 +1,11 @@
 package com.dunno.myapplication.ui.menu;
 
-
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -12,24 +15,28 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 
-public class MainActivity extends AppCompatActivity
+public class LoggedInMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_logged_in_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_logged_in);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
@@ -37,7 +44,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_logged_in);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -48,7 +56,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.logged_in_main, menu);
+        String username = getIntent().getExtras().getString("username");
+        TextView pseudotv = (TextView) findViewById(R.id.pseudoView);
+        pseudotv.setText(username);
         return true;
     }
 
@@ -60,18 +71,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
-        if(id == R.id.action_login){
-            Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(startIntent);
-            return true;
-        }
-        else if (id == R.id.action_settings) {
-            return true;
-        }
-        else{
-            return super.onOptionsItemSelected(item);
-        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -84,11 +88,24 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
+        } else if (id == R.id.nav_account) {
+
+        } else if (id == R.id.nav_logout) {
+
+            Intent logoutIntent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(logoutIntent);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(LoggedInMainActivity.this);
+            builder.setMessage("Disconnected")
+                    .create()
+                    .show();
+
+
         } else if (id == R.id.nav_contact) {
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_logged_in);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

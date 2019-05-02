@@ -14,6 +14,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
+import com.dunno.myapplication.ui.menu.LoggedInMainActivity;
+import com.dunno.myapplication.ui.menu.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +25,18 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        if(getIntent().hasExtra("Registered")){
+            String pseudo = getIntent().getExtras().getString("Registered");
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+            builder.setMessage("Votre compte "+pseudo +" a bien été crée.\nVous pouvez vous connecter.")
+                    .setNegativeButton("OK", null)
+                    .create()
+                    .show();
+        }
+
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
@@ -53,12 +67,15 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (success) {
 
-
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login Succesful")
-                                        .setNegativeButton("Retry", null)
+                                builder.setMessage("Login Successful")
                                         .create()
                                         .show();
+
+                                Intent loggedIn = new Intent(getApplicationContext(), LoggedInMainActivity.class);
+
+                                loggedIn.putExtra("username", username);
+                                startActivity(loggedIn);
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -68,10 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                                         .show();
                             }
 
-                        } catch (JSONException e) {
+                        } catch (JSONException e) { //JSON
                             e.printStackTrace();
                         }
-                    }//
+                    }
                 };
 
                 LoginRequest loginRequest = new LoginRequest(username, password, responseListener);

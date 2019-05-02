@@ -17,6 +17,10 @@ import com.dunno.myapplication.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/* TODO
+    L'application crash quand l'age n'est pas rentré
+ */
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -47,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (success) {
 
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                intent.putExtra("Registered", username);
                                 RegisterActivity.this.startActivity(intent);
 
                             } else {
