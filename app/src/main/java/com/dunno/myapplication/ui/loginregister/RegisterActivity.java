@@ -1,4 +1,3 @@
-//
 package com.dunno.myapplication.ui.loginregister;
 
 import android.app.AlertDialog;

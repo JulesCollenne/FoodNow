@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.dunno.myapplication.ui.loginregister.LoginActivity">
 
+
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
