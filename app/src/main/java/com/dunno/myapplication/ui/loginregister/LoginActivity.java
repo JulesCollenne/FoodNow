@@ -14,7 +14,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.menu.LoggedInMainActivity;
 import com.dunno.myapplication.ui.menu.MainActivity;
 
 import org.json.JSONException;
@@ -72,9 +71,11 @@ public class LoginActivity extends AppCompatActivity {
                                         .create()
                                         .show();
 
-                                Intent loggedIn = new Intent(getApplicationContext(), LoggedInMainActivity.class);
+                                Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
 
                                 loggedIn.putExtra("username", username);
+
+
                                 startActivity(loggedIn);
 
                             } else {
