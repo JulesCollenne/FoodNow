@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
+import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoTypeChoice;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -127,7 +128,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_frigo) {
-            // Handle the camera action
+
+            Intent accountIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
+            startActivity(accountIntent);
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_account) {
@@ -137,6 +141,11 @@ public class MainActivity extends AppCompatActivity
             accountIntent.putExtra("username", username);
             accountIntent.putExtra("password", password);
             startActivity(accountIntent);
+
+        } else if (id == R.id.nav_frigo) {
+
+            Intent monFrigoIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
+            startActivity(monFrigoIntent);
 
         } else if (id == R.id.nav_logout) {
 

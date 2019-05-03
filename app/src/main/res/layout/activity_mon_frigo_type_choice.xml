@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice">
+
+    <ImageButton
+        android:id="@+id/meatButton"
+        android:layout_width="fill_parent"
+        android:layout_height="182dp"
+        android:contentDescription="Viandes et Poissons"
+        android:src="@drawable/viandepoisson"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/viandepoisson" />
+
+    <ImageButton
+        android:id="@+id/vegetablesButton"
+        android:layout_width="fill_parent"
+        android:layout_height="182dp"
+        android:contentDescription="Fruits et Légumes"
+        android:src="@drawable/fruitslegumes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meatButton"
+        tools:srcCompat="@drawable/fruitslegumes" />
+
+    <ImageButton
+        android:id="@+id/feculentButton"
+        android:layout_width="fill_parent"
+        android:layout_height="182dp"
+        android:contentDescription="Féculents"
+        android:src="@drawable/feculents"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vegetablesButton"
+        tools:src="@drawable/feculents"
+        tools:srcCompat="@drawable/feculents" />
+
+    <ImageButton
+        android:id="@+id/diversButton"
+        android:layout_width="fill_parent"
+        android:layout_height="182dp"
+        android:src="@drawable/autres"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feculentButton"
+        tools:srcCompat="@drawable/autres" />
+
+    <TextView
+        android:id="@+id/tv_autre"
+        android:layout_width="113dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="142dp"
+        android:text="Autre"
+        android:textColor="#FFEB3B"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

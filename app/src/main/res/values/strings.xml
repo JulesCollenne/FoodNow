@@ -19,8 +19,6 @@
     <string name="title_activity_login">Se connecter</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Mot de passe</string>
-    <string name="action_sign_in">Se connecter</string>
-    <string name="action_sign_in_short">Se connecter</string>
     <string name="welcome">"Bonjour ! "</string>
     <string name="invalid_username">Ce n\'est pas un pseudo valide</string>
     <string name="invalid_password">Le mot de passe doit contenir plus de 5 caractères</string>

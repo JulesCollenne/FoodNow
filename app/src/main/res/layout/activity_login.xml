@@ -62,4 +62,5 @@
         android:layout_marginRight="118dp"
         android:text="Register Here"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>
