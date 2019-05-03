@@ -67,20 +67,24 @@ public class LoginActivity extends AppCompatActivity {
                             if (success) {
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login Successful")
+                                builder.setMessage("Connection réussie")
                                         .create()
                                         .show();
 
                                 Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
 
+                                String email = jsonResponse.getString("email");
+
                                 loggedIn.putExtra("username", username);
+                                loggedIn.putExtra("password", password);
+                                loggedIn.putExtra("email", email);
 
 
                                 startActivity(loggedIn);
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Login Failed")
+                                builder.setMessage("Connection échouée")
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();

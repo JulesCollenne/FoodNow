@@ -20,6 +20,10 @@ import org.json.JSONObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+TODO: Verifiez que l'email n'est pas déjà utilisé
+ */
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -77,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Matcher controler = pattern.matcher(email);
                 if (!controler.matches()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    builder.setMessage("Veuillez rentrer une adresse eMail valide")
+                    builder.setMessage("Veuillez entrer une adresse eMail valide")
                             .setNegativeButton("Ok", null)
                             .create()
                             .show();
@@ -99,14 +103,14 @@ public class RegisterActivity extends AppCompatActivity {
                             } else {
                                 if(jsonResponse.has("usernameAvailability")){
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                    builder.setMessage("Le pseudo est déjà utilisé, essayer en un autre")
+                                    builder.setMessage("Le pseudo est déjà utilisé, essayez en un autre")
                                             .setNegativeButton("Réessayer", null)
                                             .create()
                                             .show();
                                 }
                                 else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                    builder.setMessage("Création échoué, verifiez que les informations sont correctements entrées")
+                                    builder.setMessage("Création échoué, verifiez que les informations sont correctement entrées")
                                             .setNegativeButton("Réessayer", null)
                                             .create()
                                             .show();

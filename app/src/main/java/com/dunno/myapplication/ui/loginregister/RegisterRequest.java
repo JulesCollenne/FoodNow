@@ -1,7 +1,5 @@
 package com.dunno.myapplication.ui.loginregister;
 
-import android.app.AlertDialog;
-
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 

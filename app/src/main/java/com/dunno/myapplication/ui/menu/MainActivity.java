@@ -18,18 +18,28 @@ import android.widget.TextView;
 
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
+import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     boolean loggedin = false; //ajout
+    String email = null;
+    String username = null;
+    String password = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if(getIntent().hasExtra("username")){
+
             loggedin = true;
+
+            email = getIntent().getExtras().getString("email");
+            username = getIntent().getExtras().getString("username");
+            password = getIntent().getExtras().getString("password");
+
         }
 
         if(loggedin){
@@ -121,6 +131,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_account) {
+
+            Intent accountIntent = new Intent(getApplicationContext(), AccountActivity.class);
+            accountIntent.putExtra("email", email);
+            accountIntent.putExtra("username", username);
+            accountIntent.putExtra("password", password);
+            startActivity(accountIntent);
 
         } else if (id == R.id.nav_logout) {
 

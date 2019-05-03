@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.loginregister.RegisterActivity"></activity>
+        <activity android:name=".ui.menu_fonction.Account.AccountModifyActivity"></activity>
+        <activity android:name=".ui.menu_fonction.Account.AccountActivity" />
+        <activity android:name=".ui.loginregister.RegisterActivity" />
         <activity
             android:name=".ui.loginregister.LoginActivity"
             android:label="@string/title_activity_login" />
