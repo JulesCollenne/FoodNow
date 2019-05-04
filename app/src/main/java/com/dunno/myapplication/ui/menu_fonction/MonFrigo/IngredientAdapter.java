@@ -12,12 +12,14 @@ import android.widget.TextView;
 
 import com.dunno.myapplication.R;
 
+import java.util.List;
+
 public class IngredientAdapter extends BaseAdapter {
 
     LayoutInflater mInflater;
-    String[] ingredientName;
+    List<String> ingredientName;
 
-    public IngredientAdapter(Context context, String[] ingredientNames){
+    public IngredientAdapter(Context context, List<String> ingredientNames){
 
         ingredientName = ingredientNames;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -26,12 +28,12 @@ public class IngredientAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return ingredientName.length;
+        return ingredientName.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return ingredientName[position];
+        return ingredientName.get(position);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class IngredientAdapter extends BaseAdapter {
         ImageView iv_ingredient_image = (ImageView) v.findViewById(R.id.ingredient_image);
         TextView tv_ingredient_name = (TextView) v.findViewById(R.id.ingredient_name);
 
-        String ingredient_name = ingredientName[position];
+        String ingredient_name = ingredientName.get(position);
 
         iv_ingredient_image.setImageResource(R.drawable.autres);
         tv_ingredient_name.setText(ingredient_name);

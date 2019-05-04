@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dunno.myapplication.R;
+import com.dunno.myapplication.ui.menu.MainActivity;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class AccountActivity extends AppCompatActivity {
         tvUsername.setText("Votre pseudonyme:\n"+username);
 
         Button bModify = (Button) findViewById(R.id.button_account_modify);
+        Button bRetour = (Button) findViewById(R.id.btn_retour_3);
 
 
         bModify.setOnClickListener(new View.OnClickListener() {
@@ -38,9 +40,23 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent modifyAccountIntent = new Intent(getApplicationContext(), AccountModifyActivity.class);
+                modifyAccountIntent.putExtra("email", email);
                 modifyAccountIntent.putExtra("username", username);
                 modifyAccountIntent.putExtra("password", password);
                 startActivity(modifyAccountIntent);
+
+            }
+        });
+
+        bRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent retour = new Intent(getApplicationContext(), MainActivity.class);
+                retour.putExtra("email", email);
+                retour.putExtra("username", username);
+                retour.putExtra("password", password);
+                startActivity(retour);
 
             }
         });

@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.menu.MainActivity;
+import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +24,7 @@ import java.util.regex.Pattern;
 
 public class AccountModifyActivity extends AppCompatActivity {
 
+    String email = null;
     String username = null;
     String password = null;
 
@@ -32,6 +34,7 @@ public class AccountModifyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_modify);
 
+        email = getIntent().getExtras().getString("email");
         username = getIntent().getExtras().getString("username");
         password = getIntent().getExtras().getString("password");
 
@@ -43,6 +46,20 @@ public class AccountModifyActivity extends AppCompatActivity {
         final EditText etNewPasswordConfirmation = (EditText) findViewById(R.id.et_new_password_confirmation);
 
         Button bModify = (Button) findViewById(R.id.bModify);
+        Button bRetourModify = (Button) findViewById(R.id.btn_retour_4);
+
+        bRetourModify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                retourIntent.putExtra("email", email);
+                retourIntent.putExtra("username", username);
+                retourIntent.putExtra("password", password);
+                startActivity(retourIntent);
+
+            }
+        });
 
         bModify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +183,7 @@ public class AccountModifyActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 }

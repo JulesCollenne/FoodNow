@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
+import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoTypeChoice;
 
 public class MainActivity extends AppCompatActivity
@@ -129,7 +130,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_frigo) {
 
-            Intent accountIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
+            Intent accountIntent = new Intent(getApplicationContext(), AddIngredient.class);
+            if(loggedin){
+                accountIntent.putExtra("email", email);
+                accountIntent.putExtra("username", username);
+                accountIntent.putExtra("password", password);
+            }
             startActivity(accountIntent);
 
         } else if (id == R.id.nav_gallery) {
@@ -141,11 +147,6 @@ public class MainActivity extends AppCompatActivity
             accountIntent.putExtra("username", username);
             accountIntent.putExtra("password", password);
             startActivity(accountIntent);
-
-        } else if (id == R.id.nav_frigo) {
-
-            Intent monFrigoIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
-            startActivity(monFrigoIntent);
 
         } else if (id == R.id.nav_logout) {
 

@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoType"></activity>
+        <activity android:name=".ui.menu_fonction.MonFrigo.AddIngredient"></activity>
+        <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoType" />
         <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice" />
         <activity android:name=".ui.menu_fonction.Account.AccountModifyActivity" />
         <activity android:name=".ui.menu_fonction.Account.AccountActivity" />

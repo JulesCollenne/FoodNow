@@ -41,6 +41,18 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
         final Button bLogin = (Button) findViewById(R.id.bSignIn);
+        final Button bRetour = (Button) findViewById(R.id.btn_retour_5);
+
+
+        bRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent retour = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(retour);
+
+            }
+        });
 
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override

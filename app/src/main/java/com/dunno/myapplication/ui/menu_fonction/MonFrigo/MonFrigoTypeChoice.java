@@ -10,7 +10,11 @@ import android.widget.ImageButton;
 
 import com.dunno.myapplication.R;
 
+import java.util.ArrayList;
+
 public class MonFrigoTypeChoice extends AppCompatActivity {
+
+    ArrayList<String> ingredientAdded = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,9 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
         ImageButton feculentBtn = (ImageButton) findViewById(R.id.feculentButton);
         ImageButton diversBtn = (ImageButton) findViewById(R.id.diversButton);
 
+        if(getIntent().hasExtra("liste_ingredient")) {
+            ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
+        }
 
         meatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +36,12 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
 
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 0);
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                if(getIntent().hasExtra("username")){
+                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                }
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -41,6 +54,12 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
 
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 1);
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                if(getIntent().hasExtra("username")){
+                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                }
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -53,6 +72,12 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
 
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 2);
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                if(getIntent().hasExtra("username")){
+                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                }
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -65,6 +90,12 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
 
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 3);
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                if(getIntent().hasExtra("username")){
+                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                }
                 startActivity(monFrigoTypeIntent);
 
             }

@@ -37,6 +37,18 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText etPasswordVerif = (EditText) findViewById(R.id.etPasswordVerif);
 
         final Button bRegister = (Button) findViewById(R.id.bRegister);
+        final Button bRetour = (Button) findViewById(R.id.btn_retour_6);
+
+
+        bRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent retour = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(retour);
+
+            }
+        });
 
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
