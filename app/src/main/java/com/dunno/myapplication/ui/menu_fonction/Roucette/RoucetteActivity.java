@@ -1,7 +1,6 @@
 package com.dunno.myapplication.ui.menu_fonction.Roucette;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
@@ -9,21 +8,8 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.dunno.myapplication.R;
-
 import java.util.Random;
-
-import android.app.AlertDialog;
-import android.content.Intent;
-
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-
-import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
-import com.dunno.myapplication.ui.menu.MainActivity;
 
 
 public class RoucetteActivity extends AppCompatActivity {
@@ -36,6 +22,9 @@ public class RoucetteActivity extends AppCompatActivity {
 
     int degree = 0;
     int old_degree=0;
+
+    final double  demi_part_roue= 22.5;
+    final double part_roue = 45;
 
 
     @Override
@@ -54,7 +43,7 @@ public class RoucetteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 old_degree = degree % 360;
                 degree = random.nextInt(3600) + 720;
-                RotateAnimation rotate = new RotateAnimation(old_degree, degree,RotateAnimation.RELATIVE_TO_SELF,
+                RotateAnimation rotate = new RotateAnimation(old_degree, degree, RotateAnimation.RELATIVE_TO_SELF,
                         0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
                 rotate.setDuration(3600);
                 rotate.setFillAfter(true);
@@ -62,12 +51,12 @@ public class RoucetteActivity extends AppCompatActivity {
                 rotate.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-
+                        textView.setText("");
                     }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-
+                        textView.setText(currentNumber(360 - (degree % 360)));
                     }
 
                     @Override
@@ -80,5 +69,36 @@ public class RoucetteActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String currentNumber(int degree){
+        String text = "";
+
+        if(degree >= demi_part_roue + part_roue * 3 && degree < demi_part_roue + part_roue * 4){
+            text = "Recette 1";
+        }
+        if(degree >= demi_part_roue + part_roue * 4 && degree < demi_part_roue + part_roue * 5){
+            text = "Recette 2";
+        }
+        if(degree >= demi_part_roue + part_roue * 5 && degree < demi_part_roue + part_roue * 6){
+            text = "Recette 3";
+        }
+        if(degree >= demi_part_roue + part_roue * 6 && degree < demi_part_roue + part_roue * 7){
+            text = "Recette 4";
+        }
+        if((degree >= demi_part_roue + part_roue * 7 && degree < demi_part_roue )||(degree==0)){
+            text = "Recette 5";
+        }
+        if(degree >= demi_part_roue && degree < demi_part_roue + part_roue * 1){
+            text = "Recette 6";
+        }
+        if(degree >= demi_part_roue + part_roue * 1 && degree < demi_part_roue + part_roue * 2){
+            text = "Recette 7";
+        }
+        if(degree >= demi_part_roue + part_roue * 2 && degree < demi_part_roue + part_roue * 3){
+            text = "Recette 8";
+        }
+
+        return  text;
     }
 }

@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
@@ -143,13 +144,10 @@ public class MainActivity extends AppCompatActivity
 
         else if(id == R.id.nav_roucette){
 
-            Intent accountIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
-            if (loggedin) {
-                accountIntent.putExtra("email", email);
-                accountIntent.putExtra("username", username);
-                accountIntent.putExtra("password", password);
-            }
-            startActivity(accountIntent);
+            //TODO ne fonctionne pas
+           // Intent logoutIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
+           // startActivity(logoutIntent);
+
 
         }else if (id == R.id.nav_gallery) {
 
