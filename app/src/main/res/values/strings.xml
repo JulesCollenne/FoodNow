@@ -12,6 +12,7 @@
     <string name="menu_frigo">Mes ingrédients</string>
     <string name="menu_gallery">Les recettes</string>
     <string name="menu_roucette">La roucette</string>
+    <string name="button_roucette">Tournez la Roucette</string>
     <string name="menu_favoris">Mes favoris</string>
     <string name="menu_account">Mon compte</string>
     <string name="menu_logout">Se déconnecter</string>

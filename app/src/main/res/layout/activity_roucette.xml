@@ -4,6 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RoucetteFragment">
+    tools:context=".ui.menu_fonction.Roucette.RoucetteActivity">
+
+<android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="16dp"
+    tools:layout_editor_absoluteY="0dp" />
+
+<Button
+    android:id="@+id/button2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:text="@string/button_roucette"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+    app:layout_constraintVertical_bias="0.986"
+    tools:ignore="MissingConstraints"
+    tools:layout_editor_absoluteX="115dp" />
+
+<ImageView
+    android:id="@+id/roucette"
+    android:scaleType="centerInside"
+    android:layout_width="372dp"
+    android:layout_height="372dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:src="@drawable/roucette"
+    tools:layout_editor_absoluteX="19dp"
+    tools:layout_editor_absoluteY="179dp"
+    app:srcCompat="@drawable/roucette"
+    tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/pointer2"
+        android:scaleType="centerInside"
+        android:layout_width="88dp"
+        android:layout_height="77dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/pointer2"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="551dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="97dp"
+        android:text=""/>
 
 </android.support.constraint.ConstraintLayout>
