@@ -10,8 +10,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.loginregister.LoginActivity;
+import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -19,6 +25,7 @@ import java.util.ArrayList;
 public class MonFrigoType extends AppCompatActivity {
 
     ArrayList<String> ingredientAdded;
+    ArrayList<String> ingredientName = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,69 +63,109 @@ public class MonFrigoType extends AppCompatActivity {
         TextView tv_type = (TextView) findViewById(R.id.tv_ingredientType);
         tv_type.setText(typeName);
 
-        Button btnRetour = (Button) findViewById(R.id.btn_retour_1);
-
-        final ListView listIngredient = (ListView) findViewById(R.id.lv_ingredients);
-
-        /* A recuperer via la Database quand elle est faite */
-        ArrayList<String> ingredientName = new ArrayList<>();
-        ingredientName.add("Carotte");
-        ingredientName.add("Saumon");
-        ingredientName.add("Salade");
-
-        final IngredientAdapter ingredientAdapter = new IngredientAdapter(this, ingredientName);
-        listIngredient.setAdapter(ingredientAdapter);
 
 
-        btnRetour.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
-            public void onClick(View v) {
+            public void onResponse(String response) {
 
-                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
-                retourIntent.putExtra("liste_ingredient", ingredientAdded);
-                if(getIntent().hasExtra("username")){
-                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                startActivity(retourIntent);
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
 
-            }
-        });
+                    if (success) {
+
+                        for(int i = 0; i < jsonResponse.length()-1; i++) {
+                            ingredientName.add(jsonResponse.getString(i+""));
+                        }
+
+                        Button btnRetour = (Button) findViewById(R.id.btn_retour_1);
+
+                        final ListView listIngredient = (ListView) findViewById(R.id.lv_ingredients);
 
 
-        listIngredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        final IngredientAdapter ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientName);
+                        listIngredient.setAdapter(ingredientAdapter);
 
-                String newIngredient = (String) listIngredient.getAdapter().getItem(position);
 
-                if(!ingredientAdded.contains(newIngredient)) {
-                    ingredientAdded.add(newIngredient);
-                }
-                else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
-                    builder.setMessage("Vous avez déjà ajouté cet ingrédient")
-                            .setNegativeButton("Ok", null)
+                        btnRetour.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                                retourIntent.putExtra("liste_ingredient", ingredientAdded);
+                                if(getIntent().hasExtra("username")){
+                                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                                }
+                                startActivity(retourIntent);
+
+                            }
+                        });
+
+
+                        listIngredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                IngredientAdapter IA = (IngredientAdapter) listIngredient.getAdapter();
+                                String newIngredient = IA.getName(position);
+
+                                if(!ingredientAdded.contains(newIngredient)) {
+                                    ingredientAdded.add(newIngredient);
+                                }
+                                else{
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
+                                    builder.setMessage("Vous avez déjà ajouté cet ingrédient")
+                                            .setNegativeButton("Ok", null)
+                                            .create()
+                                            .show();
+
+                                    return;
+                                }
+
+                                Intent addedIngredientIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                                addedIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
+                                if(getIntent().hasExtra("username")){
+                                    addedIngredientIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                                    addedIngredientIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    addedIngredientIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                                }
+                                startActivity(addedIngredientIntent);
+
+                            }
+                        });
+
+
+
+                    } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
+                            builder.setMessage("Erreur lors de l'ajout")
+                                    .setNegativeButton("Réessayer", null)
+                                    .create()
+                                    .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(MonFrigoType.this);
+                    builder2.setMessage("RIP " +e.getMessage())
+                            .setNegativeButton("Réessayer", null)
                             .create()
                             .show();
-
-                    return;
                 }
-
-                Intent addedIngredientIntent = new Intent(getApplicationContext(), AddIngredient.class);
-                addedIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
-                if(getIntent().hasExtra("username")){
-                    addedIngredientIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    addedIngredientIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    addedIngredientIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                startActivity(addedIngredientIntent);
-
             }
-        });
+        };
 
-
+        getIngredientPerTypeRequest getIngredientRequest = new getIngredientPerTypeRequest(type+"", responseListener);
+        RequestQueue queue = Volley.newRequestQueue(MonFrigoType.this);
+        queue.add(getIngredientRequest);
 
     }
 }

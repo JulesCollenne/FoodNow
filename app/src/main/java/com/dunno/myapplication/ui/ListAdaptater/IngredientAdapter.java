@@ -1,4 +1,4 @@
-package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
+package com.dunno.myapplication.ui.ListAdaptater;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -33,6 +33,10 @@ public class IngredientAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
+        return ingredientName.get(position);
+    }
+
+    public String getName(int position) {
         return ingredientName.get(position);
     }
 
