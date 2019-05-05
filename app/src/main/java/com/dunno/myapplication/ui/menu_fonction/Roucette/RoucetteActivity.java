@@ -14,6 +14,18 @@ import com.dunno.myapplication.R;
 
 import java.util.Random;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+
+import com.dunno.myapplication.R;
+import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
+import com.dunno.myapplication.ui.menu.MainActivity;
+
+
 public class RoucetteActivity extends AppCompatActivity {
 
     Button button;
@@ -25,7 +37,6 @@ public class RoucetteActivity extends AppCompatActivity {
     int degree = 0;
     int old_degree=0;
 
-    private static final float factor = 45.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

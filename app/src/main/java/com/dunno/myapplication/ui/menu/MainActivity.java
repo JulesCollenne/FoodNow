@@ -21,6 +21,7 @@ import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoTypeChoice;
+import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -131,14 +132,26 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_frigo) {
 
             Intent accountIntent = new Intent(getApplicationContext(), AddIngredient.class);
-            if(loggedin){
+            if (loggedin) {
                 accountIntent.putExtra("email", email);
                 accountIntent.putExtra("username", username);
                 accountIntent.putExtra("password", password);
             }
             startActivity(accountIntent);
 
-        } else if (id == R.id.nav_gallery) {
+        }
+
+        else if(id == R.id.nav_roucette){
+
+            Intent accountIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
+            if (loggedin) {
+                accountIntent.putExtra("email", email);
+                accountIntent.putExtra("username", username);
+                accountIntent.putExtra("password", password);
+            }
+            startActivity(accountIntent);
+
+        }else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_account) {
 
