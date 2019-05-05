@@ -10,11 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.loginregister.LoginActivity;
+import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
 import com.dunno.myapplication.ui.menu.MainActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddIngredient extends AppCompatActivity {
 
@@ -79,10 +78,6 @@ public class AddIngredient extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Rechercher la liste d'ingredient
-
-                //Ouvrir un nouvel intent de liste de recettes.
-
                 if(ingredientAdded.size() == 0){
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddIngredient.this);
@@ -94,8 +89,14 @@ public class AddIngredient extends AppCompatActivity {
                     return;
                 }
 
-
-
+                Intent searchRecipeIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
+                if(getIntent().hasExtra("username")){
+                    searchRecipeIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    searchRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    searchRecipeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                }
+                searchRecipeIntent.putExtra("liste_ingredient", ingredientAdded);
+                startActivity(searchRecipeIntent);
 
             }
         });
