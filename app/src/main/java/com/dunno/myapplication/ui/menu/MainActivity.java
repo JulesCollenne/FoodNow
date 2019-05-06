@@ -128,64 +128,71 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_frigo) {
+        Intent chosenIntent;
 
-            Intent accountIntent = new Intent(getApplicationContext(), AddIngredient.class);
-            if (loggedin) {
-                accountIntent.putExtra("email", email);
-                accountIntent.putExtra("username", username);
-                accountIntent.putExtra("password", password);
-            }
-            startActivity(accountIntent);
+        switch(item.getItemId()) {
 
-        }
+            case R.id.nav_accueil:
 
-        else if(id == R.id.nav_roucette){
+                break;
 
-            //TODO ne fonctionne pas
-           // Intent logoutIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
-           // startActivity(logoutIntent);
-            Intent accountIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
-            if (loggedin) {
-                accountIntent.putExtra("email", email);
-                accountIntent.putExtra("username", username);
-                accountIntent.putExtra("password", password);
-            }
-            startActivity(accountIntent);
+            case R.id.nav_frigo:
+                chosenIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                if (loggedin) {
+                    chosenIntent.putExtra("email", email);
+                    chosenIntent.putExtra("username", username);
+                    chosenIntent.putExtra("password", password);
+                }
+                startActivity(chosenIntent);
+                break;
 
+            case R.id.nav_gallery:
+                chosenIntent = new Intent(getApplicationContext(), ListeRecettes.class);
+                if (loggedin) {
+                    chosenIntent.putExtra("email", email);
+                    chosenIntent.putExtra("username", username);
+                    chosenIntent.putExtra("password", password);
+                }
+                startActivity(chosenIntent);
+                break;
 
-        }else if (id == R.id.nav_gallery) {
-            Intent accountIntent = new Intent(getApplicationContext(), ListeRecettes.class);
-            if (loggedin) {
-                accountIntent.putExtra("email", email);
-                accountIntent.putExtra("username", username);
-                accountIntent.putExtra("password", password);
-            }
-            startActivity(accountIntent);
+            case R.id.nav_roucette:
+                chosenIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
+                if (loggedin) {
+                    chosenIntent.putExtra("email", email);
+                    chosenIntent.putExtra("username", username);
+                    chosenIntent.putExtra("password", password);
+                }
+                startActivity(chosenIntent);
+                break;
 
-        } else if (id == R.id.nav_account) {
+            case R.id.nav_account:
+                chosenIntent = new Intent(getApplicationContext(), AccountActivity.class);
+                chosenIntent.putExtra("email", email);
+                chosenIntent.putExtra("username", username);
+                chosenIntent.putExtra("password", password);
+                startActivity(chosenIntent);
+                break;
 
-            Intent accountIntent = new Intent(getApplicationContext(), AccountActivity.class);
-            accountIntent.putExtra("email", email);
-            accountIntent.putExtra("username", username);
-            accountIntent.putExtra("password", password);
-            startActivity(accountIntent);
+            case R.id.nav_contact:
 
-        } else if (id == R.id.nav_logout) {
+                break;
 
-            Intent logoutIntent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(logoutIntent);
+            case R.id.nav_favoris:
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setMessage("Disconnected")
-                    .create()
-                    .show();
+                break;
 
+            case R.id.nav_logout:
+                chosenIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(chosenIntent);
 
-        } else if (id == R.id.nav_contact) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Disconnected")
+                        .create()
+                        .show();
+                break;
+
 
         }
 
