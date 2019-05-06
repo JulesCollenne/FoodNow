@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecettes;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoTypeChoice;
 import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;
@@ -147,9 +148,23 @@ public class MainActivity extends AppCompatActivity
             //TODO ne fonctionne pas
            // Intent logoutIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
            // startActivity(logoutIntent);
+            Intent accountIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
+            if (loggedin) {
+                accountIntent.putExtra("email", email);
+                accountIntent.putExtra("username", username);
+                accountIntent.putExtra("password", password);
+            }
+            startActivity(accountIntent);
 
 
         }else if (id == R.id.nav_gallery) {
+            Intent accountIntent = new Intent(getApplicationContext(), ListeRecettes.class);
+            if (loggedin) {
+                accountIntent.putExtra("email", email);
+                accountIntent.putExtra("username", username);
+                accountIntent.putExtra("password", password);
+            }
+            startActivity(accountIntent);
 
         } else if (id == R.id.nav_account) {
 
