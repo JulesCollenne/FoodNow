@@ -11,7 +11,6 @@ import android.widget.ListView;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
 import com.dunno.myapplication.ui.menu.MainActivity;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
 import java.util.ArrayList;
@@ -26,8 +25,8 @@ public class ListeRecettes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_recettes);
 
-        final ListView lv_recipe = (ListView) findViewById(R.id.lv_recipe);
-        Button retourBtn = (Button) findViewById(R.id.btn_retour_2);
+        final ListView lv_recipe = (ListView) findViewById(R.id.lv_all_recipe);
+        Button retourBtn = (Button) findViewById(R.id.btn_retour_8);
 
         if(getIntent().hasExtra("liste_recipe_id")){
 
@@ -37,7 +36,7 @@ public class ListeRecettes extends AppCompatActivity {
         }
         else {
             //_______________________________________________________________________
-            //TODO: Recuperer depuis le serveur
+            //TODO: Recuperer depuis le serveur: Crée une classe java getAllRecipeRequest qui envoie une demande a un .php, le .php lui recupere toute les recettes et les transmets.
             recipeID = new ArrayList<>();
             recipeID.add(1);
             recipeID.add(2);

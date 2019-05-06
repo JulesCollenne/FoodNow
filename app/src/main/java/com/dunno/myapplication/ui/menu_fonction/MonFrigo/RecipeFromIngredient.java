@@ -89,13 +89,5 @@ public class RecipeFromIngredient extends AppCompatActivity {
             }
 
         });
-
-
-
-
-
-
-
-
     }
 }

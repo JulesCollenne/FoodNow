@@ -2,31 +2,24 @@ package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoType;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecettes;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.RecipeFromIngredient;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getIngredientPerTypeRequest;
+import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getRecipeFromIDRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class PrintRecipe extends AppCompatActivity {
 
@@ -69,7 +62,16 @@ public class PrintRecipe extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                Intent retourIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
+                                Intent retourIntent;
+
+                                if(getIntent().hasExtra("liste_ingredient")){
+                                    retourIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
+                                    retourIntent.putExtra("liste_ingredient", getIntent().getExtras().getStringArrayList("liste_ingredient"));
+                                }
+                                else{
+                                    retourIntent = new Intent(getApplicationContext(), ListeRecettes.class);
+                                }
+
 
                                 retourIntent.putExtra("liste_recipe_id", getIntent().getExtras().getIntegerArrayList("liste_recipe_id"));
                                 retourIntent.putExtra("liste_recipe_name", getIntent().getExtras().getStringArrayList("liste_recipe_name"));
@@ -81,9 +83,9 @@ public class PrintRecipe extends AppCompatActivity {
                                     retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
                                 }
 
-                                if(getIntent().hasExtra("liste_ingredient")){
-                                    retourIntent.putExtra("liste_ingredient", getIntent().getExtras().getStringArrayList("liste_ingredient"));
-                                }
+
+
+
 
                                 startActivity(retourIntent);
 

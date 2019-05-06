@@ -52,7 +52,7 @@ public class AccountModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                Intent retourIntent = new Intent(getApplicationContext(), AccountActivity.class);
                 retourIntent.putExtra("email", email);
                 retourIntent.putExtra("username", username);
                 retourIntent.putExtra("password", password);

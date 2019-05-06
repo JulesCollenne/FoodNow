@@ -17,42 +17,51 @@
     tools:layout_editor_absoluteX="16dp"
     tools:layout_editor_absoluteY="0dp" />
 
-<Button
-    android:id="@+id/button2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:text="@string/button_roucette"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar"
-    app:layout_constraintVertical_bias="0.986"
-    tools:ignore="MissingConstraints"
-    tools:layout_editor_absoluteX="115dp" />
+    <Button
+        android:id="@+id/boutton_roucette"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="button_roucette"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pointer2"
+        tools:ignore="MissingConstraints" />
 
-<ImageView
-    android:id="@+id/roucette"
-    android:scaleType="centerInside"
-    android:layout_width="372dp"
-    android:layout_height="372dp"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:src="@drawable/roucette"
-    tools:layout_editor_absoluteX="19dp"
-    tools:layout_editor_absoluteY="179dp"
-    app:srcCompat="@drawable/roucette"
-    tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/roucette"
+        android:layout_width="372dp"
+        android:layout_height="372dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="56dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/roucette"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/roucette"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/pointer2"
-        android:scaleType="centerInside"
         android:layout_width="88dp"
         android:layout_height="77dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roucette"
         app:srcCompat="@drawable/pointer2"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="551dp"
         tools:ignore="MissingConstraints" />
 
     <TextView

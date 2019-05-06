@@ -32,7 +32,7 @@ public class RoucetteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roucette);
 
-        button = (Button) findViewById(R.id.button2);
+        button = (Button) findViewById(R.id.boutton_roucette);
         roucette = (ImageView) findViewById(R.id.roucette);
         textView = (TextView) findViewById(R.id.textView);
 
