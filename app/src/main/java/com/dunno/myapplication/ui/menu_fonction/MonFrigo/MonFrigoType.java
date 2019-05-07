@@ -25,7 +25,10 @@ import java.util.ArrayList;
 public class MonFrigoType extends AppCompatActivity {
 
     ArrayList<String> ingredientAdded;
+    ArrayList<String> ingredientAddedID;
     ArrayList<String> ingredientName = new ArrayList<>();
+    ArrayList<String> ingredientID = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MonFrigoType extends AppCompatActivity {
 
         int type = getIntent().getExtras().getInt("type");
         ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
+        ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
 
         String typeName;
 
@@ -80,8 +84,9 @@ public class MonFrigoType extends AppCompatActivity {
 
                     if (success) {
 
-                        for(int i = 0; i < jsonResponse.length()-1; i++) {
-                            ingredientName.add(jsonResponse.getString(i+""));
+                        for(int i = 0; i < jsonResponse.length()/2; i++) {
+                            ingredientName.add(jsonResponse.getString("name"+i));
+                            ingredientID.add(jsonResponse.getString("ID"+i));
                         }
 
                         Button btnRetour = (Button) findViewById(R.id.btn_retour_1);
@@ -89,7 +94,7 @@ public class MonFrigoType extends AppCompatActivity {
                         final ListView listIngredient = (ListView) findViewById(R.id.lv_ingredients);
 
 
-                        final IngredientAdapter ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientName);
+                        final IngredientAdapter ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientName, ingredientID);
                         listIngredient.setAdapter(ingredientAdapter);
 
 
@@ -97,8 +102,9 @@ public class MonFrigoType extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                                Intent retourIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
                                 retourIntent.putExtra("liste_ingredient", ingredientAdded);
+                                retourIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                                 if(getIntent().hasExtra("username")){
                                     retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
                                     retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
@@ -116,9 +122,11 @@ public class MonFrigoType extends AppCompatActivity {
 
                                 IngredientAdapter IA = (IngredientAdapter) listIngredient.getAdapter();
                                 String newIngredient = IA.getName(position);
+                                String newIngredientID = IA.getID(position);
 
                                 if(!ingredientAdded.contains(newIngredient)) {
                                     ingredientAdded.add(newIngredient);
+                                    ingredientAddedID.add(newIngredientID);
                                 }
                                 else{
                                     AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
@@ -132,6 +140,7 @@ public class MonFrigoType extends AppCompatActivity {
 
                                 Intent addedIngredientIntent = new Intent(getApplicationContext(), AddIngredient.class);
                                 addedIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
+                                addedIngredientIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                                 if(getIntent().hasExtra("username")){
                                     addedIngredientIntent.putExtra("email", getIntent().getExtras().getString("email"));
                                     addedIngredientIntent.putExtra("username", getIntent().getExtras().getString("username"));
@@ -169,3 +178,4 @@ public class MonFrigoType extends AppCompatActivity {
 
     }
 }
+

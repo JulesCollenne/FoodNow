@@ -67,6 +67,7 @@ public class PrintRecipe extends AppCompatActivity {
                                 if(getIntent().hasExtra("liste_ingredient")){
                                     retourIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
                                     retourIntent.putExtra("liste_ingredient", getIntent().getExtras().getStringArrayList("liste_ingredient"));
+                                    retourIntent.putExtra("liste_ingredient_id", getIntent().getExtras().getStringArrayList("liste_ingredient_id"));
                                 }
                                 else{
                                     retourIntent = new Intent(getApplicationContext(), ListeRecettes.class);
@@ -114,3 +115,4 @@ public class PrintRecipe extends AppCompatActivity {
 
     }
 }
+

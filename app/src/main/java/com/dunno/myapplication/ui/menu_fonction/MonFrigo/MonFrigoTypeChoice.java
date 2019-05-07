@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MonFrigoTypeChoice extends AppCompatActivity {
 
     ArrayList<String> ingredientAdded = new ArrayList<>();
+    ArrayList<String> ingredientAddedID = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,11 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
         ImageButton feculentBtn = (ImageButton) findViewById(R.id.feculentButton);
         ImageButton diversBtn = (ImageButton) findViewById(R.id.diversButton);
 
+        Button retourBtn = (Button) findViewById(R.id.btn_retour_9);
+
         if(getIntent().hasExtra("liste_ingredient")) {
             ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
+            ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
         }
 
         meatBtn.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +41,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 0);
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username")){
                     monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
                     monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
@@ -55,6 +60,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 1);
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username")){
                     monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
                     monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
@@ -73,6 +79,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 2);
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username")){
                     monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
                     monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
@@ -91,6 +98,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
                 monFrigoTypeIntent.putExtra("type", 3);
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username")){
                     monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
                     monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
@@ -101,6 +109,24 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
             }
         });
 
+        retourBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                retourIntent.putExtra("liste_ingredient", ingredientAdded);
+                retourIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username")){
+                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                }
+                startActivity(retourIntent);
+
+            }
+        });
+
 
     }
 }
+

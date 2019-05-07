@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class RecipeFromIngredient extends AppCompatActivity {
 
     ArrayList ingredientAdded;
+    ArrayList ingredientAddedID;
     ArrayList<Integer> recipeID;
     ArrayList<String> recipeName;
 
@@ -26,6 +27,7 @@ public class RecipeFromIngredient extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_from_ingredient);
 
         ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
+        ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
 
         Button changeIngredient = (Button) findViewById(R.id.btn_recipe_change);
         final ListView lv_recipe = (ListView) findViewById(R.id.lv_recipe_from_ingredients);
@@ -41,6 +43,7 @@ public class RecipeFromIngredient extends AppCompatActivity {
                     IngredientmodifyIntent.putExtra("password", getIntent().getExtras().getString("password"));
                 }
                 IngredientmodifyIntent.putExtra("liste_ingredient", ingredientAdded);
+                IngredientmodifyIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 startActivity(IngredientmodifyIntent);
 
             }
@@ -52,19 +55,6 @@ public class RecipeFromIngredient extends AppCompatActivity {
             recipeID = getIntent().getExtras().getIntegerArrayList("liste_recipe_id");
             recipeName = getIntent().getExtras().getStringArrayList("liste_recipe_name");
 
-        }
-        else {
-            //_______________________________________________________________________
-            //TODO: Recuperer depuis le serveur
-            recipeID = new ArrayList<>();
-            recipeID.add(1);
-            recipeID.add(2);
-
-            recipeName = new ArrayList<>();
-            recipeName.add("Pate bolognaise");
-            recipeName.add("Boeuf bourguignon");
-
-            //_______________________________________________________________________
         }
 
         final RecipeAdapter recipeAdapter = new RecipeAdapter(getApplicationContext(), recipeID, recipeName);
@@ -81,6 +71,7 @@ public class RecipeFromIngredient extends AppCompatActivity {
                     printRecipeIntent.putExtra("password", getIntent().getExtras().getString("password"));
                 }
                 printRecipeIntent.putExtra("liste_ingredient", ingredientAdded);
+                printRecipeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 printRecipeIntent.putExtra("liste_recipe_id", recipeID);
                 printRecipeIntent.putExtra("liste_recipe_name", recipeName);
                 printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
@@ -91,3 +82,4 @@ public class RecipeFromIngredient extends AppCompatActivity {
         });
     }
 }
+
