@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.menu_fonction.MonFrigo.RecipeFromIngredient"></activity>
+        <activity android:name=".ui.menu_fonction.MonFrigo.RecipeFromIngredient" />
         <activity android:name=".ui.menu_fonction.MonFrigo.AddIngredient" />
         <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoType" />
         <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice" />
@@ -21,7 +21,6 @@
         <activity android:name=".ui.menu_fonction.Account.AccountActivity" />
         <activity android:name=".ui.menu_fonction.Roucette.RoucetteActivity" />
         <activity android:name=".ui.menu_fonction.PrintRecipe.PrintRecipe" />
-
         <activity android:name=".ui.loginregister.RegisterActivity" />
         <activity
             android:name=".ui.loginregister.LoginActivity"
