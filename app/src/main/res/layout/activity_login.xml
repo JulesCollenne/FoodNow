@@ -72,9 +72,9 @@
         android:layout_below="@+id/tvRegisterLink"
         android:layout_alignEnd="@+id/tvRegisterLink"
         android:layout_alignRight="@+id/tvRegisterLink"
-        android:layout_marginTop="442dp"
-        android:layout_marginEnd="-3dp"
-        android:layout_marginRight="-3dp"
+        android:layout_marginTop="417dp"
+        android:layout_marginEnd="-4dp"
+        android:layout_marginRight="-4dp"
         android:text="Retour" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.menu_fonction.MonFrigo.AddIngredient">
 
+
     <Button
         android:id="@+id/btn_add_ingredient"
         android:layout_width="wrap_content"

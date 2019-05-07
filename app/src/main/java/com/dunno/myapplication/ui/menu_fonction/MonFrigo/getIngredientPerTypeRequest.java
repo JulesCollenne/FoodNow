@@ -17,6 +17,7 @@ public class getIngredientPerTypeRequest extends StringRequest {
         params.put("type", type);
     }
 
+
     @Override
     public Map<String, String> getParams() {
         return params;

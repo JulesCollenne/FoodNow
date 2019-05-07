@@ -178,3 +178,4 @@ public class MonFrigoType extends AppCompatActivity {
 
     }
 }
+
