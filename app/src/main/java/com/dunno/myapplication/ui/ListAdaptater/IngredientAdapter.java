@@ -18,10 +18,12 @@ public class IngredientAdapter extends BaseAdapter {
 
     LayoutInflater mInflater;
     List<String> ingredientName;
+    List<String> ingredientID;
 
-    public IngredientAdapter(Context context, List<String> ingredientNames){
+    public IngredientAdapter(Context context, List<String> ingredientNames,  List<String> ingredientID){
 
         ingredientName = ingredientNames;
+        this.ingredientID = ingredientID;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -39,6 +41,11 @@ public class IngredientAdapter extends BaseAdapter {
     public String getName(int position) {
         return ingredientName.get(position);
     }
+
+    public String getID(int position) {
+        return ingredientID.get(position);
+    }
+
 
     @Override
     public long getItemId(int position) {
