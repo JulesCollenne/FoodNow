@@ -6,69 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice">
 
-    <ImageButton
-        android:id="@+id/meatButton"
-        android:layout_width="fill_parent"
-        android:layout_height="182dp"
-        android:contentDescription="Viandes et Poissons"
-        android:src="@drawable/viandepoisson"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/viandepoisson" />
 
-    <ImageButton
-        android:id="@+id/vegetablesButton"
+    <Button
+        android:id="@+id/btn_cereal"
         android:layout_width="fill_parent"
-        android:layout_height="182dp"
-        android:contentDescription="Fruits et Légumes"
-        android:src="@drawable/fruitslegumes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/meatButton"
-        tools:srcCompat="@drawable/fruitslegumes" />
-
-    <ImageButton
-        android:id="@+id/feculentButton"
-        android:layout_width="fill_parent"
-        android:layout_height="182dp"
-        android:contentDescription="Féculents"
-        android:src="@drawable/feculents"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vegetablesButton"
-        tools:src="@drawable/feculents"
-        tools:srcCompat="@drawable/feculents" />
-
-    <ImageButton
-        android:id="@+id/diversButton"
-        android:layout_width="fill_parent"
-        android:layout_height="182dp"
-        android:src="@drawable/autres"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feculentButton"
-        tools:srcCompat="@drawable/autres" />
-
-    <TextView
-        android:id="@+id/tv_autre"
-        android:layout_width="113dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="142dp"
-        android:text="Autre"
-        android:textColor="#FFEB3B"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Céréales"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_oeuf" />
+
+    <Button
+        android:id="@+id/btn_oeuf"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Oeufs et fromages"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_legume" />
+
+    <Button
+        android:id="@+id/btn_fruit"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Fruits"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viande" />
 
+    <Button
+        android:id="@+id/btn_condiment"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="condiment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cereal" />
 
     <Button
         android:id="@+id/btn_retour_9"
@@ -78,7 +75,37 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="retour"
-        app:layout_constraintBottom_toBottomOf="@+id/diversButton"
-        app:layout_constraintEnd_toEndOf="@+id/diversButton" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_legume"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Légumes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fruit" />
+
+    <Button
+        android:id="@+id/btn_viande"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Viandes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -62,7 +62,7 @@ public class IngredientAdapter extends BaseAdapter {
 
         String ingredient_name = ingredientName.get(position);
 
-        iv_ingredient_image.setImageResource(R.drawable.autres);
+        iv_ingredient_image.setImageResource(R.drawable.ic_menu_camera);
         tv_ingredient_name.setText(ingredient_name);
 
         return v;

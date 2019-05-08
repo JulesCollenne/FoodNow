@@ -58,7 +58,7 @@ public class RecipeAdapter extends BaseAdapter {
 
         String recipe_name = recipeName.get(position);
 
-        iv_ingredient_image.setImageResource(R.drawable.viandepoisson);
+        iv_ingredient_image.setImageResource(R.drawable.ic_menu_camera);
         tv_ingredient_name.setText(recipe_name);
 
         return v;

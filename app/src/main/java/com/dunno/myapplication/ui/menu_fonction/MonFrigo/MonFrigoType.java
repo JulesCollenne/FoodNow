@@ -35,7 +35,7 @@ public class MonFrigoType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_frigo_type);
 
-        int type = getIntent().getExtras().getInt("type");
+        String type = getIntent().getExtras().getString("type");
         ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
         ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
 
@@ -43,20 +43,28 @@ public class MonFrigoType extends AppCompatActivity {
 
         switch(type) {
 
-            case 0:
-                typeName = "Viandes et Poissons";
+            case "Viande":
+                typeName = "Viandes";
                 break;
 
-            case 1:
-                typeName = "Fruits et Légumes";
+            case "Légume":
+                typeName = "Légumes";
                 break;
 
-            case 2:
-                typeName = "Féculents";
+            case "Fruit":
+                typeName = "Fruits";
                 break;
 
-            case 3:
-                typeName = "Divers";
+            case "Condiment":
+                typeName = "Condiments";
+                break;
+
+            case "Oeufs et fromages":
+                typeName = "Oeufs et fromages";
+                break;
+
+            case "Céréales":
+                typeName = "Céréales";
                 break;
 
             default:
@@ -66,8 +74,6 @@ public class MonFrigoType extends AppCompatActivity {
 
         TextView tv_type = (TextView) findViewById(R.id.tv_ingredientType);
         tv_type.setText(typeName);
-
-
 
 
 
@@ -172,7 +178,7 @@ public class MonFrigoType extends AppCompatActivity {
             }
         };
 
-        getIngredientPerTypeRequest getIngredientRequest = new getIngredientPerTypeRequest(type+"", responseListener);
+        getIngredientPerTypeRequest getIngredientRequest = new getIngredientPerTypeRequest(type, responseListener);
         RequestQueue queue = Volley.newRequestQueue(MonFrigoType.this);
         queue.add(getIngredientRequest);
 

@@ -51,7 +51,7 @@ public class PrintRecipe extends AppCompatActivity {
                         tv_name.setText(jsonResponse.getString("name"));
                         tv_tmp.setText("Temps: "+jsonResponse.getInt("time")+" min");
                         tv_nb.setText(jsonResponse.getInt("nb")+" personnes");
-                        iv_recipe.setImageResource(R.drawable.viandepoisson);
+                        iv_recipe.setImageResource(R.drawable.ic_menu_camera);
                         tv_desc.setText(jsonResponse.getString("description"));
 
                         tv_desc.setMovementMethod(new ScrollingMovementMethod());
