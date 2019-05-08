@@ -21,6 +21,9 @@
         <activity android:name=".ui.menu_fonction.Account.AccountActivity" />
         <activity android:name=".ui.menu_fonction.Roucette.RoucetteActivity" />
         <activity android:name=".ui.menu_fonction.PrintRecipe.PrintRecipe" />
+        <activity android:name=".ui.menu_fonction.LesRecettes.ListePlats" />
+        <activity android:name=".ui.menu_fonction.LesRecettes.ListenEntrees" />
+        <activity android:name=".ui.menu_fonction.LesRecettes.ListeDesserts" />
         <activity android:name=".ui.loginregister.RegisterActivity" />
         <activity
             android:name=".ui.loginregister.LoginActivity"
@@ -35,7 +38,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.menu_fonction.LesRecettes.ListeRecettes" />
+        <activity android:name=".ui.menu_fonction.LesRecettes.ListePlats" />
+        <activity android:name=".ui.menu_fonction.LesRecettes.ChoixTypeRecette" />
     </application>
 
 </manifest>

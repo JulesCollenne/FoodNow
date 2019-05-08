@@ -14,7 +14,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecettes;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListePlats;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.RecipeFromIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getRecipeFromIDRequest;
 
@@ -70,7 +70,7 @@ public class PrintRecipe extends AppCompatActivity {
                                     retourIntent.putExtra("liste_ingredient_id", getIntent().getExtras().getStringArrayList("liste_ingredient_id"));
                                 }
                                 else{
-                                    retourIntent = new Intent(getApplicationContext(), ListeRecettes.class);
+                                    retourIntent = new Intent(getApplicationContext(), ListePlats.class);
                                 }
 
 

@@ -15,8 +15,7 @@ import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
 import java.util.ArrayList;
 
-public class ListeRecettes extends AppCompatActivity {
-
+public class ListenEntrees extends AppCompatActivity {
     ArrayList<Integer> recipeID;
     ArrayList<String> recipeName;
 
@@ -73,13 +72,7 @@ public class ListeRecettes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent retourIntent = new Intent(getApplicationContext(), MainActivity.class);
-                if(getIntent().hasExtra("username")){
-                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                startActivity(retourIntent);
+                ListenEntrees.this.finish();
 
             }
         });

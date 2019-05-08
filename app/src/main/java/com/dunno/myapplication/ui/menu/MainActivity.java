@@ -15,14 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
-import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecettes;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ChoixTypeRecette;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListePlats;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoTypeChoice;
 import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_gallery:
-                chosenIntent = new Intent(getApplicationContext(), ListeRecettes.class);
+                chosenIntent = new Intent(getApplicationContext(), ChoixTypeRecette.class);
                 if (loggedin) {
                     chosenIntent.putExtra("email", email);
                     chosenIntent.putExtra("username", username);
