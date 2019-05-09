@@ -36,6 +36,7 @@
     <string name="menu_send">Send</string>
     <string name="liste_des_recettes">Liste des recettes</string>
     <string name="retour">Retour</string>
+    <string name="favoris">Mes favoris</string>
 
 
 </resources>

@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-
+        /**
+         * Recette du jour
+         */
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -120,28 +122,6 @@ public class MainActivity extends AppCompatActivity
         getRecettedujourRequest getRecetteRequest = new getRecettedujourRequest(responseListener);
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(getRecetteRequest);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
