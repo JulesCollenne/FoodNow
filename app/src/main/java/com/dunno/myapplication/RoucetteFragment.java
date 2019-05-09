@@ -14,6 +14,7 @@ public class RoucetteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        System.out.println("Singe");
         return inflater.inflate(R.layout.fragment_roucette,container,false);
     }
 }
