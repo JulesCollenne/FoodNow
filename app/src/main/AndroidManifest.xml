@@ -38,6 +38,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.menu_fonction.LesRecettes.ChoixTypeRecette" />
+        <activity android:name=".ui.menu_fonction.ChefSashimi.ChefSashimi" />
     </application>
 
 

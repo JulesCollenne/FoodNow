@@ -4,6 +4,7 @@ package com.dunno.myapplication.ui.menu;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
+import com.dunno.myapplication.ui.menu_fonction.ChefSashimi.ChefSashimi;
 import com.dunno.myapplication.ui.menu_fonction.Favoris.FavoriteActivity;
 import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ChoixTypeRecette;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity
         }else{
             drawer = findViewById(R.id.drawer_layout);
         }
+
+        ImageButton sashimiBtn = findViewById(R.id.ib_conseil);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -151,15 +155,19 @@ public class MainActivity extends AppCompatActivity
         queue.add(getRecetteRequest);
 
 
+        sashimiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
-
-
-
-
-
-
-
+                Intent chosenIntent = new Intent(getApplicationContext(), ChefSashimi.class);
+                if (loggedin) {
+                    chosenIntent.putExtra("email", email);
+                    chosenIntent.putExtra("username", username);
+                    chosenIntent.putExtra("password", password);
+                }
+                startActivity(chosenIntent);
+            }
+        });
 
 
     }
