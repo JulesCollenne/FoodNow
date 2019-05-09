@@ -149,19 +149,6 @@ public class MainActivity extends AppCompatActivity
         getRecettedujourRequest getRecetteRequest = new getRecettedujourRequest(responseListener);
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(getRecetteRequest);
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override

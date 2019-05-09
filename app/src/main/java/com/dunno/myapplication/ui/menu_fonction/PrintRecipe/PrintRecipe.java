@@ -23,6 +23,8 @@ import org.json.JSONObject;
 
 public class PrintRecipe extends AppCompatActivity {
 
+    private ImageView btnFavorite;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +88,18 @@ public class PrintRecipe extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(PrintRecipe.this);
         queue.add(getRecipeFromID);
 
+        /**
+         * Bouton favoris
+         */
 
+        this.btnFavorite = findViewById(R.id.btn_favorite);
+
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
 
