@@ -110,7 +110,6 @@ public class PrintRecipe extends AppCompatActivity {
                 /** le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
                     /* TODO : Requête vers le serveur pour ajouter au favoris (utiliser getIdFromPseudo.php) */
-
                 }
             }
         });
