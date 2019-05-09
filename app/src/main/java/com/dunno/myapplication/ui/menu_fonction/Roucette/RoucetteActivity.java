@@ -92,11 +92,6 @@ public class RoucetteActivity extends AppCompatActivity {
 
 
                                     if (success) {
-
-                                        successRequest = true;
-
-
-                                        if(successRequest) {
                                             Intent loggedIn = new Intent(getApplicationContext(), PrintRecipe.class);
 
                                             if (loggedin) {
@@ -107,9 +102,6 @@ public class RoucetteActivity extends AppCompatActivity {
 
                                             loggedIn.putExtra("id_recipe", IDrecipe);
                                             startActivity(loggedIn);
-                                        }
-
-
 
                                     } else {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(RoucetteActivity.this);
