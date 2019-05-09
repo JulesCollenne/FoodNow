@@ -14,7 +14,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListePlats;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecetteFromType;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.RecipeFromIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getRecipeFromIDRequest;
 
@@ -62,33 +62,7 @@ public class PrintRecipe extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                Intent retourIntent;
-
-                                if(getIntent().hasExtra("liste_ingredient")){
-                                    retourIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
-                                    retourIntent.putExtra("liste_ingredient", getIntent().getExtras().getStringArrayList("liste_ingredient"));
-                                    retourIntent.putExtra("liste_ingredient_id", getIntent().getExtras().getStringArrayList("liste_ingredient_id"));
-                                }
-                                else{
-                                    retourIntent = new Intent(getApplicationContext(), ListePlats.class);
-                                }
-
-
-                                retourIntent.putExtra("liste_recipe_id", getIntent().getExtras().getIntegerArrayList("liste_recipe_id"));
-                                retourIntent.putExtra("liste_recipe_name", getIntent().getExtras().getStringArrayList("liste_recipe_name"));
-
-
-                                if(getIntent().hasExtra("username")){
-                                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                                }
-
-
-
-
-
-                                startActivity(retourIntent);
+                                PrintRecipe.this.finish();
 
                             }
                         });

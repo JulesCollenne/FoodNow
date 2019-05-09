@@ -28,13 +28,14 @@ public class ChoixTypeRecette extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent monFrigoTypeIntent = new Intent(getApplicationContext(), ListenEntrees.class);
+                Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
                 if(getIntent().hasExtra("username")){
-                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                    listeRecetteIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    listeRecetteIntent.putExtra("password", getIntent().getExtras().getString("password"));
                 }
-                startActivity(monFrigoTypeIntent);
+                listeRecetteIntent.putExtra("type", "Entrées");
+                startActivity(listeRecetteIntent);
 
             }
         });
@@ -44,13 +45,14 @@ public class ChoixTypeRecette extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent monFrigoTypeIntent = new Intent(getApplicationContext(), ListePlats.class);
+                Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
                 if(getIntent().hasExtra("username")){
-                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                    listeRecetteIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    listeRecetteIntent.putExtra("password", getIntent().getExtras().getString("password"));
                 }
-                startActivity(monFrigoTypeIntent);
+                listeRecetteIntent.putExtra("type", "Plats");
+                startActivity(listeRecetteIntent);
 
             }
         });
@@ -60,13 +62,14 @@ public class ChoixTypeRecette extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent monFrigoTypeIntent = new Intent(getApplicationContext(), ListeDesserts.class);
+                Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
                 if(getIntent().hasExtra("username")){
-                    monFrigoTypeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    monFrigoTypeIntent.putExtra("password", getIntent().getExtras().getString("password"));
+                    listeRecetteIntent.putExtra("email", getIntent().getExtras().getString("email"));
+                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    listeRecetteIntent.putExtra("password", getIntent().getExtras().getString("password"));
                 }
-                startActivity(monFrigoTypeIntent);
+                listeRecetteIntent.putExtra("type", "Desserts");
+                startActivity(listeRecetteIntent);
 
             }
         });
