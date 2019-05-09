@@ -36,7 +36,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    boolean loggedin = false; //ajout
+    boolean loggedIn = false; //ajout
     String email = null;
     String username = null;
     String password = null;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
 
         if(getIntent().hasExtra("username")){
 
-            loggedin = true;
+            loggedIn = true;
 
             email = getIntent().getExtras().getString("email");
             username = getIntent().getExtras().getString("username");
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        if(loggedin){
+        if(loggedIn){
             setContentView(R.layout.activity_logged_in_main);
         }else {
             setContentView(R.layout.activity_main);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer;
-        if(loggedin){
+        if(loggedIn){
             drawer = findViewById(R.id.drawer_layout_logged_in);
         }else{
             drawer = findViewById(R.id.drawer_layout);
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity
                         TODO: Faire en sorte que la recette du jour ne change pas quand on se connecte.
 
                          */
-                        if(loggedin){
+                        if(loggedIn){
                             tvName = findViewById(R.id.tv_recettedujour2);
                             ibrecette = findViewById(R.id.iv_recettedujour2);
                         }else{
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity
 
                                 Intent printIntent = new Intent(getApplicationContext(), PrintRecipe.class);
 
-                                if (loggedin) {
+                                if (loggedIn) {
                                     printIntent.putExtra("email", email);
                                     printIntent.putExtra("username", username);
                                     printIntent.putExtra("password", password);
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed() {
 
         DrawerLayout drawer;
-        if(loggedin){
+        if(loggedIn){
             drawer = findViewById(R.id.drawer_layout_logged_in);
         }else{
             drawer = findViewById(R.id.drawer_layout);
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        if(loggedin){
+        if(loggedIn){
             getMenuInflater().inflate(R.menu.logged_in_main, menu);
             String username = getIntent().getExtras().getString("username");
             TextView pseudotv = (TextView) findViewById(R.id.pseudoView);
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_frigo:
                 chosenIntent = new Intent(getApplicationContext(), AddIngredient.class);
-                if (loggedin) {
+                if (loggedIn) {
                     chosenIntent.putExtra("email", email);
                     chosenIntent.putExtra("username", username);
                     chosenIntent.putExtra("password", password);
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_gallery:
                 chosenIntent = new Intent(getApplicationContext(), ChoixTypeRecette.class);
-                if (loggedin) {
+                if (loggedIn) {
                     chosenIntent.putExtra("email", email);
                     chosenIntent.putExtra("username", username);
                     chosenIntent.putExtra("password", password);
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_roucette:
                 chosenIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
-                if (loggedin) {
+                if (loggedIn) {
                     chosenIntent.putExtra("email", email);
                     chosenIntent.putExtra("username", username);
                     chosenIntent.putExtra("password", password);
@@ -280,7 +280,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         DrawerLayout drawer;
-        if(loggedin){
+        if(loggedIn){
             drawer = findViewById(R.id.drawer_layout_logged_in);
         }else{
             drawer = findViewById(R.id.drawer_layout);

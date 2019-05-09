@@ -24,6 +24,7 @@ import org.json.JSONObject;
 public class PrintRecipe extends AppCompatActivity {
 
     private ImageView btnFavorite;
+    private boolean loggedIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,10 +95,18 @@ public class PrintRecipe extends AppCompatActivity {
 
         this.btnFavorite = findViewById(R.id.btn_favorite);
 
+        /** On vérifie si l'utilisateur est connecté */
+        if(getIntent().hasExtra("pseudo")) { this.loggedIn = true; }
+        else { this.loggedIn = false; }
+
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                /** le click ne fonctionne que si l'utilisateur est connecté */
+                if(loggedIn) {
+                    /* TODO : Requête vers le serveur pour ajouter au favoris */
+                }
             }
         });
     }
