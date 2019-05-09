@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
+import com.dunno.myapplication.ui.menu_fonction.Favoris.FavoriteActivity;
 import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ChoixTypeRecette;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
@@ -92,10 +93,21 @@ public class MainActivity extends AppCompatActivity
 
                     if (success) {
 
-                        TextView tvName = findViewById(R.id.tv_recettedujour);
-                        tvName.setText(nameRecipe);
+                        TextView tvName;
+                        ImageButton ibrecette;
+                        /*
 
-                        ImageButton ibrecette = findViewById(R.id.iv_recettedujour);
+                        TODO: Faire en sorte que la recette du jour ne change pas quand on se connecte.
+
+                         */
+                        if(loggedin){
+                            tvName = findViewById(R.id.tv_recettedujour2);
+                            ibrecette = findViewById(R.id.iv_recettedujour2);
+                        }else{
+                            tvName = findViewById(R.id.tv_recettedujour);
+                            ibrecette = findViewById(R.id.iv_recettedujour);
+                        }
+                        tvName.setText(nameRecipe);
                         ibrecette.setImageResource(R.drawable.ic_menu_camera);
 
 
@@ -260,7 +272,11 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_favoris:
-
+                chosenIntent = new Intent(getApplicationContext(), FavoriteActivity.class);
+                chosenIntent.putExtra("email", email);
+                chosenIntent.putExtra("username", username);
+                chosenIntent.putExtra("password", password);
+                startActivity(chosenIntent);
                 break;
 
             case R.id.nav_logout:
