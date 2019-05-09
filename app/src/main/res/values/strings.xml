@@ -9,7 +9,7 @@
 
 
     <string name="menu_accueil">Accueil</string>
-    <string name="menu_frigo">Mes ingrédients</string>
+    <string name="menu_frigo">Mon Frigo</string>
     <string name="menu_gallery">Les recettes</string>
     <string name="menu_roucette">La roucette</string>
     <string name="button_roucette">Tournez la Roucette</string>

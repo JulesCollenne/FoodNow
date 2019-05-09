@@ -21,6 +21,7 @@ import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.loginregister.LoginRequest;
 import com.dunno.myapplication.ui.menu.MainActivity;
+import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecetteFromType;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
 import org.json.JSONException;
@@ -38,8 +39,9 @@ public class RoucetteActivity extends AppCompatActivity {
     String email;
     String username;
     String password;
-
+    int IDrecipe;
     double random;
+    boolean successRequest = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,58 +72,83 @@ public class RoucetteActivity extends AppCompatActivity {
                 ObjectAnimator rotateAnimation = ObjectAnimator.ofFloat(roucette,"rotation",0f, (float)random);
                 rotateAnimation.setDuration(3000);
 
-                AnimatorSet animatorSet = new AnimatorSet();
-                animatorSet.playTogether(rotateAnimation);
-                animatorSet.start();
-
-
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                final AnimatorSet animatorSet = new AnimatorSet();
+                Animator.AnimatorListener animatorListener = new Animator.AnimatorListener() {
                     @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-                            int IDrecipe = jsonResponse.getInt("id");
+                    public void onAnimationStart(Animator animation) {
 
-                            if (success) {
+                    }
 
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RoucetteActivity.this);
-                                builder.setMessage("Connection réussie")
-                                        .create()
-                                        .show();
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
 
-                                Intent loggedIn = new Intent(getApplicationContext(), PrintRecipe.class);
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonResponse = new JSONObject(response);
+                                    boolean success = jsonResponse.getBoolean("success");
+                                    IDrecipe = jsonResponse.getInt("id");
 
-                                String email = jsonResponse.getString("email");
 
-                                if(loggedin) {
-                                    loggedIn.putExtra("username", username);
-                                    loggedIn.putExtra("password", password);
-                                    loggedIn.putExtra("email", email);
+                                    if (success) {
+
+                                        successRequest = true;
+
+
+                                        if(successRequest) {
+                                            Intent loggedIn = new Intent(getApplicationContext(), PrintRecipe.class);
+
+                                            if (loggedin) {
+                                                loggedIn.putExtra("username", username);
+                                                loggedIn.putExtra("password", password);
+                                                loggedIn.putExtra("email", email);
+                                            }
+
+                                            loggedIn.putExtra("id_recipe", IDrecipe);
+                                            startActivity(loggedIn);
+                                        }
+
+
+
+                                    } else {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(RoucetteActivity.this);
+                                        builder.setMessage("Connection échouée")
+                                                .setNegativeButton("Retry", null)
+                                                .create()
+                                                .show();
+                                    }
+
+                                } catch (JSONException e) { //JSON
+                                    e.printStackTrace();
                                 }
-
-                                loggedIn.putExtra("id_recipe",IDrecipe);
-                                startActivity(loggedIn);
-
-                            } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RoucetteActivity.this);
-                                builder.setMessage("Connection échouée")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
                             }
+                        };
 
-                        } catch (JSONException e) { //JSON
-                            e.printStackTrace();
-                        }
+                        getRecipefromRoucetteRequest roucetteRequest = new getRecipefromRoucetteRequest(responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(RoucetteActivity.this);
+                        queue.add(roucetteRequest);
+
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
                     }
                 };
 
-                getRecipefromRoucetteRequest roucetteRequest = new getRecipefromRoucetteRequest(responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RoucetteActivity.this);
-                queue.add(roucetteRequest);
+                animatorSet.addListener(animatorListener);
+                animatorSet.playTogether(rotateAnimation);
+                animatorSet.start();
+
             }
         });
+
 
     }
 

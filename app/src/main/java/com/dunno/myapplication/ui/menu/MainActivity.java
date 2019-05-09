@@ -26,7 +26,6 @@ import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.loginregister.LoginRequest;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
 import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ChoixTypeRecette;
-import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListePlats;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;

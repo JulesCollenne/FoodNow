@@ -23,6 +23,4 @@ public class getIngredientPerTypeRequest extends StringRequest {
         return params;
     }
 
-
-
 }
