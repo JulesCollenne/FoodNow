@@ -25,13 +25,15 @@ public class PrintRecipe extends AppCompatActivity {
 
     private ImageView btnFavorite;
     private boolean loggedIn;
+    private int recipeID;
+    private int userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print_recipe);
 
-        int recipeID = getIntent().getExtras().getInt("id_recipe");
+        recipeID = getIntent().getExtras().getInt("id_recipe");
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -96,7 +98,9 @@ public class PrintRecipe extends AppCompatActivity {
         this.btnFavorite = findViewById(R.id.btn_favorite);
 
         /** On vérifie si l'utilisateur est connecté */
-        if(getIntent().hasExtra("pseudo")) { this.loggedIn = true; }
+        if(getIntent().hasExtra("pseudo")) {
+            this.loggedIn = true;
+        }
         else { this.loggedIn = false; }
 
         btnFavorite.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +109,7 @@ public class PrintRecipe extends AppCompatActivity {
 
                 /** le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
-                    /* TODO : Requête vers le serveur pour ajouter au favoris */
+                    /* TODO : Requête vers le serveur pour ajouter au favoris (utiliser getIdFromPseudo.php) */
                 }
             }
         });
