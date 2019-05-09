@@ -42,4 +42,5 @@
         <activity android:name=".ui.menu_fonction.LesRecettes.ChoixTypeRecette" />
     </application>
 
+
 </manifest>
