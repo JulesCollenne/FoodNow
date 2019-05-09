@@ -14,14 +14,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.loginregister.LoginActivity;
 import com.dunno.myapplication.ui.menu_fonction.Account.AccountActivity;
 import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ChoixTypeRecette;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
+import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,6 +77,79 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+
+                    String nameRecipe = jsonResponse.getString("name");
+                    final int idRecipe = jsonResponse.getInt("id");
+
+
+                    if (success) {
+
+                        TextView tvName = findViewById(R.id.tv_recettedujour);
+                        tvName.setText(nameRecipe);
+
+                        ImageButton ibrecette = findViewById(R.id.iv_recettedujour);
+                        ibrecette.setImageResource(R.drawable.ic_menu_camera);
+
+
+                        ibrecette.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent printIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+
+                                if (loggedin) {
+                                    printIntent.putExtra("email", email);
+                                    printIntent.putExtra("username", username);
+                                    printIntent.putExtra("password", password);
+                                }
+
+                                printIntent.putExtra("id_recipe", idRecipe);
+
+                                startActivity(printIntent);
+
+
+                            }
+                        });
+
+
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setMessage("Connection échouée")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
+                    }
+
+                } catch (JSONException e) { //JSON
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        getRecettedujourRequest getRecetteRequest = new getRecettedujourRequest(responseListener);
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        queue.add(getRecetteRequest);
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override
