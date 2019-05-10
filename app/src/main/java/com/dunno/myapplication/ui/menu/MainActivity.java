@@ -289,6 +289,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_logout:
                 chosenIntent = new Intent(getApplicationContext(), MainActivity.class);
+                chosenIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(chosenIntent);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

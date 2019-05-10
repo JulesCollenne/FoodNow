@@ -51,12 +51,7 @@ public class AccountActivity extends AppCompatActivity {
         bRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent retour = new Intent(getApplicationContext(), MainActivity.class);
-                retour.putExtra("email", email);
-                retour.putExtra("username", username);
-                retour.putExtra("password", password);
-                startActivity(retour);
+                AccountActivity.this.finish();
 
             }
         });

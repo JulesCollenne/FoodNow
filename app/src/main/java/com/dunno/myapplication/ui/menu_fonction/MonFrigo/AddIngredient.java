@@ -180,15 +180,7 @@ public class AddIngredient extends AppCompatActivity {
         retourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent retourIntent = new Intent(getApplicationContext(), MainActivity.class);
-                if(getIntent().hasExtra("username")){
-                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                startActivity(retourIntent);
-
+                AddIngredient.this.finish();
             }
         });
 

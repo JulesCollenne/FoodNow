@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loggedIn.putExtra("password", password);
                                 loggedIn.putExtra("email", email);
 
-
+                                loggedIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(loggedIn);
 
                             } else {
