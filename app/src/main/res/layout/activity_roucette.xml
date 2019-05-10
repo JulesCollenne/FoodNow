@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.menu_fonction.Roucette.RoucetteActivity">
 
+    <!--    Bouton permettant de tourner la roue    -->
     <Button
         android:id="@+id/boutton_roucette"
         android:layout_width="wrap_content"
@@ -23,25 +24,31 @@
         app:layout_constraintTop_toBottomOf="@+id/pointer2"
         tools:ignore="MissingConstraints" />
 
+    <!--    Image de la roue    -->
     <ImageView
         android:id="@+id/roucette"
-        android:layout_width="372dp"
-        android:layout_height="372dp"
+        android:layout_width="338dp"
+        android:layout_height="330dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:scaleType="centerInside"
         android:src="@drawable/roucette"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.183"
         app:srcCompat="@drawable/roucette"
         tools:ignore="MissingConstraints" />
 
+    <!--    Image du pointeur qui pointe sur le résultat de la roue     -->
     <ImageView
         android:id="@+id/pointer2"
         android:layout_width="88dp"
@@ -51,11 +58,12 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/roucette"
         app:srcCompat="@drawable/pointer2"

@@ -33,12 +33,14 @@ import java.util.Random;
 public class RoucetteActivity extends AppCompatActivity {
 
     Button button;
-    TextView textView;
     ImageView roucette;
+
     boolean loggedin = false;
+
     String email;
     String username;
     String password;
+
     int IDrecipe;
     double random;
     boolean successRequest = false;
@@ -48,9 +50,12 @@ public class RoucetteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roucette);
 
+
+        /*on récupère les différents éléments (image, bouton) grâce à leur identifiant et on les stocke dans des variables pour
+        * pouvoir ensuite les "manipuler"*/
+
         button = (Button) findViewById(R.id.boutton_roucette);
         roucette = (ImageView) findViewById(R.id.roucette);
-        textView = (TextView) findViewById(R.id.textView);
 
 
 
@@ -65,6 +70,8 @@ public class RoucetteActivity extends AppCompatActivity {
 
         }
 
+        /* L'animation de la roue*/
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +83,11 @@ public class RoucetteActivity extends AppCompatActivity {
                 Animator.AnimatorListener animatorListener = new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
-
+                        /*on fait rien*/
                     }
+
+
+                    /* à la fin de l'animation, on affiche la recette trouvée au hasard */
 
                     @Override
                     public void onAnimationEnd(Animator animation) {

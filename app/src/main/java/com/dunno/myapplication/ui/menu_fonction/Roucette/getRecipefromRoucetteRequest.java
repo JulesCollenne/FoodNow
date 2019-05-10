@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class getRecipefromRoucetteRequest extends StringRequest {
 
+    /* Cette partie du code permet de réaliser la requête avec le serveur et la base de donnée pour
+     * obtenir une recette au hasard */
+
     private static final String REQUEST_ROUCETTE = "https://foodnowdb.000webhostapp.com/RoucetteV2.php";
 
     private Map<String, String> params;
