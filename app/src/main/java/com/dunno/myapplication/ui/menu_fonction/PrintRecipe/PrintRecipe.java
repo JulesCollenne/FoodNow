@@ -14,6 +14,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
+import com.dunno.myapplication.ui.menu_fonction.Favoris.ChangeRecipeStateInFavoriteRequest;
+import com.dunno.myapplication.ui.menu_fonction.Favoris.getIdFromPseudoRequest;
+import com.dunno.myapplication.ui.menu_fonction.Favoris.isRecipeFavoriteRequest;
 import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecetteFromType;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.RecipeFromIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getRecipeFromIDRequest;
@@ -27,6 +30,8 @@ public class PrintRecipe extends AppCompatActivity {
     private boolean loggedIn;
     private int recipeID;
     private int userID;
+    private String pseudo = null;
+    private boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,10 @@ public class PrintRecipe extends AppCompatActivity {
         setContentView(R.layout.activity_print_recipe);
 
         recipeID = getIntent().getExtras().getInt("id_recipe");
+
+        /**
+         * Affiche la recette en prenant les infos depuis la bdd
+         */
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -99,9 +108,73 @@ public class PrintRecipe extends AppCompatActivity {
 
         /** On vérifie si l'utilisateur est connecté */
         if(getIntent().hasExtra("pseudo")) {
+            this.pseudo = getIntent().getExtras().getString("pseudo");
             this.loggedIn = true;
+
+            /**
+             * Récupération de l'ID de l'utilisateur dans la bdd
+             */
+
+            Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.getBoolean("success");
+
+                        if (success) { userID = jsonResponse.getInt("UserID"); }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
+                        builder2.setMessage("RIP " +e.getMessage())
+                                .setNegativeButton("Réessayer", null)
+                                .create()
+                                .show();
+                    }
+                }
+            };
+
+            getIdFromPseudoRequest getIdFromPseudo = new getIdFromPseudoRequest(pseudo, responseListener1);
+            RequestQueue queue1 = Volley.newRequestQueue(PrintRecipe.this);
+            queue1.add(getIdFromPseudo);
+
+
+            /**
+             * On check si la recette est déjà en favoris pour cette utilisateur
+             */
+
+
+            Response.Listener<String> responseListener2 = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        boolean success = jsonResponse.getBoolean("success");
+
+                        if (success) { isFavorite = jsonResponse.getBoolean("isFavorite"); }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
+                        builder2.setMessage("RIP " +e.getMessage())
+                                .setNegativeButton("Réessayer", null)
+                                .create()
+                                .show();
+                    }
+                }
+            };
+
+            isRecipeFavoriteRequest isRecipeFavorite = new isRecipeFavoriteRequest(userID+"", recipeID+"", responseListener2);
+            RequestQueue queue2 = Volley.newRequestQueue(PrintRecipe.this);
+            queue2.add(isRecipeFavorite);
         }
         else { this.loggedIn = false; }
+
 
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +183,40 @@ public class PrintRecipe extends AppCompatActivity {
                 /** le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
                     /* TODO : Requête vers le serveur pour ajouter au favoris (utiliser getIdFromPseudo.php) */
+
+
+                    /**
+                     * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
+                     */
+
+                    Response.Listener<String> responseListener3 = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+                                boolean success = jsonResponse.getBoolean("success");
+
+                                if (success) {
+                                    /* TODO : */
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
+                                builder2.setMessage("RIP " +e.getMessage())
+                                        .setNegativeButton("Réessayer", null)
+                                        .create()
+                                        .show();
+                            }
+                        }
+                    };
+
+                    ChangeRecipeStateInFavoriteRequest changeRecipeStateInFavorite = new ChangeRecipeStateInFavoriteRequest(userID+"", recipeID+"", isFavorite+"", responseListener3);
+                    RequestQueue queue3 = Volley.newRequestQueue(PrintRecipe.this);
+                    queue3.add(changeRecipeStateInFavorite);
+
 
                 }
             }
