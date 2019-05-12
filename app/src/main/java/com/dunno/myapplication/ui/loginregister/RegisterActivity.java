@@ -44,8 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent retour = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(retour);
+                RegisterActivity.this.finish();
 
             }
         });

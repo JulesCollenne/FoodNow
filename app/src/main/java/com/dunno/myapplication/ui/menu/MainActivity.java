@@ -276,7 +276,12 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_contact:
-
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                String[] mail = new String[1];
+                mail[0] = "FoodNowSupport@gmail.com";
+                intent.putExtra(Intent.EXTRA_EMAIL, mail);
+                intent.setType("message/rfc822");
+                startActivity(Intent.createChooser(intent, "Choose an email client"));
                 break;
 
             case R.id.nav_favoris:

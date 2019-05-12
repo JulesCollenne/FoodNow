@@ -180,7 +180,9 @@ public class AddIngredient extends AppCompatActivity {
         retourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddIngredient.this.finish();
+                Intent chosenIntent = new Intent(getApplicationContext(), MainActivity.class);
+                chosenIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(chosenIntent);
             }
         });
 

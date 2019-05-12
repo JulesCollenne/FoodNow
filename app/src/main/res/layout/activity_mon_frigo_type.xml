@@ -23,16 +23,15 @@
 
     <ListView
         android:id="@+id/lv_ingredients"
-        android:layout_width="395dp"
-        android:layout_height="648dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_retour_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ingredientType" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ingredientType"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_retour_1"
@@ -43,8 +42,8 @@
         android:layout_marginBottom="8dp"
         android:text="Retour"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lv_ingredients"
-        app:layout_constraintEnd_toEndOf="@+id/lv_ingredients"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:text="retour" />
 
 

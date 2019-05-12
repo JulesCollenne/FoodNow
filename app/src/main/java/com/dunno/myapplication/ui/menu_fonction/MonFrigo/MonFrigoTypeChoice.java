@@ -155,15 +155,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent retourIntent = new Intent(getApplicationContext(), AddIngredient.class);
-                retourIntent.putExtra("liste_ingredient", ingredientAdded);
-                retourIntent.putExtra("liste_ingredient_id", ingredientAddedID);
-                if(getIntent().hasExtra("username")){
-                    retourIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    retourIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    retourIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                startActivity(retourIntent);
+                MonFrigoTypeChoice.this.finish();
 
             }
         });
