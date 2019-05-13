@@ -145,8 +145,6 @@ public class PrintRecipe extends AppCompatActivity {
             /**
              * On check si la recette est déjà en favoris pour cette utilisateur
              */
-
-
             Response.Listener<String> responseListener2 = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -182,13 +180,10 @@ public class PrintRecipe extends AppCompatActivity {
 
                 /** le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
-                    /* TODO : Requête vers le serveur pour ajouter au favoris (utiliser getIdFromPseudo.php) */
-
 
                     /**
                      * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
                      */
-
                     Response.Listener<String> responseListener3 = new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -198,7 +193,7 @@ public class PrintRecipe extends AppCompatActivity {
                                 boolean success = jsonResponse.getBoolean("success");
 
                                 if (success) {
-                                    /* TODO : */
+                                    /* TODO : rien, la requête php retire de la liste ou ajoute*/
                                 }
 
                             } catch (JSONException e) {
