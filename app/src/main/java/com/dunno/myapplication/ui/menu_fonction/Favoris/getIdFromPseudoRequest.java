@@ -14,7 +14,7 @@ public class getIdFromPseudoRequest extends StringRequest {
     public getIdFromPseudoRequest(String pseudo, Response.Listener<String> listener) {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
-        params.put("pseudo", pseudo);
+        params.put("username", pseudo);
     }
 
     @Override

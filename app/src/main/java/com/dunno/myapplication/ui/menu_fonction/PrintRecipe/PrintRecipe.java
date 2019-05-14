@@ -113,42 +113,14 @@ public class PrintRecipe extends AppCompatActivity {
         btnFavorite.onVisibilityAggregated(false);
 
         /** On vérifie si l'utilisateur est connecté */
-        if(getIntent().hasExtra("pseudo")) {
-            this.pseudo = getIntent().getExtras().getString("pseudo");
+        if(getIntent().hasExtra("username")) {
+            this.pseudo = getIntent().getExtras().getString("username");
             this.loggedIn = true;
             btnFavorite.onVisibilityAggregated(true);
 
             /**
              * Récupération de l'ID de l'utilisateur dans la bdd
              */
-
-            Response.Listener<String> responseListener1 = new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-
-                    try {
-                        JSONObject jsonResponse = new JSONObject(response);
-                        boolean success = jsonResponse.getBoolean("success");
-
-                        if (success) { userID = jsonResponse.getInt("UserID"); }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
-                        builder2.setMessage("RIP " +e.getMessage())
-                                .setNegativeButton("Réessayer", null)
-                                .create()
-                                .show();
-                    }
-                }
-            };
-
-            getIdFromPseudoRequest getIdFromPseudo = new getIdFromPseudoRequest(pseudo, responseListener1);
-            RequestQueue queue1 = Volley.newRequestQueue(PrintRecipe.this);
-            queue1.add(getIdFromPseudo);
-
-
             /**
              * On check si la recette est déjà en favoris pour cette utilisateur
              */
@@ -162,6 +134,7 @@ public class PrintRecipe extends AppCompatActivity {
 
                         if (success) {
                             isFavorite = jsonResponse.getBoolean("isFavorite");
+                            userID = jsonResponse.getInt("userID");
                         }
 
                     } catch (JSONException e) {
@@ -176,7 +149,7 @@ public class PrintRecipe extends AppCompatActivity {
                 }
             };
 
-            isRecipeFavoriteRequest isRecipeFavorite = new isRecipeFavoriteRequest(userID+"", recipeID+"", responseListener2);
+            isRecipeFavoriteRequest isRecipeFavorite = new isRecipeFavoriteRequest(pseudo, recipeID+"", responseListener2);
             RequestQueue queue2 = Volley.newRequestQueue(PrintRecipe.this);
             queue2.add(isRecipeFavorite);
 

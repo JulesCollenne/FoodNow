@@ -12,10 +12,10 @@ public class isRecipeFavoriteRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/isRecipeFavorite.php";
     private Map<String, String> params;
 
-    public isRecipeFavoriteRequest(String userID, String recipeID, Response.Listener<String> listener) {
+    public isRecipeFavoriteRequest(String username, String recipeID, Response.Listener<String> listener) {
         super(Request.Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
-        params.put("idUser", userID);
+        params.put("username", username);
         params.put("idRecipe", recipeID);
     }
 
