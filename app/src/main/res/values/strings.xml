@@ -1,42 +1,150 @@
 <resources>
-    <string name="app_name">Food Now!</string>
+
+    /* TODO: Le contenu des alertes, activity java */
+
+    <string name="nom_application">Food Now!</string>
+    <string name="bouton_retour">Retour</string>
+
+    /* Accueil */
+
+        /* Menu déroulant */
+
+            /* Truc au dessus */
+
+                <string name="menu_deroulant_nav_titre">Accueil</string>
+
+            /* Truc au dessus */
+
+            <string name="menu_deroulant_accueil">Accueil</string>
+            <string name="menu_deroulant_frigo">Mon Frigo</string>
+            <string name="menu_deroulant_recettes">Les Recettes</string>
+            <string name="menu_deroulant_roucette">La Roucette</string>
+            <string name="menu_deroulant_favoris">Mes Favoris</string>
+            <string name="menu_deroulant_compte">Mon Compte</string>
+            <string name="menu_deroulant_déconnexion">Se Déconnecter</string>
+            <string name="menu_deroulant_contact">Nous contacter</string>
+            <string name="menu_deroulant_email">FoodNowSupport@gmail.com</string>
+
+        /* Menu déroulant */
+
+        <string name="menu_paramètres">Paramètres</string>
+        <string name="menu_recette_du_jour">Recette du jour</string>
+        <string name="menu_connection">Se connecter</string>
+
+    /* Accueil */
+
+
+    /* Connection */
+
+        <string name="login_title">Se connecter</string>
+        <string name="login_hint_pseudo">Pseudonyme</string>
+        <string name="login_hint_mdp">Mot de passe</string>
+        <string name="login_login_bouton">Se connecter</string>
+        <string name="login_toInscription_bouton">Pas encore de compte ?           Inscrivez vous ici.</string>
+
+    /* Connection */
+
+
+    /* Inscription */
+
+        <string name="inscription_hint_email">Email</string>
+        <string name="inscription_hint_pseudo">Pseudonyme</string>
+        <string name="inscription_hint_mdp">Mot de Passe</string>
+        <string name="inscription_verif_mdp">Vérification du MDP</string>
+
+        <string name="inscription_inscription_bouton">S\'inscrire</string>
+        <string name="inscription_toConnection_bouton">Vous avez déjà un compte ? Connectez vous.</string>
+
+    /* Inscription */
+
+
+    /* Mon Frigo */
+
+        <string name="frigo_explication">Cliquez sur un ingrédient pour l\'enlever</string>
+        <string name="frigo_add">Ajouter un ingrédient</string>
+        <string name="frigo_find">Trouver des recettes</string>
+
+        /* Choix type ingrédient */
+
+            <string name="choix_ingredient_type_oeufsetfromage">Oeufs et Fromages</string>
+            <string name="choix_ingredient_type_céréales">Céréales</string>
+            <string name="choix_ingredient_type_viandes">Viandes</string>
+            <string name="choix_ingredient_type_fruits">Fruits</string>
+            <string name="choix_ingredient_type_légumes">Légumes</string>
+            <string name="choix_ingredient_type_condiments">Condiments</string>
+
+        /* Choix type ingrédient */
+
+        /* Resultat recettes par rapport aux ingrédients */
+
+            <string name="resultat_recettes_titre">Recettes disponibles à partir des ingrédients choisis</string>
+            <string name="resultat_recettes_changer_ingredient_bouton">Changer la liste d\'ingrédients</string>
+
+        /* Resultat recettes par rapport aux ingrédients */
+
+    /* Mon Frigo */
+
+
+    /* Les Recettes */
+
+        <string name="recette_entrée">Entrées</string>
+        <string name="recette_plat">Plats</string>
+        <string name="recette_dessert">Desserts</string>
+
+    /* Les Recettes */
+
+
+    /* Roucette */
+
+        <string name="roucette_tourner_bouton">Tourner la Roucette</string>
+
+    /* Roucette */
+
+
+    /* Favoris */
+
+        <string name="favoris_titre">Mes Favoris</string>
+
+    /* Favoris */
+
+
+    /* Compte */
+
+        <string name="compte_email">Votre adresse mail:</string>
+        <string name="compte_pseudo">Votre pseudonyme:</string>
+        <string name="compte_tomodifier">Modifiez les informations</string>
+
+        /* Modification Compte */
+
+            <string name="modif_compte_hint_mdp_actuel">Mot de passe actuel</string>
+            <string name="modif_compte_hint_email">Nouvel email</string>
+            <string name="modif_compte_hint_pseudo">Nouveau pseudo</string>
+            <string name="modif_compte_hint_mdp">Nouveau mot de passe</string>
+            <string name="modif_compte_hint_verif_mdp">Confirmer le nouveau mot de passe</string>
+            <string name="modif_compte_modifier">Modifier</string>
+
+        /* Modification Compte */
+
+    /* Compte */
+
+
+    /* Conseil */
+
+        <string name="conseil_image_desc">Un sashimi moustachu</string>
+
+    /* Conseil */
+
+
+
+
+
+
+
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Food Now!</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Paramètres</string>
-    <string name="action_login">Se connecter</string>
-
-
-    <string name="menu_accueil">Accueil</string>
-    <string name="menu_frigo">Mon Frigo</string>
-    <string name="menu_gallery">Les recettes</string>
-    <string name="menu_roucette">La roucette</string>
-    <string name="button_roucette">Tournez la Roucette</string>
-    <string name="menu_favoris">Mes favoris</string>
-    <string name="menu_account">Mon compte</string>
-    <string name="menu_logout">Se déconnecter</string>
-    <string name="menu_contact">FoodNowSupport@gmail.com</string>
-    <string name="title_activity_login">Se connecter</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Mot de passe</string>
-    <string name="welcome">"Bonjour ! "</string>
-    <string name="invalid_username">Ce n\'est pas un pseudo valide</string>
-    <string name="invalid_password">Le mot de passe doit contenir plus de 5 caractères</string>
-    <string name="login_failed">"Connection échouée"</string>
-    <string name="nous_contacter">Nous contacter</string>
-    <string name="item">Item</string>
-    <string name="title_activity_logged_in_main">Food Now!</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-    <string name="liste_des_recettes">Liste des recettes</string>
-    <string name="retour">Retour</string>
-    <string name="favoris">Mes favoris</string>
 
 
 </resources>

@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Recettes disponibles à partir des ingrédients choisis"
+        android:text="@string/resultat_recettes_titre"
         android:textSize="17dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Changer la liste d'ingrédient"
+        android:text="@string/resultat_recettes_changer_ingredient_bouton"
         android:textSize="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_recipe_from_ingredient" />

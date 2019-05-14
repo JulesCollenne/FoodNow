@@ -27,7 +27,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center"
-        android:text="@string/favoris"
+        android:text="@string/favoris_titre"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/lv_recipe_from_ingredients"
         app:layout_constraintEnd_toEndOf="parent"

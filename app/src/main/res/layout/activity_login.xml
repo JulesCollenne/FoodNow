@@ -20,7 +20,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:ems="10"
-        android:hint="Pseudonyme" />
+        android:hint="@string/login_hint_pseudo" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -32,7 +32,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="@string/login_hint_mdp"
         android:inputType="textPassword" />
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Se connecter" />
+        android:text="@string/login_login_bouton" />
 
     <TextView
         android:id="@+id/tvRegisterLink"
@@ -61,7 +61,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
         android:gravity="center"
-        android:text="Pas encore de compte ?           Inscrivez vous ici."
+        android:text="@string/login_toInscription_bouton"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
@@ -75,6 +75,6 @@
         android:layout_marginTop="417dp"
         android:layout_marginEnd="-4dp"
         android:layout_marginRight="-4dp"
-        android:text="Retour" />
+        android:text="@string/bouton_retour" />
 
 </RelativeLayout>

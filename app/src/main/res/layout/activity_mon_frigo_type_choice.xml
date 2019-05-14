@@ -27,7 +27,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Oeufs et fromages" />
+                android:text="@string/choix_ingredient_type_oeufsetfromage"/>
 
             <Button
                 android:id="@+id/btn_cereal"
@@ -38,7 +38,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Céréales" />
+                android:text="@string/choix_ingredient_type_céréales" />
 
             <Button
                 android:id="@+id/btn_viande"
@@ -49,7 +49,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Viandes" />
+                android:text="@string/choix_ingredient_type_viandes" />
 
             <Button
                 android:id="@+id/btn_fruit"
@@ -60,7 +60,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Fruits" />
+                android:text="@string/choix_ingredient_type_fruits" />
 
             <Button
                 android:id="@+id/btn_legume"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Légumes" />
+                android:text="@string/choix_ingredient_type_légumes" />
 
             <Button
                 android:id="@+id/btn_condiment"
@@ -83,7 +83,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
-                android:text="condiment" />
+                android:text="@string/choix_ingredient_type_condiments" />
 
             <Button
                 android:id="@+id/btn_retour_9"
@@ -92,7 +92,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="retour" />
+                android:text="@string/bouton_retour" />
         </LinearLayout>
     </ScrollView>
 
