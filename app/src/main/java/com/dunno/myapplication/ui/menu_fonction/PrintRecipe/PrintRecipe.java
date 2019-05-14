@@ -2,6 +2,10 @@ package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -33,6 +37,7 @@ public class PrintRecipe extends AppCompatActivity {
     private String pseudo = null;
     private boolean isFavorite;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +110,7 @@ public class PrintRecipe extends AppCompatActivity {
          */
 
         this.btnFavorite = findViewById(R.id.btn_favorite);
+        btnFavorite.onVisibilityAggregated(false);
 
         /** On vérifie si l'utilisateur est connecté */
         if(getIntent().hasExtra("pseudo")) {
@@ -153,7 +159,9 @@ public class PrintRecipe extends AppCompatActivity {
                         JSONObject jsonResponse = new JSONObject(response);
                         boolean success = jsonResponse.getBoolean("success");
 
-                        if (success) { isFavorite = jsonResponse.getBoolean("isFavorite"); }
+                        if (success) {
+                            isFavorite = jsonResponse.getBoolean("isFavorite");
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -170,16 +178,23 @@ public class PrintRecipe extends AppCompatActivity {
             isRecipeFavoriteRequest isRecipeFavorite = new isRecipeFavoriteRequest(userID+"", recipeID+"", responseListener2);
             RequestQueue queue2 = Volley.newRequestQueue(PrintRecipe.this);
             queue2.add(isRecipeFavorite);
+
+            if(!isFavorite) {
+                btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+            }
+
         }
         else { this.loggedIn = false; }
 
 
         btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
 
                 /** le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
+                    btnFavorite.onVisibilityAggregated(true);
 
                     /**
                      * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
@@ -193,7 +208,14 @@ public class PrintRecipe extends AppCompatActivity {
                                 boolean success = jsonResponse.getBoolean("success");
 
                                 if (success) {
-                                    /* TODO : rien, la requête php retire de la liste ou ajoute*/
+                                    if(isFavorite) {
+                                        isFavorite = false;
+                                        btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+                                    }
+                                    else {
+                                        isFavorite = true;
+                                        btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                                    }
                                 }
 
                             } catch (JSONException e) {
