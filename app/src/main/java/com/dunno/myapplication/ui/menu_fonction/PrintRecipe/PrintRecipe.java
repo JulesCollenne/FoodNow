@@ -116,6 +116,7 @@ public class PrintRecipe extends AppCompatActivity {
         if(getIntent().hasExtra("pseudo")) {
             this.pseudo = getIntent().getExtras().getString("pseudo");
             this.loggedIn = true;
+            btnFavorite.onVisibilityAggregated(true);
 
             /**
              * Récupération de l'ID de l'utilisateur dans la bdd
@@ -194,7 +195,6 @@ public class PrintRecipe extends AppCompatActivity {
 
                 /** le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
-                    btnFavorite.onVisibilityAggregated(true);
 
                     /**
                      * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute

@@ -96,6 +96,7 @@
 
     <ImageView
         android:id="@+id/btn_favorite"
+        android:visibility="invisible"
         android:layout_width="40dp"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
