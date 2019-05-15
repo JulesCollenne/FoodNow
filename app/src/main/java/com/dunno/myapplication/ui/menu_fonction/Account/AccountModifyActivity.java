@@ -55,7 +55,12 @@ public class AccountModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent accountIntent = new Intent(getApplicationContext(), AccountActivity.class);
+                accountIntent.putExtra("email", email);
+                accountIntent.putExtra("username", username);
+                accountIntent.putExtra("password", password);
                 AccountModifyActivity.this.finish();
+                startActivity(accountIntent);
 
             }
         });
@@ -146,10 +151,11 @@ public class AccountModifyActivity extends AppCompatActivity {
                                                         .create()
                                                         .show();
 
-                                                Intent intent = new Intent(AccountModifyActivity.this, MainActivity.class);
+                                                Intent intent = new Intent(AccountModifyActivity.this, AccountActivity.class);
                                                 intent.putExtra("email", newEmail);
                                                 intent.putExtra("username", newUsername);
                                                 intent.putExtra("password", newPassword);
+                                                AccountModifyActivity.this.finish();
                                                 AccountModifyActivity.this.startActivity(intent);
 
                                             } else {

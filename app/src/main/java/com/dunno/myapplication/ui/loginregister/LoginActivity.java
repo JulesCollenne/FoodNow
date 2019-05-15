@@ -2,6 +2,7 @@
 package com.dunno.myapplication.ui.loginregister;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LoginActivity.this.finish();
                 Intent registerIntent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(registerIntent);
             }
@@ -87,12 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (success) {
 
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage(R.string.connection_reussit_alert_dialog)
-                                        .create()
-                                        .show();
-
-                                Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
+                                final Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
 
                                 String email = jsonResponse.getString("email");
 
@@ -101,7 +98,20 @@ public class LoginActivity extends AppCompatActivity {
                                 loggedIn.putExtra("email", email);
 
                                 loggedIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(loggedIn);
+
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                builder.setMessage(R.string.connection_reussit_alert_dialog)
+                                        .setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                LoginActivity.this.finish();
+                                                startActivity(loggedIn);
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

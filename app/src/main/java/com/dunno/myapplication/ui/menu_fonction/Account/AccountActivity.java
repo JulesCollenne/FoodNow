@@ -1,5 +1,6 @@
 package com.dunno.myapplication.ui.menu_fonction.Account;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -49,6 +50,7 @@ public class AccountActivity extends AppCompatActivity {
                 modifyAccountIntent.putExtra("email", email);
                 modifyAccountIntent.putExtra("username", username);
                 modifyAccountIntent.putExtra("password", password);
+                AccountActivity.this.finish();
                 startActivity(modifyAccountIntent);
 
             }

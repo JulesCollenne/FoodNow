@@ -24,6 +24,16 @@ public class ChefSashimi extends AppCompatActivity {
         setContentView(R.layout.activity_chef_sashimi);
         ImageButton sashimiBtn = findViewById(R.id.talkingSashimi);
 
+
+        Button retourBtn = findViewById(R.id.btn_retour_10);
+
+        retourBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChefSashimi.this.finish();
+            }
+        });
+
         sashimiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,14 +73,7 @@ public class ChefSashimi extends AppCompatActivity {
             }
         });
 
-        Button retourBtn = findViewById(R.id.btn_retour_10);
 
-        retourBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChefSashimi.this.finish();
-            }
-        });
 
     }
 }

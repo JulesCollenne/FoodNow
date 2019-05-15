@@ -44,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 RegisterActivity.this.finish();
+                Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(loginIntent);
 
             }
         });
@@ -106,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
                             if (success) {
 
+                                RegisterActivity.this.finish();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 intent.putExtra("Registered", username);
                                 RegisterActivity.this.startActivity(intent);

@@ -36,10 +36,21 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorite);
 
 
+
+        Button btnRetour = findViewById(R.id.btn_retour_12);
+        btnRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FavoriteActivity.this.finish();
+
+            }
+        });
+
+
         /*
          * Requete a serveur
          */
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -55,8 +66,6 @@ public class FavoriteActivity extends AppCompatActivity {
                             recipesID.add(jsonResponse.getInt("ID"+i));
                         }
 
-                        Button btnRetour = findViewById(R.id.btn_retour_12);
-
                         final ListView listFavorite = findViewById(R.id.lv_favorite);
 
 
@@ -64,14 +73,7 @@ public class FavoriteActivity extends AppCompatActivity {
                         listFavorite.setAdapter(recipeAdapter);
 
 
-                        btnRetour.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
 
-                                FavoriteActivity.this.finish();
-
-                            }
-                        });
 
 
                         listFavorite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
