@@ -8,6 +8,8 @@
 
     /* Accueil */
 
+        <string name="titre_recetteDuJour">Recette du jour !</string>
+
         /* Menu déroulant */
 
             /* Truc au dessus */
