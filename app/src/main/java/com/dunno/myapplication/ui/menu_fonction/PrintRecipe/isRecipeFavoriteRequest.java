@@ -1,4 +1,4 @@
-package com.dunno.myapplication.ui.menu_fonction.Favoris;
+package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class isRecipeFavoriteRequest extends StringRequest {
 
-    private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/isRecipeFavorite.php";
+    private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/IsRecipeFavorite.php";
     private Map<String, String> params;
 
-    public isRecipeFavoriteRequest(String username, String recipeID, Response.Listener<String> listener) {
+    isRecipeFavoriteRequest(String username, String recipeID, Response.Listener<String> listener) {
         super(Request.Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("username", username);

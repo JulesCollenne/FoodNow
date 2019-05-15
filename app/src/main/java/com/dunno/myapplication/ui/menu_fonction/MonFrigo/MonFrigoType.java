@@ -24,6 +24,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/*
+ *
+ * Liste les ingrédients selon le type choisit, et les ajoutes lorsqu'on clique dessus
+ *
+ */
 
 public class MonFrigoType extends AppCompatActivity {
 
@@ -83,8 +88,6 @@ public class MonFrigoType extends AppCompatActivity {
 
 
 
-
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -127,6 +130,8 @@ public class MonFrigoType extends AppCompatActivity {
                                 String newIngredient = IA.getName(position);
                                 String newIngredientID = IA.getID(position);
 
+
+                                // Vérifie que l'ingrédient choisit n'a pas déjà été ajouté
                                 if(!ingredientAdded.contains(newIngredient)) {
                                     ingredientAdded.add(newIngredient);
                                     ingredientAddedID.add(newIngredientID);
@@ -142,15 +147,15 @@ public class MonFrigoType extends AppCompatActivity {
                                 }
 
                                 MonFrigoType.this.finish();
-                                Intent addedIngredientIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
-                                addedIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
-                                addedIngredientIntent.putExtra("liste_ingredient_id", ingredientAddedID);
-                                startActivity(addedIngredientIntent);
+                                Intent choiceIngredientTypeIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
+                                choiceIngredientTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                                choiceIngredientTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                                if(getIntent().hasExtra("username"))
+                                    choiceIngredientTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                startActivity(choiceIngredientTypeIntent);
 
                             }
                         });
-
-
 
                     } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);

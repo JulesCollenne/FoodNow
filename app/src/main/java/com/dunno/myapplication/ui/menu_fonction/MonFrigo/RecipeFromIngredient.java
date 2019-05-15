@@ -17,6 +17,12 @@ import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/*
+ *
+ * Affiche les recettes trouvés selon la liste d'ingrédients
+ *
+ */
+
 public class RecipeFromIngredient extends AppCompatActivity {
 
     ArrayList<Integer> recipeID;
@@ -56,6 +62,8 @@ public class RecipeFromIngredient extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+                if(getIntent().hasExtra("username"))
+                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
                 startActivity(printRecipeIntent);
 

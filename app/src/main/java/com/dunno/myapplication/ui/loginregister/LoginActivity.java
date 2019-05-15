@@ -107,19 +107,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                 loggedIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage(R.string.connection_reussit_alert_dialog)
-                                        .setPositiveButton(R.string.alert_dialog_ok, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                LoginActivity.this.finish();
-                                                startActivity(loggedIn);
-                                            }
-                                        })
-                                        .create()
-                                        .show();
-
+                                LoginActivity.this.finish();
+                                startActivity(loggedIn);
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

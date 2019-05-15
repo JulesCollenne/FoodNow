@@ -1,6 +1,7 @@
 package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
@@ -17,12 +18,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.menu_fonction.Favoris.ChangeRecipeStateInFavoriteRequest;
-import com.dunno.myapplication.ui.menu_fonction.Favoris.isRecipeFavoriteRequest;
+import com.dunno.myapplication.ui.menu_fonction.Favoris.FavoriteActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class PrintRecipe extends AppCompatActivity {
@@ -32,6 +33,8 @@ public class PrintRecipe extends AppCompatActivity {
     private int recipeID;
     private int userID;
     private boolean isFavorite;
+    String recipeName;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -63,7 +66,8 @@ public class PrintRecipe extends AppCompatActivity {
 
                         ImageView iv_recipe = findViewById(R.id.recipe_image_big);
 
-                        tv_name.setText(jsonResponse.getString("name"));
+                        recipeName = jsonResponse.getString("name");
+                        tv_name.setText(recipeName);
                         String tmp = getString(R.string.print_recipe_time) + " " + jsonResponse.getInt("time")+" min";
                         tv_tmp.setText(tmp);
                         tmp = jsonResponse.getInt("nb") + " " + getString(R.string.print_recipe_personnes);
@@ -107,13 +111,14 @@ public class PrintRecipe extends AppCompatActivity {
          */
 
         this.btnFavorite = findViewById(R.id.btn_favorite);
-        btnFavorite.onVisibilityAggregated(false);
+        btnFavorite.setVisibility(View.INVISIBLE);
 
         /* On vérifie si l'utilisateur est connecté */
         if(getIntent().hasExtra("username")) {
             String pseudo = getIntent().getExtras().getString("username");
             this.loggedIn = true;
-            btnFavorite.onVisibilityAggregated(true);
+            btnFavorite.setVisibility(View.VISIBLE);
+            btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
             /*
              * Récupération de l'ID de l'utilisateur dans la bdd
@@ -121,6 +126,7 @@ public class PrintRecipe extends AppCompatActivity {
             /*
              * On check si la recette est déjà en favoris pour cette utilisateur
              */
+
             Response.Listener<String> responseListener2 = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -130,8 +136,77 @@ public class PrintRecipe extends AppCompatActivity {
                         boolean success = jsonResponse.getBoolean("success");
 
                         if (success) {
+
                             isFavorite = jsonResponse.getBoolean("isFavorite");
-                            userID = jsonResponse.getInt("userID");
+                            userID = jsonResponse.getInt("idUser");
+
+                            if(!isFavorite) {
+                                btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+                            }
+                            else{
+                                btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                            }
+
+
+
+
+                            btnFavorite.setOnClickListener(new View.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.N)
+                                @Override
+                                public void onClick(View view) {
+
+                                    /* le click ne fonctionne que si l'utilisateur est connecté */
+
+                                        /*
+                                         * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
+                                         */
+                                        Response.Listener<String> responseListener3 = new Response.Listener<String>() {
+                                            @Override
+                                            public void onResponse(String response) {
+
+                                                try {
+                                                    JSONObject jsonResponse = new JSONObject(response);
+                                                    boolean success = jsonResponse.getBoolean("success");
+
+                                                    if (success) {
+                                                        if(isFavorite) {
+                                                            isFavorite = false;
+                                                            btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+                                                        }
+                                                        else {
+                                                            isFavorite = true;
+                                                            btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                                                        }
+                                                    } else {
+                                                        AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
+                                                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                                                .create()
+                                                                .show();
+                                                    }
+
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        };
+
+                                        String paramIsFavorite;
+                                        if(isFavorite)
+                                            paramIsFavorite = "true";
+                                        else
+                                            paramIsFavorite = "false";
+
+                                        ChangeRecipeStateInFavoriteRequest changeRecipeStateInFavorite = new ChangeRecipeStateInFavoriteRequest(userID+"", recipeID+"", paramIsFavorite, responseListener3);
+                                        RequestQueue queue3 = Volley.newRequestQueue(PrintRecipe.this);
+                                        queue3.add(changeRecipeStateInFavorite);
+
+                                    }
+                            });
+
+
+
+
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
                             builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
@@ -144,69 +219,15 @@ public class PrintRecipe extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+
             };
 
             isRecipeFavoriteRequest isRecipeFavorite = new isRecipeFavoriteRequest(pseudo, recipeID+"", responseListener2);
-            queue.add(isRecipeFavorite);
-
-            if(!isFavorite) {
-                btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-            }
-
+            RequestQueue queue2 = Volley.newRequestQueue(PrintRecipe.this);
+            queue2.add(isRecipeFavorite);
         }
         else { this.loggedIn = false; }
 
-
-        btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View view) {
-
-                /* le click ne fonctionne que si l'utilisateur est connecté */
-                if(loggedIn) {
-
-                    /*
-                     * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
-                     */
-                    Response.Listener<String> responseListener3 = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                            try {
-                                JSONObject jsonResponse = new JSONObject(response);
-                                boolean success = jsonResponse.getBoolean("success");
-
-                                if (success) {
-                                    if(isFavorite) {
-                                        isFavorite = false;
-                                        btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-                                    }
-                                    else {
-                                        isFavorite = true;
-                                        btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                                    }
-                                } else {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
-                                    builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
-                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                                            .create()
-                                            .show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    };
-
-                    ChangeRecipeStateInFavoriteRequest changeRecipeStateInFavorite = new ChangeRecipeStateInFavoriteRequest(userID+"", recipeID+"", isFavorite+"", responseListener3);
-                    RequestQueue queue3 = Volley.newRequestQueue(PrintRecipe.this);
-                    queue3.add(changeRecipeStateInFavorite);
-
-
-                }
-            }
-        });
     }
 }
 

@@ -13,6 +13,13 @@ import com.dunno.myapplication.R;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/*
+ *
+ *  Permet de choisir le type d'ingrédient que l'on cherche
+ *
+ */
+
+
 public class MonFrigoTypeChoice extends AppCompatActivity {
 
     ArrayList<String> ingredientAdded = new ArrayList<>();
@@ -49,6 +56,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("type", "Viande");
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -64,6 +73,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("type", "Fruit");
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -79,6 +90,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("type", "Légume");
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -94,6 +107,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("type", "Oeufs et fromages");
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -109,6 +124,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("type", "Céréales");
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -124,6 +141,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("type", "Condiment");
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -137,6 +156,8 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 Intent AddIngredientIntent = new Intent(getApplicationContext(), AddIngredient.class);
                 AddIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
                 AddIngredientIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    AddIngredientIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(AddIngredientIntent);
 
             }

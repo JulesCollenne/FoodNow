@@ -84,9 +84,11 @@ public class RoucetteActivity extends AppCompatActivity {
 
 
                                     if (success) {
-                                            Intent loggedIn = new Intent(getApplicationContext(), PrintRecipe.class);
-                                            loggedIn.putExtra("id_recipe", IDrecipe);
-                                            startActivity(loggedIn);
+                                            Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+                                            if(getIntent().hasExtra("username"))
+                                                printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                            printRecipeIntent.putExtra("id_recipe", IDrecipe);
+                                            startActivity(printRecipeIntent);
 
                                     } else {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(RoucetteActivity.this);

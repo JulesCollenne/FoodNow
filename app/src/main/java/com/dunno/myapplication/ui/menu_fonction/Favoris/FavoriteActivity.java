@@ -36,7 +36,6 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorite);
 
 
-
         Button btnRetour = findViewById(R.id.btn_retour_12);
         btnRetour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +45,6 @@ public class FavoriteActivity extends AppCompatActivity {
 
             }
         });
-
 
         /*
          * Requete a serveur
@@ -61,9 +59,9 @@ public class FavoriteActivity extends AppCompatActivity {
 
                     if (success) {
 
-                        for(int i = 0; i < jsonResponse.length()/2; i++) {
-                            recipesName.add(jsonResponse.getString("name"+i));
-                            recipesID.add(jsonResponse.getInt("ID"+i));
+                        for (int i = 0; i < jsonResponse.length() / 2; i++) {
+                            recipesName.add(jsonResponse.getString("name" + i));
+                            recipesID.add(jsonResponse.getInt("ID" + i));
                         }
 
                         final ListView listFavorite = findViewById(R.id.lv_favorite);
@@ -73,9 +71,6 @@ public class FavoriteActivity extends AppCompatActivity {
                         listFavorite.setAdapter(recipeAdapter);
 
 
-
-
-
                         listFavorite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -83,6 +78,8 @@ public class FavoriteActivity extends AppCompatActivity {
                                 int recipeID = (int) listFavorite.getAdapter().getItem(position);
 
                                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+                                if (getIntent().hasExtra("username"))
+                                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                                 printRecipeIntent.putExtra("id_recipe", recipeID);
                                 startActivity(printRecipeIntent);
 
@@ -106,4 +103,5 @@ public class FavoriteActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(FavoriteActivity.this);
         queue.add(getfavoriteRequest);
     }
+
 }

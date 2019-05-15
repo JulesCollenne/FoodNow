@@ -24,13 +24,14 @@ public class ChoixTypeRecette extends AppCompatActivity {
 
         Button retourBtn = findViewById(R.id.btn_retour_9);
 
-
         entreeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
                 listeRecetteIntent.putExtra("type", "Entrées");
+                if(getIntent().hasExtra("username"))
+                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(listeRecetteIntent);
 
             }
@@ -43,6 +44,8 @@ public class ChoixTypeRecette extends AppCompatActivity {
 
                 Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
                 listeRecetteIntent.putExtra("type", "Plats");
+                if(getIntent().hasExtra("username"))
+                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(listeRecetteIntent);
 
             }
@@ -55,6 +58,8 @@ public class ChoixTypeRecette extends AppCompatActivity {
 
                 Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
                 listeRecetteIntent.putExtra("type", "Desserts");
+                if(getIntent().hasExtra("username"))
+                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
                 startActivity(listeRecetteIntent);
 
             }

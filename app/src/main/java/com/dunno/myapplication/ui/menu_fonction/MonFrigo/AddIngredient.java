@@ -23,6 +23,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/*
+ *
+ *  Affiche la liste d'ingrédient qui a été ajouté
+ *
+ */
+
+
 public class AddIngredient extends AppCompatActivity {
 
     ArrayList<String> ingredientAdded = new ArrayList<>();
@@ -35,6 +42,8 @@ public class AddIngredient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingredient);
 
+
+        // Récupère les listes d'ingrédients ajoutés à jour
         if(getIntent().hasExtra("liste_ingredient")){
 
             ingredientAdded = Objects.requireNonNull(getIntent().getExtras()).getStringArrayList("liste_ingredient");
@@ -46,6 +55,7 @@ public class AddIngredient extends AppCompatActivity {
 
             listIngredient.setAdapter(ingredientAdapter);
 
+            // Lorsqu'on clique sur un élément de la liste
             listIngredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -58,7 +68,6 @@ public class AddIngredient extends AppCompatActivity {
                     String removedIngredientID = IA.getID(position);
                     ingredientAddedID.remove(removedIngredientID);
 
-
                     ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientAdded, ingredientAddedID);
                     listIngredient.setAdapter(ingredientAdapter);
 
@@ -68,17 +77,20 @@ public class AddIngredient extends AppCompatActivity {
         }
 
 
-
         Button addBtn = findViewById(R.id.btn_add_ingredient);
         Button searchBtn = findViewById(R.id.button_search_recipee);
         Button retourBtn = findViewById(R.id.btn_retour_2);
 
+
+        // Bouton ajout d'ingrédient: Mène a l'acitivité MonFrigoTypeChoice
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 AddIngredient.this.finish();
                 Intent addIngredient = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
+                if(getIntent().hasExtra("username"))
+                    addIngredient.putExtra("username", getIntent().getExtras().getString("username"));
                 addIngredient.putExtra("liste_ingredient", ingredientAdded);
                 addIngredient.putExtra("liste_ingredient_id", ingredientAddedID);
                 startActivity(addIngredient);
@@ -86,10 +98,13 @@ public class AddIngredient extends AppCompatActivity {
             }
         });
 
+
+        // Bouton de recherche: Lance la requete getIngredientPerType au serveur et ouvre une nouvelle activité RecipeFromIngredient
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // Uniquement s'il y a au moins un ingrédient dans la liste
                 if(ingredientAdded.size() == 0){
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddIngredient.this);
@@ -100,6 +115,7 @@ public class AddIngredient extends AppCompatActivity {
 
                     return;
                 }
+
 
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -115,6 +131,8 @@ public class AddIngredient extends AppCompatActivity {
                                 ArrayList<Integer> recipeID = new ArrayList<>();
                                 ArrayList<String> recipeName = new ArrayList<>();
 
+
+                                //Récupère la liste de recettes envoyée par le serveur
                                 for(int i = 0; i<jsonResponse.length()/2; i++){
 
                                     recipeID.add(jsonResponse.getInt("id"+i));
@@ -123,6 +141,8 @@ public class AddIngredient extends AppCompatActivity {
                                 }
 
                                 Intent searchRecipeIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
+                                if(getIntent().hasExtra("username"))
+                                    searchRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                                 searchRecipeIntent.putExtra("liste_recipe_id", recipeID);
                                 searchRecipeIntent.putExtra("liste_recipe_name", recipeName);
                                 startActivity(searchRecipeIntent);
@@ -149,6 +169,8 @@ public class AddIngredient extends AppCompatActivity {
             }
         });
 
+
+        // Bouton retour
         retourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

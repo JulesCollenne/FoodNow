@@ -4,6 +4,17 @@
 
 
     <string name="nom_application">Food Now!</string>
+
+    <string name="main_title_frigo">Food Now!  -  Mon frigo</string>
+    <string name="main_title_recettes">Food Now!  -  Les recettes</string>
+    <string name="main_title_account">Food Now!  -  Mon compte</string>
+    <string name="main_title_favoris">Food Now!  -  Mes favoris</string>
+    <string name="main_title_roucette">Food Now!  -  La roucette</string>
+    <string name="main_title_inscription">Food Now!  -  S\'inscrire</string>
+    <string name="main_title_conseil">Food Now!  -  Chef Sashimi</string>
+
+
+
     <string name="bouton_retour">Retour</string>
 
     /* Accueil */

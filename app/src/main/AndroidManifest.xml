@@ -13,20 +13,63 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.menu_fonction.Favoris.FavoriteActivity"></activity>
-        <activity android:name=".ui.menu_fonction.MonFrigo.RecipeFromIngredient" />
-        <activity android:name=".ui.menu_fonction.MonFrigo.AddIngredient" />
-        <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoType" />
-        <activity android:name=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice" />
-        <activity android:name=".ui.menu_fonction.Account.AccountModifyActivity" />
-        <activity android:name=".ui.menu_fonction.Account.AccountActivity" />
-        <activity android:name=".ui.menu_fonction.Roucette.RoucetteActivity" />
+
+        <activity
+            android:name=".ui.menu_fonction.Favoris.FavoriteActivity"
+            android:label="@string/main_title_favoris">
+        </activity>
+
+        <activity
+            android:name=".ui.menu_fonction.MonFrigo.RecipeFromIngredient"
+            android:label="@string/main_title_frigo"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.MonFrigo.AddIngredient"
+            android:label="Food Now!  -  Mon Frigo"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.MonFrigo.MonFrigoType"
+            android:label="@string/main_title_frigo"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice"
+            android:label="@string/main_title_frigo"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.Account.AccountModifyActivity"
+            android:label="@string/main_title_account"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.Account.AccountActivity"
+            android:label="@string/main_title_account"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.Roucette.RoucetteActivity"
+            android:label="@string/main_title_roucette"
+            />
+
         <activity android:name=".ui.menu_fonction.PrintRecipe.PrintRecipe" />
-        <activity android:name=".ui.menu_fonction.LesRecettes.ListeRecetteFromType" />
-        <activity android:name=".ui.loginregister.RegisterActivity" />
+
+        <activity
+            android:name=".ui.menu_fonction.LesRecettes.ListeRecetteFromType"
+            android:label="@string/main_title_recettes"
+            />
+
+        <activity
+            android:name=".ui.loginregister.RegisterActivity"
+            android:label="@string/main_title_inscription"
+            />
+
         <activity
             android:name=".ui.loginregister.LoginActivity"
             android:label="@string/login_login_bouton" />
+
         <activity
             android:name=".ui.menu.MainActivity"
             android:label="@string/nom_application"
@@ -37,8 +80,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.menu_fonction.LesRecettes.ChoixTypeRecette" />
-        <activity android:name=".ui.menu_fonction.ChefSashimi.ChefSashimi" />
+
+        <activity
+            android:name=".ui.menu_fonction.LesRecettes.ChoixTypeRecette"
+            android:label="@string/main_title_recettes"
+            />
+
+        <activity
+            android:name=".ui.menu_fonction.ChefSashimi.ChefSashimi"
+            android:label="@string/main_title_conseil"
+            />
+
     </application>
 
 

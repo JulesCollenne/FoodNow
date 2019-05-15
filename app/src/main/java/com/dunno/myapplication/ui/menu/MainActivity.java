@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity
                             tvName = findViewById(R.id.tv_recettedujour);
                             ibrecette = findViewById(R.id.iv_recettedujour);
                         }
+
                         tvName.setText(nameRecipe);
                         ibrecette.setImageResource(R.drawable.ic_menu_camera);
-
 
                         ibrecette.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -127,15 +127,12 @@ public class MainActivity extends AppCompatActivity
                                 Intent printIntent = new Intent(getApplicationContext(), PrintRecipe.class);
 
                                 if (loggedin) {
-                                    printIntent.putExtra("email", email);
                                     printIntent.putExtra("username", username);
-                                    printIntent.putExtra("password", password);
                                 }
 
                                 printIntent.putExtra("id_recipe", idRecipe);
 
                                 startActivity(printIntent);
-
 
                             }
                         });
@@ -165,11 +162,6 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
 
                 Intent chosenIntent = new Intent(getApplicationContext(), ChefSashimi.class);
-                if (loggedin) {
-                    chosenIntent.putExtra("email", email);
-                    chosenIntent.putExtra("username", username);
-                    chosenIntent.putExtra("password", password);
-                }
                 startActivity(chosenIntent);
             }
         });
@@ -245,16 +237,22 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_frigo:
                 chosenIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                if(loggedin)
+                    chosenIntent.putExtra("username", username);
                 startActivity(chosenIntent);
                 break;
 
             case R.id.nav_recettes:
                 chosenIntent = new Intent(getApplicationContext(), ChoixTypeRecette.class);
+                if(loggedin)
+                    chosenIntent.putExtra("username", username);
                 startActivity(chosenIntent);
                 break;
 
             case R.id.nav_roucette:
                 chosenIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
+                if(loggedin)
+                    chosenIntent.putExtra("username", username);
                 startActivity(chosenIntent);
                 break;
 
@@ -284,6 +282,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_logout:
                 chosenIntent = new Intent(getApplicationContext(), MainActivity.class);
                 chosenIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                MainActivity.this.finish();
                 startActivity(chosenIntent);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

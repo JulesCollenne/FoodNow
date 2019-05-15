@@ -38,7 +38,6 @@ public class ListeRecetteFromType extends AppCompatActivity {
         setContentView(R.layout.activity_liste_recettes);
 
 
-
         type = Objects.requireNonNull(getIntent().getExtras()).getString("type");
 
         final ListView lv_recipe = findViewById(R.id.lv_all_recipe);
@@ -111,6 +110,8 @@ public class ListeRecetteFromType extends AppCompatActivity {
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                                     Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+                                    if(getIntent().hasExtra("username"))
+                                        printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                                     printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
                                     startActivity(printRecipeIntent);
 
