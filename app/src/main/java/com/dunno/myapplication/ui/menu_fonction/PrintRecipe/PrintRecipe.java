@@ -19,7 +19,6 @@ import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.menu_fonction.Favoris.ChangeRecipeStateInFavoriteRequest;
 import com.dunno.myapplication.ui.menu_fonction.Favoris.isRecipeFavoriteRequest;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getRecipeFromIDRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

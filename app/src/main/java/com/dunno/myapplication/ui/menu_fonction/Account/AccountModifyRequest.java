@@ -6,6 +6,12 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Params: l'ancien pseudo, ainsi que les nouveaux pseudo, email et mot de passe
+ *  Requête: Modifie la ligne correspondants au compte dans la base de données pour changer les informations, vérifie que le pseudo n'est pas déjà utilisé
+ *  Return: Réussite ou non
+ */
+
 public class AccountModifyRequest extends StringRequest {
 
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/ModifyAccount.php";

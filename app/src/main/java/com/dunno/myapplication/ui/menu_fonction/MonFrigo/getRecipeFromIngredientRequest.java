@@ -9,6 +9,12 @@ import java.util.Map;
 
 public class getRecipeFromIngredientRequest extends StringRequest {
 
+    /*
+     * Params: liste d'ingrédient et sa taille
+     *  Requête: Récupère la liste de recette utilisant la liste d'ingrédient donnée en paramètre
+     *  Return: liste de recette
+     */
+
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getRecipeFromIngredient.php";
     private Map<String, String> params;
 

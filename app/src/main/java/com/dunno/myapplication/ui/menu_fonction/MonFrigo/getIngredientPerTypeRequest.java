@@ -6,6 +6,12 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Params: type d'ingredient
+ *  Requête: Récupère la liste des ingrédients selon le type en paramètres
+ *  Return: Une liste d'ingrédient
+ */
+
 public class getIngredientPerTypeRequest extends StringRequest {
 
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getIngredientPerType.php";

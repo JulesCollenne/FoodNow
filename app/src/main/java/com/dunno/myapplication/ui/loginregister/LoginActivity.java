@@ -24,6 +24,13 @@ import org.json.JSONObject;
 
 import java.util.Objects;
 
+
+/*
+ *
+ *  Gère tout ce qui est lié à la connection à un compte existant
+ *
+ */
+
 public class LoginActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -32,18 +39,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
+        //Appel la fonction lorsqu'on arrive d'une inscription réussie
         if(getIntent().hasExtra("Registered")){
-            String pseudo = Objects.requireNonNull(getIntent().getExtras()).getString("Registered");
-
-            String connectionReussitTexte = getString(R.string.connection_inscription_reussit_alert_dialog_part_1);
-            connectionReussitTexte += " "+pseudo+" ";
-            connectionReussitTexte += getString(R.string.connection_inscription_reussit_alert_dialog_part_2);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-            builder.setMessage(connectionReussitTexte)
-                    .setNegativeButton(R.string.alert_dialog_ok, null)
-                    .create()
-                    .show();
+            promptRegisterSuccessful();
         }
 
 
@@ -54,16 +52,20 @@ public class LoginActivity extends AppCompatActivity {
         final Button bRetour = findViewById(R.id.btn_retour_5);
 
 
+
+        //Bouton retour: Supprime l'activité courante (retour au menu)
         bRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent retour = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(retour);
+                LoginActivity.this.finish();
 
             }
         });
 
+
+
+        //Bouton vers l'inscription: Crée une activité Register
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +75,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
+        /* Bouton de tentative de connection: Vérifie via la requête LoginRequest que le pseudo et le mdp sont bon.
+         * Si oui: Affiche un alertDialog indiquant la réussite, puis crée une nouvelle activité main avec les informations de comptes.
+         * Sinon affiche un message d'erreur et attent une nouvelle demande
+         */
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
-                // Response received from the server
+                //Fonction qui reçoit la réponse du serveur
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -127,10 +135,35 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
+                //Création et envoie de la requête
                 LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }
         });
     }
+
+
+    /*
+        Params: None
+        Return: None
+        Fonction: Affiche un message via AlertDialog indiquant que l'inscription a été réussit
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void promptRegisterSuccessful(){
+
+        String pseudo = Objects.requireNonNull(getIntent().getExtras()).getString("Registered");
+
+        String connectionReussitTexte = getString(R.string.connection_inscription_reussit_alert_dialog_part_1);
+        connectionReussitTexte += " "+pseudo+" ";
+        connectionReussitTexte += getString(R.string.connection_inscription_reussit_alert_dialog_part_2);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setMessage(connectionReussitTexte)
+                .setNegativeButton(R.string.alert_dialog_ok, null)
+                .create()
+                .show();
+
+    }
+
 }

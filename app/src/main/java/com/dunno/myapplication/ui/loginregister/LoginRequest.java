@@ -7,6 +7,13 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Params: username, password
+ *  Requête: Vérifie que le couple username-password existe
+ *  Return: Réussite ou non
+ */
+
+
 public class LoginRequest extends StringRequest {
     private static final String LOGIN_REQUEST_URL = "https://foodnowdb.000webhostapp.com/Login.php";
     private Map<String, String> params;
