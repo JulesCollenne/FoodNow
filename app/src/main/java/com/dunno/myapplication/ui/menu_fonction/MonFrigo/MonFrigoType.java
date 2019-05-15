@@ -2,6 +2,8 @@ package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class MonFrigoType extends AppCompatActivity {
@@ -30,41 +33,43 @@ public class MonFrigoType extends AppCompatActivity {
     ArrayList<String> ingredientID = new ArrayList<>();
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_frigo_type);
 
-        String type = getIntent().getExtras().getString("type");
+        String type = Objects.requireNonNull(getIntent().getExtras()).getString("type");
         ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
         ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
 
         String typeName;
 
+        assert type != null;
         switch(type) {
 
             case "Viande":
-                typeName = "Viandes";
+                typeName = getString(R.string.choix_ingredient_type_viandes);
                 break;
 
             case "Légume":
-                typeName = "Légumes";
+                typeName = getString(R.string.choix_ingredient_type_légumes);
                 break;
 
             case "Fruit":
-                typeName = "Fruits";
+                typeName = getString(R.string.choix_ingredient_type_fruits);
                 break;
 
             case "Condiment":
-                typeName = "Condiments";
+                typeName = getString(R.string.choix_ingredient_type_condiments);
                 break;
 
             case "Oeufs et fromages":
-                typeName = "Oeufs et fromages";
+                typeName = getString(R.string.choix_ingredient_type_oeufsetfromage);
                 break;
 
             case "Céréales":
-                typeName = "Céréales";
+                typeName = getString(R.string.choix_ingredient_type_céréales);
                 break;
 
             default:
@@ -72,7 +77,7 @@ public class MonFrigoType extends AppCompatActivity {
 
         }
 
-        TextView tv_type = (TextView) findViewById(R.id.tv_ingredientType);
+        TextView tv_type = findViewById(R.id.tv_ingredientType);
         tv_type.setText(typeName);
 
 
@@ -95,9 +100,9 @@ public class MonFrigoType extends AppCompatActivity {
                             ingredientID.add(jsonResponse.getString("ID"+i));
                         }
 
-                        Button btnRetour = (Button) findViewById(R.id.btn_retour_1);
+                        Button btnRetour = findViewById(R.id.btn_retour_1);
 
-                        final ListView listIngredient = (ListView) findViewById(R.id.lv_ingredients);
+                        final ListView listIngredient = findViewById(R.id.lv_ingredients);
 
 
                         final IngredientAdapter ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientName, ingredientID);
@@ -128,22 +133,18 @@ public class MonFrigoType extends AppCompatActivity {
                                 }
                                 else{
                                     AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
-                                    builder.setMessage("Vous avez déjà ajouté cet ingrédient")
-                                            .setNegativeButton("Ok", null)
+                                    builder.setMessage(R.string.mon_frigo_type_deja_ajouté)
+                                            .setNegativeButton(R.string.alert_dialog_ok, null)
                                             .create()
                                             .show();
 
                                     return;
                                 }
 
-                                Intent addedIngredientIntent = new Intent(getApplicationContext(), AddIngredient.class);
+                                MonFrigoType.this.finish();
+                                Intent addedIngredientIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
                                 addedIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
                                 addedIngredientIntent.putExtra("liste_ingredient_id", ingredientAddedID);
-                                if(getIntent().hasExtra("username")){
-                                    addedIngredientIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                                    addedIngredientIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                                    addedIngredientIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                                }
                                 startActivity(addedIngredientIntent);
 
                             }
@@ -153,19 +154,13 @@ public class MonFrigoType extends AppCompatActivity {
 
                     } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
-                            builder.setMessage("Erreur lors de l'ajout")
-                                    .setNegativeButton("Réessayer", null)
+                            builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                    .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                     .create()
                                     .show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-
-                    AlertDialog.Builder builder2 = new AlertDialog.Builder(MonFrigoType.this);
-                    builder2.setMessage("RIP " +e.getMessage())
-                            .setNegativeButton("Réessayer", null)
-                            .create()
-                            .show();
                 }
             }
         };

@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import com.dunno.myapplication.R;
 
 
+
 public class ChoixTypeRecette extends AppCompatActivity {
 
     @Override
@@ -17,11 +18,11 @@ public class ChoixTypeRecette extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_type_recette);
 
-        ImageButton entreeBtn = (ImageButton) findViewById(R.id.entreeButton);
-        ImageButton platBtn = (ImageButton) findViewById(R.id.platButton);
-        ImageButton dessertBtn = (ImageButton) findViewById(R.id.dessertButton);
+        ImageButton entreeBtn = findViewById(R.id.entreeButton);
+        ImageButton platBtn = findViewById(R.id.platButton);
+        ImageButton dessertBtn = findViewById(R.id.dessertButton);
 
-        Button retourBtn = (Button) findViewById(R.id.btn_retour_9);
+        Button retourBtn = findViewById(R.id.btn_retour_9);
 
 
         entreeBtn.setOnClickListener(new View.OnClickListener() {
@@ -29,11 +30,6 @@ public class ChoixTypeRecette extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
-                if(getIntent().hasExtra("username")){
-                    listeRecetteIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    listeRecetteIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
                 listeRecetteIntent.putExtra("type", "Entrées");
                 startActivity(listeRecetteIntent);
 
@@ -46,11 +42,6 @@ public class ChoixTypeRecette extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
-                if(getIntent().hasExtra("username")){
-                    listeRecetteIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    listeRecetteIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
                 listeRecetteIntent.putExtra("type", "Plats");
                 startActivity(listeRecetteIntent);
 
@@ -63,11 +54,6 @@ public class ChoixTypeRecette extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent listeRecetteIntent = new Intent(getApplicationContext(), ListeRecetteFromType.class);
-                if(getIntent().hasExtra("username")){
-                    listeRecetteIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    listeRecetteIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    listeRecetteIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
                 listeRecetteIntent.putExtra("type", "Desserts");
                 startActivity(listeRecetteIntent);
 

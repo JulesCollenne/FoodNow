@@ -1,6 +1,8 @@
 package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,38 +15,27 @@ import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RecipeFromIngredient extends AppCompatActivity {
 
-    ArrayList ingredientAdded;
-    ArrayList ingredientAddedID;
     ArrayList<Integer> recipeID;
     ArrayList<String> recipeName;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_from_ingredient);
 
-        ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
-        ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
-
-        Button changeIngredient = (Button) findViewById(R.id.btn_recipe_change);
-        final ListView lv_recipe = (ListView) findViewById(R.id.lv_recipe_from_ingredients);
+        Button changeIngredient = findViewById(R.id.btn_recipe_change);
+        final ListView lv_recipe = findViewById(R.id.lv_recipe_from_ingredients);
 
         changeIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent IngredientmodifyIntent = new Intent(getApplicationContext(), AddIngredient.class);
-                if(getIntent().hasExtra("username")){
-                    IngredientmodifyIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    IngredientmodifyIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    IngredientmodifyIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                IngredientmodifyIntent.putExtra("liste_ingredient", ingredientAdded);
-                IngredientmodifyIntent.putExtra("liste_ingredient_id", ingredientAddedID);
-                startActivity(IngredientmodifyIntent);
+                RecipeFromIngredient.this.finish();
 
             }
         });
@@ -52,7 +43,7 @@ public class RecipeFromIngredient extends AppCompatActivity {
 
         if(getIntent().hasExtra("liste_recipe_id")){
 
-            recipeID = getIntent().getExtras().getIntegerArrayList("liste_recipe_id");
+            recipeID = Objects.requireNonNull(getIntent().getExtras()).getIntegerArrayList("liste_recipe_id");
             recipeName = getIntent().getExtras().getStringArrayList("liste_recipe_name");
 
         }
@@ -65,15 +56,6 @@ public class RecipeFromIngredient extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
-                if(getIntent().hasExtra("username")){
-                    printRecipeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                    printRecipeIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                }
-                printRecipeIntent.putExtra("liste_ingredient", ingredientAdded);
-                printRecipeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
-                printRecipeIntent.putExtra("liste_recipe_id", recipeID);
-                printRecipeIntent.putExtra("liste_recipe_name", recipeName);
                 printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
                 startActivity(printRecipeIntent);
 

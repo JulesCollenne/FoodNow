@@ -43,15 +43,15 @@ public class ChefSashimi extends AppCompatActivity {
                                 tv_advice.setText(jsonResponse.getString("conseil"));
 
                             }
-
+                            else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ChefSashimi.this);
+                                builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                        .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                        .create()
+                                        .show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
-
-                            AlertDialog.Builder builder2 = new AlertDialog.Builder(ChefSashimi.this);
-                            builder2.setMessage("RIP " +e.getMessage())
-                                    .setNegativeButton("Réessayer", null)
-                                    .create()
-                                    .show();
                         }
                     }
                 };

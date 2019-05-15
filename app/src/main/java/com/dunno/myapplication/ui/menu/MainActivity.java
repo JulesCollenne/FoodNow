@@ -4,8 +4,10 @@ package com.dunno.myapplication.ui.menu;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -35,6 +37,8 @@ import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     String username = null;
     String password = null;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
             loggedin = true;
 
-            email = getIntent().getExtras().getString("email");
+            email = Objects.requireNonNull(getIntent().getExtras()).getString("email");
             username = getIntent().getExtras().getString("username");
             password = getIntent().getExtras().getString("password");
 
@@ -138,8 +143,8 @@ public class MainActivity extends AppCompatActivity
 
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setMessage("Connection échouée")
-                                .setNegativeButton("Retry", null)
+                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                 .create()
                                 .show();
                     }
@@ -189,13 +194,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         if(loggedin){
             getMenuInflater().inflate(R.menu.logged_in_main, menu);
-            String username = getIntent().getExtras().getString("username");
-            TextView pseudotv = (TextView) findViewById(R.id.pseudoView);
+            String username = Objects.requireNonNull(getIntent().getExtras()).getString("username");
+            TextView pseudotv = findViewById(R.id.pseudoView);
             pseudotv.setText(username);
         }else {
             getMenuInflater().inflate(R.menu.main, menu);
@@ -225,9 +231,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Intent chosenIntent;
 
@@ -239,31 +245,16 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_frigo:
                 chosenIntent = new Intent(getApplicationContext(), AddIngredient.class);
-                if (loggedin) {
-                    chosenIntent.putExtra("email", email);
-                    chosenIntent.putExtra("username", username);
-                    chosenIntent.putExtra("password", password);
-                }
                 startActivity(chosenIntent);
                 break;
 
-            case R.id.nav_gallery:
+            case R.id.nav_recettes:
                 chosenIntent = new Intent(getApplicationContext(), ChoixTypeRecette.class);
-                if (loggedin) {
-                    chosenIntent.putExtra("email", email);
-                    chosenIntent.putExtra("username", username);
-                    chosenIntent.putExtra("password", password);
-                }
                 startActivity(chosenIntent);
                 break;
 
             case R.id.nav_roucette:
                 chosenIntent = new Intent(getApplicationContext(), RoucetteActivity.class);
-                if (loggedin) {
-                    chosenIntent.putExtra("email", email);
-                    chosenIntent.putExtra("username", username);
-                    chosenIntent.putExtra("password", password);
-                }
                 startActivity(chosenIntent);
                 break;
 
@@ -286,9 +277,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_favoris:
                 chosenIntent = new Intent(getApplicationContext(), FavoriteActivity.class);
-                chosenIntent.putExtra("email", email);
                 chosenIntent.putExtra("username", username);
-                chosenIntent.putExtra("password", password);
                 startActivity(chosenIntent);
                 break;
 
@@ -298,7 +287,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(chosenIntent);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("Disconnected")
+                builder.setMessage(R.string.alert_dialog_déconnection)
                         .create()
                         .show();
                 break;

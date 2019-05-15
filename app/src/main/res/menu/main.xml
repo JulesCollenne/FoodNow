@@ -9,8 +9,4 @@
         android:title="@string/menu_connection"
         app:showAsAction="ifRoom"/>
 
-
-
-
-
 </menu>

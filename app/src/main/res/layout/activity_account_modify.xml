@@ -8,10 +8,10 @@
 
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/et_new_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etUsername"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -30,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_new_email" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/et_password_confirmation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,6 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/et_new_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -70,10 +72,10 @@
         app:layout_constraintTop_toBottomOf="@+id/et_password_confirmation" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/et_new_password_confirmation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etUsername"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -92,10 +94,10 @@
         app:layout_constraintTop_toBottomOf="@+id/et_new_password" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/et_new_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etUsername"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -138,7 +140,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/bouton_retour"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="retour" />

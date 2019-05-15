@@ -12,7 +12,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import java.util.regex.*;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,13 +30,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword2);
-        final EditText etPasswordVerif = (EditText) findViewById(R.id.etPasswordVerif);
+        final EditText etEmail = findViewById(R.id.etEmail);
+        final EditText etUsername = findViewById(R.id.etUsername);
+        final EditText etPassword = findViewById(R.id.etPassword2);
+        final EditText etPasswordVerif = findViewById(R.id.etPasswordVerif);
 
-        final Button bRegister = (Button) findViewById(R.id.bRegister);
-        final Button bRetour = (Button) findViewById(R.id.btn_retour_6);
+        final Button bRegister = findViewById(R.id.bRegister);
+        final Button bRetour = findViewById(R.id.btn_retour_6);
 
 
         bRetour.setOnClickListener(new View.OnClickListener() {
@@ -60,8 +59,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(!password.equals(passwordVerif)){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    builder.setMessage("Les mots de passes sont différents")
-                            .setNegativeButton("Ok", null)
+                    builder.setMessage(R.string.inscription_alert_dialog_mdp_different)
+                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
                             .create()
                             .show();
                     return;
@@ -69,8 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(password.length() < 3){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    builder.setMessage("Le mot de passe n'est pas valide (au moins 3 caractères)")
-                            .setNegativeButton("Ok", null)
+                    builder.setMessage(R.string.inscription_alert_dialog_mdp_non_valide)
+                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
                             .create()
                             .show();
                     return;
@@ -78,22 +77,22 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(username.length() < 3){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    builder.setMessage("Le pseudo n'est pas valide (au moins 3 caractères")
-                            .setNegativeButton("Ok", null)
+                    builder.setMessage(R.string.inscription_alert_dialog_pseudo_non_valide)
+                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
                             .create()
                             .show();
                     return;
                 }
 
 
-                String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
-                        + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
+                String masque = "^[a-zA-Z]+[a-zA-Z0-9._-]*[a-zA-Z0-9]@[a-zA-Z]+"
+                        + "[a-zA-Z0-9_-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
                 Pattern pattern = Pattern.compile(masque);
                 Matcher controler = pattern.matcher(email);
                 if (!controler.matches()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    builder.setMessage("Veuillez entrer une adresse eMail valide")
-                            .setNegativeButton("Ok", null)
+                    builder.setMessage(R.string.inscription_alert_dialog_email_non_valide)
+                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
                             .create()
                             .show();
                     return;
@@ -114,15 +113,15 @@ public class RegisterActivity extends AppCompatActivity {
                             } else {
                                 if(jsonResponse.has("usernameAvailability")){
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                    builder.setMessage("Le pseudo est déjà utilisé, essayez en un autre")
-                                            .setNegativeButton("Réessayer", null)
+                                    builder.setMessage(R.string.inscription_alert_dialog_pseudo_deja_utilise)
+                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                             .create()
                                             .show();
                                 }
                                 else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                    builder.setMessage("Création échoué, verifiez que les informations sont correctement entrées")
-                                            .setNegativeButton("Réessayer", null)
+                                    builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                             .create()
                                             .show();
                                 }

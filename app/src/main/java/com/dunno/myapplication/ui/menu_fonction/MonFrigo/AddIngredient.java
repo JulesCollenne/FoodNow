@@ -2,11 +2,12 @@ package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -15,12 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
-import com.dunno.myapplication.ui.menu.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AddIngredient extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class AddIngredient extends AppCompatActivity {
     ArrayList<String> ingredientAddedID = new ArrayList<>();
     IngredientAdapter ingredientAdapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +37,10 @@ public class AddIngredient extends AppCompatActivity {
 
         if(getIntent().hasExtra("liste_ingredient")){
 
-            ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
+            ingredientAdded = Objects.requireNonNull(getIntent().getExtras()).getStringArrayList("liste_ingredient");
             ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
 
-            final ListView listIngredient = (ListView) findViewById(R.id.lv_ingredient_chosen);
+            final ListView listIngredient = findViewById(R.id.lv_ingredient_chosen);
 
             ingredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientAdded, ingredientAddedID);
 
@@ -67,22 +69,18 @@ public class AddIngredient extends AppCompatActivity {
 
 
 
-        Button addBtn = (Button) findViewById(R.id.btn_add_ingredient);
-        Button searchBtn = (Button) findViewById(R.id.button_search_recipee);
-        Button retourBtn = (Button) findViewById(R.id.btn_retour_2);
+        Button addBtn = findViewById(R.id.btn_add_ingredient);
+        Button searchBtn = findViewById(R.id.button_search_recipee);
+        Button retourBtn = findViewById(R.id.btn_retour_2);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                AddIngredient.this.finish();
                 Intent addIngredient = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
                 addIngredient.putExtra("liste_ingredient", ingredientAdded);
                 addIngredient.putExtra("liste_ingredient_id", ingredientAddedID);
-                if(getIntent().hasExtra("username")){
-                    addIngredient.putExtra("email", getIntent().getExtras().getString("email"));
-                    addIngredient.putExtra("username", getIntent().getExtras().getString("username"));
-                    addIngredient.putExtra("password", getIntent().getExtras().getString("password"));
-                }
                 startActivity(addIngredient);
 
             }
@@ -95,8 +93,8 @@ public class AddIngredient extends AppCompatActivity {
                 if(ingredientAdded.size() == 0){
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddIngredient.this);
-                    builder.setMessage("Vous devez ajouter au moins 1 ingrédient")
-                            .setNegativeButton("Ok", null)
+                    builder.setMessage(R.string.add_ingredient_0)
+                            .setNegativeButton(R.string.alert_dialog_ok, null)
                             .create()
                             .show();
 
@@ -125,46 +123,20 @@ public class AddIngredient extends AppCompatActivity {
                                 }
 
                                 Intent searchRecipeIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
-                                if(getIntent().hasExtra("username")){
-                                    searchRecipeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                                    searchRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                                    searchRecipeIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                                }
                                 searchRecipeIntent.putExtra("liste_recipe_id", recipeID);
                                 searchRecipeIntent.putExtra("liste_recipe_name", recipeName);
-                                searchRecipeIntent.putExtra("liste_ingredient", ingredientAdded);
-                                searchRecipeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                                 startActivity(searchRecipeIntent);
 
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(AddIngredient.this);
-                                builder.setMessage("Erreur lors de l'ajout")
-                                        .setNegativeButton("Réessayer", null)
+                                builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                        .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                         .create()
                                         .show();
-
-                                //En attendant que le .php fonctionne
-                                Intent searchRecipeIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
-                                if(getIntent().hasExtra("username")){
-                                    searchRecipeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                                    searchRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                                    searchRecipeIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                                }
-                                searchRecipeIntent.putExtra("liste_ingredient", ingredientAdded);
-                                searchRecipeIntent.putExtra("liste_ingredient", ingredientAddedID);
-                                startActivity(searchRecipeIntent);
-                                //
-
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-
-                            AlertDialog.Builder builder2 = new AlertDialog.Builder(AddIngredient.this);
-                            builder2.setMessage("RIP " +e.getMessage())
-                                    .setNegativeButton("Réessayer", null)
-                                    .create()
-                                    .show();
                         }
                     }
                 };
@@ -180,9 +152,7 @@ public class AddIngredient extends AppCompatActivity {
         retourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent chosenIntent = new Intent(getApplicationContext(), MainActivity.class);
-                chosenIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(chosenIntent);
+                AddIngredient.this.finish();
             }
         });
 

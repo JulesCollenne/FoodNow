@@ -11,7 +11,7 @@ public class AccountModifyRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/ModifyAccount.php";
     private Map<String, String> params;
 
-    public AccountModifyRequest(String username, String newEmail, String newUsername, String newPassword, Response.Listener<String> listener) {
+    AccountModifyRequest(String username, String newEmail, String newUsername, String newPassword, Response.Listener<String> listener) {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("username", username);

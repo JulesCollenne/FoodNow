@@ -8,6 +8,7 @@
 
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/etPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,6 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,6 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <EditText
+        tools:ignore="Autofill"
         android:id="@+id/etPasswordVerif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,7 +120,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="400dp"
         android:text="@string/inscription_toConnection_bouton"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Vous avez déjà un compte ? Connectez vous." />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@drawable/side_nav_bar"
@@ -18,7 +19,8 @@
         android:layout_width="108dp"
         android:layout_height="71dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/sashimii" />
+        app:srcCompat="@drawable/sashimii"
+        android:contentDescription="@null" />
 
     <TextView
         android:id="@+id/pseudoView"
@@ -27,6 +29,8 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/menu_deroulant_nav_titre"
         android:paddingLeft="15dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry" />
 
 </LinearLayout>

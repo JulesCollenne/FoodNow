@@ -1,8 +1,6 @@
 package com.dunno.myapplication.ui.ListAdaptater;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +14,9 @@ import java.util.List;
 
 public class IngredientAdapter extends BaseAdapter {
 
-    LayoutInflater mInflater;
-    List<String> ingredientName;
-    List<String> ingredientID;
+    private LayoutInflater mInflater;
+    private List<String> ingredientName;
+    private List<String> ingredientID;
 
     public IngredientAdapter(Context context, List<String> ingredientNames,  List<String> ingredientID){
 
@@ -57,8 +55,8 @@ public class IngredientAdapter extends BaseAdapter {
 
         View v = mInflater.inflate(R.layout.list_item_ingredient, null);
 
-        ImageView iv_ingredient_image = (ImageView) v.findViewById(R.id.ingredient_image);
-        TextView tv_ingredient_name = (TextView) v.findViewById(R.id.ingredient_name);
+        ImageView iv_ingredient_image = v.findViewById(R.id.ingredient_image);
+        TextView tv_ingredient_name = v.findViewById(R.id.ingredient_name);
 
         String ingredient_name = ingredientName.get(position);
 

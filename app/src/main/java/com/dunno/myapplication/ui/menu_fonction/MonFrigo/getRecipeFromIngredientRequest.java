@@ -12,7 +12,7 @@ public class getRecipeFromIngredientRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getRecipeFromIngredient.php";
     private Map<String, String> params;
 
-    public getRecipeFromIngredientRequest(ArrayList<String> ingredientID, Response.Listener<String> listener) {
+    getRecipeFromIngredientRequest(ArrayList<String> ingredientID, Response.Listener<String> listener) {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
 

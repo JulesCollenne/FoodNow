@@ -11,7 +11,7 @@ public class getAdviceRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getAdvice.php";
     private Map<String, String> params;
 
-    public getAdviceRequest(Response.Listener<String> listener) {
+    getAdviceRequest(Response.Listener<String> listener) {
         super(Request.Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
     }

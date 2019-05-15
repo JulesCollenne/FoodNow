@@ -1,7 +1,6 @@
 package com.dunno.myapplication.ui.ListAdaptater;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,9 @@ import java.util.ArrayList;
 
 public class RecipeAdapter extends BaseAdapter {
 
-    LayoutInflater mInflater;
-
-    ArrayList<Integer> recipeID;
-    ArrayList<String> recipeName;
+    private LayoutInflater mInflater;
+    private ArrayList<Integer> recipeID;
+    private ArrayList<String> recipeName;
 
     public RecipeAdapter(Context context, ArrayList<Integer> IDs, ArrayList<String> names){
 
@@ -53,8 +51,8 @@ public class RecipeAdapter extends BaseAdapter {
 
         View v = mInflater.inflate(R.layout.list_item_recipe, null);
 
-        ImageView iv_ingredient_image = (ImageView) v.findViewById(R.id.recipe_image);
-        TextView tv_ingredient_name = (TextView) v.findViewById(R.id.recipe_name);
+        ImageView iv_ingredient_image = v.findViewById(R.id.recipe_image);
+        TextView tv_ingredient_name = v.findViewById(R.id.recipe_name);
 
         String recipe_name = recipeName.get(position);
 

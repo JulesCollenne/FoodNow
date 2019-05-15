@@ -1,7 +1,6 @@
 package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
@@ -19,14 +18,13 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.menu_fonction.Favoris.ChangeRecipeStateInFavoriteRequest;
-import com.dunno.myapplication.ui.menu_fonction.Favoris.getIdFromPseudoRequest;
 import com.dunno.myapplication.ui.menu_fonction.Favoris.isRecipeFavoriteRequest;
-import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ListeRecetteFromType;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.RecipeFromIngredient;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getRecipeFromIDRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Objects;
 
 public class PrintRecipe extends AppCompatActivity {
 
@@ -34,7 +32,6 @@ public class PrintRecipe extends AppCompatActivity {
     private boolean loggedIn;
     private int recipeID;
     private int userID;
-    private String pseudo = null;
     private boolean isFavorite;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -43,9 +40,9 @@ public class PrintRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print_recipe);
 
-        recipeID = getIntent().getExtras().getInt("id_recipe");
+        recipeID = Objects.requireNonNull(getIntent().getExtras()).getInt("id_recipe");
 
-        /**
+        /*
          * Affiche la recette en prenant les infos depuis la bdd
          */
 
@@ -59,23 +56,25 @@ public class PrintRecipe extends AppCompatActivity {
 
                     if (success) {
 
-                        TextView tv_name = (TextView) findViewById(R.id.tv_recipeName);
-                        TextView tv_tmp = (TextView) findViewById(R.id.tv_tmp_prep);
-                        TextView tv_nb = (TextView) findViewById(R.id.tv_nb_pers);
-                        TextView tv_desc = (TextView) findViewById(R.id.tv_recipe_description);
+                        TextView tv_name = findViewById(R.id.tv_recipeName);
+                        TextView tv_tmp = findViewById(R.id.tv_tmp_prep);
+                        TextView tv_nb = findViewById(R.id.tv_nb_pers);
+                        TextView tv_desc = findViewById(R.id.tv_recipe_description);
                         tv_desc.setMovementMethod(new ScrollingMovementMethod());
 
-                        ImageView iv_recipe = (ImageView) findViewById(R.id.recipe_image_big);
+                        ImageView iv_recipe = findViewById(R.id.recipe_image_big);
 
                         tv_name.setText(jsonResponse.getString("name"));
-                        tv_tmp.setText("Temps: "+jsonResponse.getInt("time")+" min");
-                        tv_nb.setText(jsonResponse.getInt("nb")+" personnes");
+                        String tmp = getString(R.string.print_recipe_time) + " " + jsonResponse.getInt("time")+" min";
+                        tv_tmp.setText(tmp);
+                        tmp = jsonResponse.getInt("nb") + " " + getString(R.string.print_recipe_personnes);
+                        tv_nb.setText(tmp);
                         iv_recipe.setImageResource(R.drawable.ic_menu_camera);
                         tv_desc.setText(jsonResponse.getString("description"));
 
                         tv_desc.setMovementMethod(new ScrollingMovementMethod());
 
-                        Button bRetour = (Button) findViewById(R.id.btn_retour_7);
+                        Button bRetour = findViewById(R.id.btn_retour_7);
 
                         bRetour.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -86,42 +85,41 @@ public class PrintRecipe extends AppCompatActivity {
                             }
                         });
 
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
+                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                .create()
+                                .show();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-
-                    AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
-                    builder2.setMessage("RIP " +e.getMessage())
-                            .setNegativeButton("Réessayer", null)
-                            .create()
-                            .show();
                 }
             }
         };
-
 
         getRecipeFromIDRequest getRecipeFromID = new getRecipeFromIDRequest(recipeID+"", responseListener);
         RequestQueue queue = Volley.newRequestQueue(PrintRecipe.this);
         queue.add(getRecipeFromID);
 
-        /**
+        /*
          * Bouton favoris
          */
 
         this.btnFavorite = findViewById(R.id.btn_favorite);
         btnFavorite.onVisibilityAggregated(false);
 
-        /** On vérifie si l'utilisateur est connecté */
+        /* On vérifie si l'utilisateur est connecté */
         if(getIntent().hasExtra("username")) {
-            this.pseudo = getIntent().getExtras().getString("username");
+            String pseudo = getIntent().getExtras().getString("username");
             this.loggedIn = true;
             btnFavorite.onVisibilityAggregated(true);
 
-            /**
+            /*
              * Récupération de l'ID de l'utilisateur dans la bdd
              */
-            /**
+            /*
              * On check si la recette est déjà en favoris pour cette utilisateur
              */
             Response.Listener<String> responseListener2 = new Response.Listener<String>() {
@@ -135,23 +133,22 @@ public class PrintRecipe extends AppCompatActivity {
                         if (success) {
                             isFavorite = jsonResponse.getBoolean("isFavorite");
                             userID = jsonResponse.getInt("userID");
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
+                            builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                    .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                    .create()
+                                    .show();
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
-                        builder2.setMessage("RIP " +e.getMessage())
-                                .setNegativeButton("Réessayer", null)
-                                .create()
-                                .show();
                     }
                 }
             };
 
             isRecipeFavoriteRequest isRecipeFavorite = new isRecipeFavoriteRequest(pseudo, recipeID+"", responseListener2);
-            RequestQueue queue2 = Volley.newRequestQueue(PrintRecipe.this);
-            queue2.add(isRecipeFavorite);
+            queue.add(isRecipeFavorite);
 
             if(!isFavorite) {
                 btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
@@ -166,10 +163,10 @@ public class PrintRecipe extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                /** le click ne fonctionne que si l'utilisateur est connecté */
+                /* le click ne fonctionne que si l'utilisateur est connecté */
                 if(loggedIn) {
 
-                    /**
+                    /*
                      * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
                      */
                     Response.Listener<String> responseListener3 = new Response.Listener<String>() {
@@ -189,16 +186,16 @@ public class PrintRecipe extends AppCompatActivity {
                                         isFavorite = true;
                                         btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
                                     }
+                                } else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
+                                    builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                            .create()
+                                            .show();
                                 }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-
-                                AlertDialog.Builder builder2 = new AlertDialog.Builder(PrintRecipe.this);
-                                builder2.setMessage("RIP " +e.getMessage())
-                                        .setNegativeButton("Réessayer", null)
-                                        .create()
-                                        .show();
                             }
                         }
                     };

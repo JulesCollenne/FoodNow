@@ -45,7 +45,8 @@
                 android:layout_marginBottom="25dp"
                 android:background="#F9F9F9"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/sashimii" />
+                app:srcCompat="@drawable/sashimii"
+                android:contentDescription="@null" />
 
             <ImageButton
                 android:id="@+id/iv_recettedujour"
@@ -63,8 +64,8 @@
                 android:background="#F9F9F9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_recipeName"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@null" />
 
             <TextView
                 android:id="@+id/tv_recettedujour"
@@ -81,8 +82,7 @@
                 android:layout_marginRight="0dp"
                 android:layout_marginBottom="324dp"
                 android:gravity="center"
-                android:text="TextView"
-                android:textSize="23dp" />
+                android:textSize="23sp" />
 
 
         </RelativeLayout>

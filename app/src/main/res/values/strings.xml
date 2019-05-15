@@ -2,6 +2,11 @@
 
     /* TODO: Le contenu des alertes, activity java */
 
+
+
+/* ------------------------------------------- XML -----------------------------------------------------*/
+
+
     <string name="nom_application">Food Now!</string>
     <string name="bouton_retour">Retour</string>
 
@@ -136,9 +141,95 @@
 
 
 
+/* ------------------------------------------- XML -----------------------------------------------------*/
 
 
 
+
+
+/* ------------------------------------------- Activity java -----------------------------------------------------*/
+
+    /* Général */
+
+        <string name="alert_dialog_erreur_base_de_donnée">Erreur lors de l\'accès à la base de donnée</string>
+        <string name="alert_dialog_reesayer">Réesayer</string>
+        <string name="alert_dialog_déconnection">Déconnecté</string>
+        <string name="alert_dialog_ok">OK</string>
+        <string name="alert_dialog_oui">Oui</string>
+        <string name="alert_dialog_non">Non</string>
+
+    /* Général */
+
+
+    /* Inscription */
+
+        <string name="inscription_alert_dialog_mdp_different">Les mots de passe sont différents</string>
+        <string name="inscription_alert_dialog_mdp_non_valide">Le mot de passe n\'est pas valide (au moins 3 caractères)</string>
+        <string name="inscription_alert_dialog_pseudo_non_valide">Le pseudo n\'est pas valide (au moins 3 caractères</string>
+        <string name="inscription_alert_dialog_email_non_valide">Veuillez entrer une adresse eMail valide</string>
+        <string name="inscription_alert_dialog_pseudo_deja_utilise">Le pseudo est déjà utilisé, essayez en un autre</string>
+
+    /* Inscription */
+
+
+    /* Login */
+
+        <string name="connection_inscription_reussit_alert_dialog_part_1">Votre compte</string>
+        <string name="connection_inscription_reussit_alert_dialog_part_2">a bien été crée.
+Vous pouvez vous connecter.</string>
+        <string name="connection_reussit_alert_dialog">Connection réussie</string>
+        <string name="connection_échouée_alert_dialog">Connection échouée: Le pseudonyme ou le mot de passe entrée est mauvais</string>
+
+    /* Login */
+
+
+    /* AccountModify */
+
+        <string name="account_email">Votre adresse mail:</string>
+        <string name="account_pseudo">Votre pseudonyme:</string>
+
+
+
+        <string name="account_modify_mdp_incorrect">Le mot de passe actuel que vous avez entré est incorrect, veuillez entrer votre mot de passe actuel</string>
+        <string name="account_modify_mdp_different">Votre nouveau mot de passe est différent de celui entré dans la confirmation, veuillez entrer le même mot de passe</string>
+
+        <string name="account_modify_confirmation_part_1">Voulez vous vraiment modifier votre compte ainsi:
+email:</string>
+        <string name="account_modify_confirmation_part_2">Pseudo:</string>
+        <string name="account_modify_confirmation_part_3">Mot de passe:</string>
+        <string name="account_modify_success">Modification réussie</string>
+
+    /* AccountModify */
+
+
+    /* ListeRecetteFromType */
+
+        <string name="type_recette_entrée">Entrées</string>
+        <string name="type_recette_plat">Plats</string>
+        <string name="type_recette_dessert">Desserts</string>
+
+    /* ListeRecetteFromType */
+
+
+    /* AddIngredient */
+
+        <string name="add_ingredient_0">Vous devez ajouter au moins 1 ingrédient</string>
+        <string name="mon_frigo_type_deja_ajouté">Vous avez déjà ajouté cet ingrédient</string>
+
+    /* AddIngredient */
+
+
+    /* PrintRecipe */
+
+        <string name="print_recipe_time">Temps:</string>
+        <string name="print_recipe_personnes">personne(s)</string>
+
+    /* PrintRecipe */
+
+
+
+
+/* ------------------------------------------- Activity Java -----------------------------------------------------*/
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

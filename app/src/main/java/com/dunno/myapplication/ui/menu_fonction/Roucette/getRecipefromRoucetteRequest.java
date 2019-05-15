@@ -15,7 +15,7 @@ public class getRecipefromRoucetteRequest extends StringRequest {
 
     private Map<String, String> params;
 
-    public getRecipefromRoucetteRequest(Response.Listener<String> listener) {
+    getRecipefromRoucetteRequest(Response.Listener<String> listener) {
         super(Method.POST, REQUEST_ROUCETTE, listener, null);
         params = new HashMap<>();
     }

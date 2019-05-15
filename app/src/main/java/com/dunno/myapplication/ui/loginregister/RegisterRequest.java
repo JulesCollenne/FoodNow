@@ -10,7 +10,7 @@ public class RegisterRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/Register.php";
     private Map<String, String> params;
 
-    public RegisterRequest(String email, String username, String password, Response.Listener<String> listener) {
+    RegisterRequest(String email, String username, String password, Response.Listener<String> listener) {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
 

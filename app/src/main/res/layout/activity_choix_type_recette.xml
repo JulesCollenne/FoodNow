@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,7 +20,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/entree" />
+        app:srcCompat="@drawable/entree"
+        android:contentDescription="@null" />
 
     <ImageButton
         android:id="@+id/platButton"
@@ -39,7 +39,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entreeButton"
-        app:srcCompat="@drawable/plat" />
+        app:srcCompat="@drawable/plat"
+        android:contentDescription="@null" />
 
     <ImageButton
         android:id="@+id/dessertButton"
@@ -55,7 +56,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/dessert" />
+        app:srcCompat="@drawable/dessert"
+        android:contentDescription="@null" />
 
     <Button
         android:id="@+id/btn_retour_9"

@@ -3,7 +3,9 @@ package com.dunno.myapplication.ui.loginregister;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,10 @@ import com.dunno.myapplication.ui.menu.MainActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,21 +32,25 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if(getIntent().hasExtra("Registered")){
-            String pseudo = getIntent().getExtras().getString("Registered");
+            String pseudo = Objects.requireNonNull(getIntent().getExtras()).getString("Registered");
+
+            String connectionReussitTexte = getString(R.string.connection_inscription_reussit_alert_dialog_part_1);
+            connectionReussitTexte += " "+pseudo+" ";
+            connectionReussitTexte += getString(R.string.connection_inscription_reussit_alert_dialog_part_2);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-            builder.setMessage("Votre compte "+pseudo +" a bien été crée.\nVous pouvez vous connecter.")
-                    .setNegativeButton("OK", null)
+            builder.setMessage(connectionReussitTexte)
+                    .setNegativeButton(R.string.alert_dialog_ok, null)
                     .create()
                     .show();
         }
 
 
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final TextView tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
-        final Button bLogin = (Button) findViewById(R.id.bSignIn);
-        final Button bRetour = (Button) findViewById(R.id.btn_retour_5);
+        final EditText etUsername = findViewById(R.id.etUsername);
+        final EditText etPassword = findViewById(R.id.etPassword);
+        final TextView tvRegisterLink = findViewById(R.id.tvRegisterLink);
+        final Button bLogin = findViewById(R.id.bSignIn);
+        final Button bRetour = findViewById(R.id.btn_retour_5);
 
 
         bRetour.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (success) {
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Connection réussie")
+                                builder.setMessage(R.string.connection_reussit_alert_dialog)
                                         .create()
                                         .show();
 
@@ -96,8 +105,8 @@ public class LoginActivity extends AppCompatActivity {
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage("Connection échouée")
-                                        .setNegativeButton("Retry", null)
+                                builder.setMessage(R.string.connection_échouée_alert_dialog)
+                                        .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                         .create()
                                         .show();
                             }

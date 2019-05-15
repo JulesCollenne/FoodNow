@@ -2,7 +2,9 @@ package com.dunno.myapplication.ui.menu_fonction.LesRecettes;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,18 +16,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
 import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoType;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.MonFrigoTypeChoice;
-import com.dunno.myapplication.ui.menu_fonction.MonFrigo.getIngredientPerTypeRequest;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListeRecetteFromType extends AppCompatActivity {
 
@@ -33,6 +31,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
     ArrayList<String> recipeName = new ArrayList<>();
     String type;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,39 +39,43 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
 
 
-        type = getIntent().getExtras().getString("type");
+        type = Objects.requireNonNull(getIntent().getExtras()).getString("type");
 
-        final ListView lv_recipe = (ListView) findViewById(R.id.lv_all_recipe);
-        final Button retourBtn = (Button) findViewById(R.id.btn_retour_8);
-        TextView tvTitle = (TextView) findViewById(R.id.tv_list_all_recipe);
-
-
+        final ListView lv_recipe = findViewById(R.id.lv_all_recipe);
+        final Button retourBtn = findViewById(R.id.btn_retour_8);
+        TextView tvTitle = findViewById(R.id.tv_list_all_recipe);
 
 
-        tvTitle.setText(type);
 
+
+
+        String typeTitle;
 
         switch(type) {
 
             case "Plats":
                 type = "Plat";
+                typeTitle = getString(R.string.type_recette_plat);
                 break;
 
             case "Entrées":
                 type = "Entree";
+                typeTitle = getString(R.string.type_recette_entrée);
                 break;
 
             case "Desserts":
                 type = "Dessert";
+                typeTitle = getString(R.string.type_recette_dessert);
                 break;
 
 
             default:
                 type = "TYPE";
+                typeTitle = "TYPE";
 
         }
 
-
+        tvTitle.setText(typeTitle);
 
         if(getIntent().hasExtra("liste_recipe_id")){
 
@@ -108,15 +111,9 @@ public class ListeRecetteFromType extends AppCompatActivity {
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                                     Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
-                                    if(getIntent().hasExtra("username")){
-                                        printRecipeIntent.putExtra("email", getIntent().getExtras().getString("email"));
-                                        printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                                        printRecipeIntent.putExtra("password", getIntent().getExtras().getString("password"));
-                                    }
-                                    printRecipeIntent.putExtra("liste_recipe_id", recipeID);
-                                    printRecipeIntent.putExtra("liste_recipe_name", recipeName);
                                     printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
                                     startActivity(printRecipeIntent);
+
                                 }
 
                             });
@@ -130,23 +127,15 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
                                 }
                             });
-
-
                         } else {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ListeRecetteFromType.this);
-                            builder.setMessage("Erreur lors de l'ajout")
-                                    .setNegativeButton("Réessayer", null)
+                            builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                    .setNegativeButton(R.string.alert_dialog_reesayer, null)
                                     .create()
                                     .show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(ListeRecetteFromType.this);
-                        builder2.setMessage("RIP " +e.getMessage())
-                                .setNegativeButton("Réessayer", null)
-                                .create()
-                                .show();
                     }
                 }
             };
@@ -155,27 +144,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
             RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
             queue.add(getRecipeRequest);
 
-
-
-
-
-
-            /*____________________________________________________________________
-            //TODO: Recuperer depuis le serveur: Crée une classe java getAllRecipeRequest qui envoie une demande a un .php, le .php lui recupere toute les recettes et les transmets.
-            recipeID = new ArrayList<>();
-            recipeID.add(1);
-            recipeID.add(2);
-
-            recipeName = new ArrayList<>();
-            recipeName.add("Pate bolognaise");
-            recipeName.add("Boeuf bourguignon");
-
-            //_______________________________________________________________________*/
         }
-
-
-
-
 
     }
 }
