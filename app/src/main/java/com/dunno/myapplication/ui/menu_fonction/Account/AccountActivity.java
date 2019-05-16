@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dunno.myapplication.R;
@@ -48,7 +49,7 @@ public class AccountActivity extends AppCompatActivity {
 
 
         Button bModify = findViewById(R.id.button_account_modify);
-        Button bRetour = findViewById(R.id.btn_retour_3);
+        ImageButton bRetour = findViewById(R.id.btn_retour_3);
 
         // Bouton modifier: Ouvre l'activité de modification d'information de compte
         bModify.setOnClickListener(new View.OnClickListener() {

@@ -25,7 +25,7 @@ public class ChefSashimi extends AppCompatActivity {
         ImageButton sashimiBtn = findViewById(R.id.talkingSashimi);
 
 
-        Button retourBtn = findViewById(R.id.btn_retour_10);
+        ImageButton retourBtn = findViewById(R.id.btn_retour_10);
 
         retourBtn.setOnClickListener(new View.OnClickListener() {
             @Override

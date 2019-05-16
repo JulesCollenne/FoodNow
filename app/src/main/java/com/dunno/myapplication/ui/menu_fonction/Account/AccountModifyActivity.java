@@ -3,6 +3,7 @@ package com.dunno.myapplication.ui.menu_fonction.Account;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -58,7 +60,7 @@ public class AccountModifyActivity extends AppCompatActivity {
         final EditText etNewPasswordConfirmation = findViewById(R.id.et_new_password_confirmation);
 
         Button bModify = findViewById(R.id.bModify);
-        Button bRetourModify = findViewById(R.id.btn_retour_4);
+        ImageButton bRetourModify = findViewById(R.id.btn_retour_4);
 
 
         // Bouton retour: Ferme l'activité actuel et ouvre une activité AccountActivity avec les informations du compte inchangées

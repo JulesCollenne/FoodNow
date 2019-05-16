@@ -2,6 +2,7 @@ package com.dunno.myapplication.ui.menu_fonction.Favoris;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -36,7 +38,7 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorite);
 
 
-        Button btnRetour = findViewById(R.id.btn_retour_12);
+        ImageButton btnRetour = findViewById(R.id.btn_retour_12);
         btnRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

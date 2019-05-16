@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -77,7 +78,7 @@ public class PrintRecipe extends AppCompatActivity {
 
                         tv_desc.setMovementMethod(new ScrollingMovementMethod());
 
-                        Button bRetour = findViewById(R.id.btn_retour_7);
+                        ImageButton bRetour = findViewById(R.id.btn_retour_7);
 
 
                         if(getIntent().hasExtra("favoris")){

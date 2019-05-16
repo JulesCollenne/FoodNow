@@ -2,6 +2,7 @@ package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -79,7 +81,7 @@ public class AddIngredient extends AppCompatActivity {
 
         Button addBtn = findViewById(R.id.btn_add_ingredient);
         Button searchBtn = findViewById(R.id.button_search_recipee);
-        Button retourBtn = findViewById(R.id.btn_retour_2);
+        ImageButton retourBtn = findViewById(R.id.btn_retour_2);
 
 
         // Bouton ajout d'ingrédient: Mène a l'acitivité MonFrigoTypeChoice

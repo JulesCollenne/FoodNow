@@ -22,7 +22,7 @@ public class ChoixTypeRecette extends AppCompatActivity {
         ImageButton platBtn = findViewById(R.id.platButton);
         ImageButton dessertBtn = findViewById(R.id.dessertButton);
 
-        Button retourBtn = findViewById(R.id.btn_retour_9);
+        ImageButton retourBtn = findViewById(R.id.btn_retour_13);
 
         entreeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

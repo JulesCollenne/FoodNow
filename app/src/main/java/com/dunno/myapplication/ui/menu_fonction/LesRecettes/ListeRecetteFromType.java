@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,7 +42,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
         type = Objects.requireNonNull(getIntent().getExtras()).getString("type");
 
         final ListView lv_recipe = findViewById(R.id.lv_all_recipe);
-        final Button retourBtn = findViewById(R.id.btn_retour_8);
+        final ImageButton retourBtn = findViewById(R.id.btn_retour_8);
         TextView tvTitle = findViewById(R.id.tv_list_all_recipe);
 
 

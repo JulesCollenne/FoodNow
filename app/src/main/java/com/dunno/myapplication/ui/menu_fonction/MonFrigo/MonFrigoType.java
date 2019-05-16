@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -103,7 +104,7 @@ public class MonFrigoType extends AppCompatActivity {
                             ingredientID.add(jsonResponse.getString("ID"+i));
                         }
 
-                        Button btnRetour = findViewById(R.id.btn_retour_1);
+                        ImageButton btnRetour = findViewById(R.id.btn_retour_1);
 
                         final ListView listIngredient = findViewById(R.id.lv_ingredients);
 
@@ -116,7 +117,13 @@ public class MonFrigoType extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
+                                Intent choiceIngredientTypeIntent = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
+                                choiceIngredientTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                                choiceIngredientTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                                if(getIntent().hasExtra("username"))
+                                    choiceIngredientTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                                 MonFrigoType.this.finish();
+                                startActivity(choiceIngredientTypeIntent);
 
                             }
                         });

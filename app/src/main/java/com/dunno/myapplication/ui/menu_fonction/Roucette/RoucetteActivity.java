@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
@@ -40,7 +41,7 @@ public class RoucetteActivity extends AppCompatActivity {
         button = findViewById(R.id.boutton_roucette);
         roucette = findViewById(R.id.roucette);
 
-        Button bRetour = findViewById(R.id.btn_retour_11);
+        ImageButton bRetour = findViewById(R.id.btn_retour_11);
 
         bRetour.setOnClickListener(new View.OnClickListener() {
             @Override
