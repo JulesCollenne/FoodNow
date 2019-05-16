@@ -126,7 +126,7 @@
 
         <string name="compte_email">Votre adresse mail:</string>
         <string name="compte_pseudo">Votre pseudonyme:</string>
-        <string name="compte_tomodifier">Modifiez les informations</string>
+        <string name="compte_tomodifier">Modifier les informations</string>
 
         /* Modification Compte */
 
@@ -174,7 +174,7 @@
 
         <string name="inscription_alert_dialog_mdp_different">Les mots de passe sont différents</string>
         <string name="inscription_alert_dialog_mdp_non_valide">Le mot de passe n\'est pas valide (au moins 3 caractères)</string>
-        <string name="inscription_alert_dialog_pseudo_non_valide">Le pseudo n\'est pas valide (au moins 3 caractères</string>
+        <string name="inscription_alert_dialog_pseudo_non_valide">Le pseudo n\'est pas valide (au moins 3 caractères)</string>
         <string name="inscription_alert_dialog_email_non_valide">Veuillez entrer une adresse eMail valide</string>
         <string name="inscription_alert_dialog_pseudo_deja_utilise">Le pseudo est déjà utilisé, essayez en un autre</string>
 
