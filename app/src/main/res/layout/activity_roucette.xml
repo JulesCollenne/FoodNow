@@ -7,23 +7,26 @@
     tools:context=".ui.menu_fonction.Roucette.RoucetteActivity">
 
     <!--    Bouton permettant de tourner la roue    -->
-    <Button
-        android:id="@+id/boutton_roucette"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/bouton_roucette"
+        android:layout_width="242dp"
+        android:layout_height="87dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#F9F9F9"
+        android:scaleType="centerInside"
+        android:src="@drawable/tourner_roucette"
         android:text="@string/roucette_tourner_bouton"
         app:layout_constraintBottom_toTopOf="@+id/btn_retour_11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pointer2"
-        app:layout_constraintVertical_bias="0.34"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
     <!--    Image de la roue    -->

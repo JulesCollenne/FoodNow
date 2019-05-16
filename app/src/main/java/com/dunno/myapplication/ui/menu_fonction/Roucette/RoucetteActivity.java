@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -23,7 +22,7 @@ import org.json.JSONObject;
 
 public class RoucetteActivity extends AppCompatActivity {
 
-    Button button;
+    ImageButton button;
     ImageView roucette;
 
     int IDrecipe;
@@ -38,7 +37,7 @@ public class RoucetteActivity extends AppCompatActivity {
         /*on récupère les différents éléments (image, bouton) grâce à leur identifiant et on les stocke dans des variables pour
         * pouvoir ensuite les "manipuler"*/
 
-        button = findViewById(R.id.boutton_roucette);
+        button = findViewById(R.id.bouton_roucette);
         roucette = findViewById(R.id.roucette);
 
         ImageButton bRetour = findViewById(R.id.btn_retour_11);

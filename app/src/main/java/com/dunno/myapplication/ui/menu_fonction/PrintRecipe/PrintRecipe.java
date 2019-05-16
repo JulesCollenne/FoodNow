@@ -177,51 +177,51 @@ public class PrintRecipe extends AppCompatActivity {
 
                                     /* le click ne fonctionne que si l'utilisateur est connecté */
 
-                                        /*
-                                         * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
-                                         */
-                                        Response.Listener<String> responseListener3 = new Response.Listener<String>() {
-                                            @Override
-                                            public void onResponse(String response) {
+                                    /*
+                                     * Si la recette est déjà en favoris on l'enleve des favoris, sinon on l'ajoute
+                                     */
+                                    Response.Listener<String> responseListener3 = new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
 
-                                                try {
-                                                    JSONObject jsonResponse = new JSONObject(response);
-                                                    boolean success = jsonResponse.getBoolean("success");
+                                            try {
+                                                JSONObject jsonResponse = new JSONObject(response);
+                                                boolean success = jsonResponse.getBoolean("success");
 
-                                                    if (success) {
-                                                        if(isFavorite) {
-                                                            isFavorite = false;
-                                                            btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-                                                        }
-                                                        else {
-                                                            isFavorite = true;
-                                                            btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-                                                        }
-                                                    } else {
-                                                        AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
-                                                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
-                                                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                                                                .create()
-                                                                .show();
+                                                if (success) {
+                                                    if(isFavorite) {
+                                                        isFavorite = false;
+                                                        btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                                                     }
-
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
+                                                    else {
+                                                        isFavorite = true;
+                                                        btnFavorite.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+                                                    }
+                                                } else {
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
+                                                    builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                                            .create()
+                                                            .show();
                                                 }
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
                                             }
-                                        };
+                                        }
+                                    };
 
-                                        String paramIsFavorite;
-                                        if(isFavorite)
-                                            paramIsFavorite = "true";
-                                        else
-                                            paramIsFavorite = "false";
+                                    String paramIsFavorite;
+                                    if(isFavorite)
+                                        paramIsFavorite = "true";
+                                    else
+                                        paramIsFavorite = "false";
 
-                                        ChangeRecipeStateInFavoriteRequest changeRecipeStateInFavorite = new ChangeRecipeStateInFavoriteRequest(userID+"", recipeID+"", paramIsFavorite, responseListener3);
-                                        RequestQueue queue3 = Volley.newRequestQueue(PrintRecipe.this);
-                                        queue3.add(changeRecipeStateInFavorite);
+                                    ChangeRecipeStateInFavoriteRequest changeRecipeStateInFavorite = new ChangeRecipeStateInFavoriteRequest(userID+"", recipeID+"", paramIsFavorite, responseListener3);
+                                    RequestQueue queue3 = Volley.newRequestQueue(PrintRecipe.this);
+                                    queue3.add(changeRecipeStateInFavorite);
 
-                                    }
+                                }
                             });
 
 

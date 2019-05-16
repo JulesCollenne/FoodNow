@@ -78,6 +78,18 @@ public class MonFrigoType extends AppCompatActivity {
                 typeName = getString(R.string.choix_ingredient_type_céréales);
                 break;
 
+            case "Autres":
+                typeName = "Autres";
+                break;
+
+            case "Pains":
+                typeName = "Pains";
+                break;
+
+            case "Poisson et fruit de mer":
+                typeName = "Poissons et fruits de mer";
+                break;
+
             default:
                 typeName = "TYPE";
 

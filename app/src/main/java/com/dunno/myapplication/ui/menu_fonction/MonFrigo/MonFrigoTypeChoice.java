@@ -32,16 +32,18 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_frigo_type_choice);
 
-        Button meatBtn = findViewById(R.id.btn_viande);
-        Button fruitBtn = findViewById(R.id.btn_fruit);
-        Button vegeBtn = findViewById(R.id.btn_legume);
-        Button eggBtn = findViewById(R.id.btn_oeuf);
-        Button cerealBtn = findViewById(R.id.btn_cereal);
-        Button condimBtn = findViewById(R.id.btn_condiment);
+        ImageButton meatBtn = findViewById(R.id.btn_viande);
+        ImageButton fruitBtn = findViewById(R.id.btn_fruit);
+        ImageButton vegeBtn = findViewById(R.id.btn_legume);
+        ImageButton eggBtn = findViewById(R.id.btn_fromage);
+        ImageButton cerealBtn = findViewById(R.id.btn_cereal);
+        ImageButton condimBtn = findViewById(R.id.btn_condiment);
+        ImageButton autreBtn = findViewById(R.id.btn_autre);
+        ImageButton painBtn = findViewById(R.id.btn_pain);
+        ImageButton poissonBtn = findViewById(R.id.btn_poisson);
 
 
-
-        Button retourBtn = findViewById(R.id.btn_retour_9);
+        ImageButton retourBtn = findViewById(R.id.btn_retour_9);
 
         if(getIntent().hasExtra("liste_ingredient")) {
             ingredientAdded = Objects.requireNonNull(getIntent().getExtras()).getStringArrayList("liste_ingredient");
@@ -164,7 +166,53 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
             }
         });
 
+        autreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                MonFrigoTypeChoice.this.finish();
+                Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
+                monFrigoTypeIntent.putExtra("type", "Autres");
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                startActivity(monFrigoTypeIntent);
+
+            }
+        });
+
+        painBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MonFrigoTypeChoice.this.finish();
+                Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
+                monFrigoTypeIntent.putExtra("type", "Pains");
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                startActivity(monFrigoTypeIntent);
+
+            }
+        });
+
+        poissonBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MonFrigoTypeChoice.this.finish();
+                Intent monFrigoTypeIntent = new Intent(getApplicationContext(), MonFrigoType.class);
+                monFrigoTypeIntent.putExtra("type", "Poisson et fruit de mer");
+                monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
+                monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
+                if(getIntent().hasExtra("username"))
+                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                startActivity(monFrigoTypeIntent);
+
+            }
+        });
     }
 }
 
