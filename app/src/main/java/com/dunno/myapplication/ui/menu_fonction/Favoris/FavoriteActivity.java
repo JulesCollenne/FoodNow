@@ -78,9 +78,11 @@ public class FavoriteActivity extends AppCompatActivity {
                                 int recipeID = (int) listFavorite.getAdapter().getItem(position);
 
                                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+                                printRecipeIntent.putExtra("favoris", "salut");
                                 if (getIntent().hasExtra("username"))
                                     printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
                                 printRecipeIntent.putExtra("id_recipe", recipeID);
+                                FavoriteActivity.this.finish();
                                 startActivity(printRecipeIntent);
 
                             }
@@ -103,5 +105,6 @@ public class FavoriteActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(FavoriteActivity.this);
         queue.add(getfavoriteRequest);
     }
+
 
 }

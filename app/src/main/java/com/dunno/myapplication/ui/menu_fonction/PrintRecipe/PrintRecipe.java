@@ -79,14 +79,33 @@ public class PrintRecipe extends AppCompatActivity {
 
                         Button bRetour = findViewById(R.id.btn_retour_7);
 
-                        bRetour.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
 
-                                PrintRecipe.this.finish();
+                        if(getIntent().hasExtra("favoris")){
 
-                            }
-                        });
+                            bRetour.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    Intent favorisIntent = new Intent(getApplicationContext(), FavoriteActivity.class);
+                                    if (getIntent().hasExtra("username"))
+                                        favorisIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    PrintRecipe.this.finish();
+                                    startActivity(favorisIntent);
+
+
+                                }
+                            });
+
+                        }else {
+                            bRetour.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    PrintRecipe.this.finish();
+
+                                }
+                            });
+                        }
 
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(PrintRecipe.this);
