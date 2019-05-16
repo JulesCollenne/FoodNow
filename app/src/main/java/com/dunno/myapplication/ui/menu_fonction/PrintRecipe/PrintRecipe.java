@@ -69,9 +69,9 @@ public class PrintRecipe extends AppCompatActivity {
 
                         recipeName = jsonResponse.getString("name");
                         tv_name.setText(recipeName);
-                        String tmp = getString(R.string.print_recipe_time) + " " + jsonResponse.getInt("time")+" min";
+                        String tmp = jsonResponse.getInt("time")+" min";
                         tv_tmp.setText(tmp);
-                        tmp = jsonResponse.getInt("nb") + " " + getString(R.string.print_recipe_personnes);
+                        tmp = jsonResponse.getInt("nb") + "";
                         tv_nb.setText(tmp);
                         iv_recipe.setImageResource(R.drawable.ic_menu_camera);
                         tv_desc.setText(jsonResponse.getString("description"));
