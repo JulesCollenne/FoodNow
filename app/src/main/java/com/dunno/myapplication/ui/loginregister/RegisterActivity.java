@@ -20,11 +20,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
-TODO: Verifiez que l'email n'est pas déjà utilisé
- */
-
-
-/*
  *
  *  Gère tout ce qui est lié à l'inscription d'un nouveau compte
  *
@@ -105,12 +100,22 @@ public class RegisterActivity extends AppCompatActivity {
                                             .create()
                                             .show();
                                 }
-                                else { // Sinon erreur anormale
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                    builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
-                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                                            .create()
-                                            .show();
+                                else {
+                                    if(jsonResponse.has("emailAvailability")) {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                        builder.setMessage(R.string.inscription_alert_dialog_email_deja_utilise)
+                                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                                .create()
+                                                .show();
+                                    }
+                                    else {
+                                        // Sinon erreur anormale
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                                .create()
+                                                .show();
+                                    }
                                 }
                             }
 

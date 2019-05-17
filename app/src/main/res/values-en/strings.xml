@@ -38,6 +38,7 @@
     <string name="inscription_alert_dialog_mdp_different">"Passwords are different "</string>
     <string name="inscription_alert_dialog_mdp_non_valide">"This password is not valid (at least 3 characters) "</string>
     <string name="inscription_alert_dialog_pseudo_deja_utilise">"This username is already used, try another one "</string>
+    <string name="inscription_alert_dialog_email_deja_utilise">"There is already an account using this email address"</string>
     <string name="inscription_alert_dialog_pseudo_non_valide">"This username is not valid (at least 3 characters) "</string>
     <string name="inscription_hint_email">Email</string>
     <string name="inscription_hint_mdp">Password</string>

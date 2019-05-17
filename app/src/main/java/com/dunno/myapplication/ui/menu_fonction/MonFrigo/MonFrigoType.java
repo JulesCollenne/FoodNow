@@ -51,6 +51,9 @@ public class MonFrigoType extends AppCompatActivity {
 
         String typeName;
 
+
+        TextView tv_type = findViewById(R.id.tv_ingredientType);
+
         assert type != null;
         switch(type) {
 
@@ -88,6 +91,7 @@ public class MonFrigoType extends AppCompatActivity {
 
             case "Poisson et fruit de mer":
                 typeName = "Poissons et fruits de mer";
+                tv_type.setTextSize(25);
                 break;
 
             default:
@@ -95,7 +99,7 @@ public class MonFrigoType extends AppCompatActivity {
 
         }
 
-        TextView tv_type = findViewById(R.id.tv_ingredientType);
+
         tv_type.setText(typeName);
 
 
