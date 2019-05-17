@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -18,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
+import com.dunno.myapplication.ui.loginregister.LoginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +39,8 @@ public class MonFrigoType extends AppCompatActivity {
     ArrayList<String> ingredientAddedID;
     ArrayList<String> ingredientName = new ArrayList<>();
     ArrayList<String> ingredientID = new ArrayList<>();
+    ArrayList<String> ingredientNameOutput = new ArrayList<>();
+    ArrayList<String> ingredientIDOutput = new ArrayList<>();
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -104,7 +108,6 @@ public class MonFrigoType extends AppCompatActivity {
 
 
 
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -143,6 +146,24 @@ public class MonFrigoType extends AppCompatActivity {
 
                             }
                         });
+
+                        SearchView sv_ingredient = findViewById(R.id.searchIngredient);
+
+                        sv_ingredient.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                            @Override
+                            public boolean onQueryTextSubmit(String query) {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onQueryTextChange(String newText) {
+                                getIngredient(newText);
+                                final IngredientAdapter filteredIngredientAdapter = new IngredientAdapter(getApplicationContext(), ingredientNameOutput, ingredientIDOutput);
+                                listIngredient.setAdapter(filteredIngredientAdapter);
+                                return false;
+                            }
+                        });
+
 
 
                         listIngredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -198,5 +219,25 @@ public class MonFrigoType extends AppCompatActivity {
         queue.add(getIngredientRequest);
 
     }
+
+
+    public void getIngredient(String query) {
+
+        ingredientIDOutput.clear();
+        ingredientNameOutput.clear();
+
+        for (int i = 0; i < ingredientName.size(); i++) {
+            if (ingredientName.get(i).toLowerCase().startsWith(query.toLowerCase())) {
+                if(!ingredientNameOutput.contains(ingredientName.get(i))) {
+                    ingredientNameOutput.add(ingredientName.get(i));
+                    ingredientIDOutput.add(ingredientID.get(i));
+                }
+            }
+        }
+    }
+
+
+
+
 }
 

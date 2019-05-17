@@ -88,8 +88,10 @@
     <string name="recette_dessert">Dessert</string>
     <string name="recette_entrée">Opening</string>
     <string name="recette_plat">Dish</string>
+    <string name="recette_hint_search">Search a recipe</string>
     <string name="resultat_recettes_changer_ingredient_bouton">Change the list of ingredients</string>
     <string name="resultat_recettes_titre">Recipes available from selected ingredients</string>
+    <string name="resultat_recettes_hint_search">Search an ingredient</string>
     <string name="roucette_tourner_bouton">Turn the Roucette</string>
     <string name="titre_recetteDuJour">Recipe of the day!</string>
     <string name="type_recette_dessert">Desserts</string>

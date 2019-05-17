@@ -13,12 +13,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
+import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
 import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
@@ -32,6 +34,8 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
     ArrayList<Integer> recipeID = new ArrayList<>();
     ArrayList<String> recipeName = new ArrayList<>();
+    ArrayList<Integer> recipeIDOutput = new ArrayList<>();
+    ArrayList<String> recipeNameOutput = new ArrayList<>();
     String type;
     String restriction = "Aucune";
 
@@ -109,6 +113,22 @@ public class ListeRecetteFromType extends AppCompatActivity {
                         final RecipeAdapter recipeAdapter = new RecipeAdapter(getApplicationContext(), recipeID, recipeName);
                         lv_recipe.setAdapter(recipeAdapter);
 
+                        SearchView sv_recipe = findViewById(R.id.searchRecipe);
+                        sv_recipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                            @Override
+                            public boolean onQueryTextSubmit(String query) {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onQueryTextChange(String newText) {
+                                getRecipe(newText);
+                                final RecipeAdapter filteredRecipeAdapter = new RecipeAdapter(getApplicationContext(), recipeIDOutput, recipeNameOutput);
+                                lv_recipe.setAdapter(filteredRecipeAdapter);
+                                return false;
+                            }
+                        });
+
                         lv_recipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -131,6 +151,9 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
                             }
                         });
+
+
+
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ListeRecetteFromType.this);
                         builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
@@ -212,5 +235,27 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void getRecipe(String query) {
+
+        recipeIDOutput.clear();
+        recipeNameOutput.clear();
+
+       /* AlertDialog.Builder builder = new AlertDialog.Builder(MonFrigoType.this);
+        builder.setMessage("query = /"+query+"/")
+                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                .create()
+                .show();*/
+
+
+        for (int i = 0; i < recipeName.size(); i++) {
+            if (recipeName.get(i).toLowerCase().startsWith(query.toLowerCase())) {
+                if(!recipeNameOutput.contains(recipeName.get(i))) {
+                    recipeNameOutput.add(recipeName.get(i));
+                    recipeIDOutput.add(recipeID.get(i));
+                }
+            }
+        }
     }
 }

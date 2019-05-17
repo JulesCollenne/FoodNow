@@ -91,6 +91,7 @@
 
         /* Resultat recettes par rapport aux ingrédients */
 
+            <string name="resultat_recettes_hint_search">Chercher un ingrédient</string>
             <string name="resultat_recettes_titre">Recettes disponibles à partir des ingrédients choisis</string>
             <string name="resultat_recettes_changer_ingredient_bouton">Changer la liste d\'ingrédients</string>
 
@@ -104,6 +105,8 @@
         <string name="recette_entrée">Entrées</string>
         <string name="recette_plat">Plats</string>
         <string name="recette_dessert">Desserts</string>
+
+        <string name="recette_hint_search">Chercher une recette</string>
 
     /* Les Recettes */
 
