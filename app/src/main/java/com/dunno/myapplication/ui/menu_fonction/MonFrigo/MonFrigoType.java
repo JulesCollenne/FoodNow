@@ -227,7 +227,7 @@ public class MonFrigoType extends AppCompatActivity {
         ingredientNameOutput.clear();
 
         for (int i = 0; i < ingredientName.size(); i++) {
-            if (ingredientName.get(i).toLowerCase().startsWith(query.toLowerCase())) {
+            if (ingredientName.get(i).toLowerCase().contains(query.toLowerCase())) {
                 if(!ingredientNameOutput.contains(ingredientName.get(i))) {
                     ingredientNameOutput.add(ingredientName.get(i));
                     ingredientIDOutput.add(ingredientID.get(i));

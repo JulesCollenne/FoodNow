@@ -250,7 +250,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
 
         for (int i = 0; i < recipeName.size(); i++) {
-            if (recipeName.get(i).toLowerCase().startsWith(query.toLowerCase())) {
+            if (recipeName.get(i).toLowerCase().contains(query.toLowerCase())) {
                 if(!recipeNameOutput.contains(recipeName.get(i))) {
                     recipeNameOutput.add(recipeName.get(i));
                     recipeIDOutput.add(recipeID.get(i));
