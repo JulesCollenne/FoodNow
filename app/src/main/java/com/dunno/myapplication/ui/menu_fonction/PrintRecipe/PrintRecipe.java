@@ -1,6 +1,7 @@
 package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -73,7 +74,12 @@ public class PrintRecipe extends AppCompatActivity {
                         tv_tmp.setText(tmp);
                         tmp = jsonResponse.getInt("nb") + "";
                         tv_nb.setText(tmp);
-                        iv_recipe.setImageResource(R.drawable.ic_menu_camera);
+
+                        String imageName = "recid"+recipeID;
+                        Context context = iv_recipe.getContext();
+                        int id = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+                        iv_recipe.setImageResource(id);
+
                         tv_desc.setText(jsonResponse.getString("description"));
 
                         tv_desc.setMovementMethod(new ScrollingMovementMethod());

@@ -55,13 +55,16 @@ public class RecipeAdapter extends BaseAdapter {
 
         View v = mInflater.inflate(R.layout.list_item_recipe, null);
 
-        ImageView iv_ingredient_image = v.findViewById(R.id.recipe_image);
-        TextView tv_ingredient_name = v.findViewById(R.id.recipe_name);
+        ImageView iv_recipe_image = v.findViewById(R.id.recipe_image);
+        TextView tv_recipe_name = v.findViewById(R.id.recipe_name);
 
         String recipe_name = recipeName.get(position);
 
-        iv_ingredient_image.setImageResource(R.drawable.ic_menu_camera);
-        tv_ingredient_name.setText(recipe_name);
+        String tmp = "recid"+recipeID.get(position);
+        Context context = iv_recipe_image.getContext();
+        int id = context.getResources().getIdentifier(tmp, "drawable", context.getPackageName());
+        iv_recipe_image.setImageResource(id);
+        tv_recipe_name.setText(recipe_name);
 
         return v;
 

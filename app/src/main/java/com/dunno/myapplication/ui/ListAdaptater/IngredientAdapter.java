@@ -1,6 +1,11 @@
 package com.dunno.myapplication.ui.ListAdaptater;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +70,12 @@ public class IngredientAdapter extends BaseAdapter {
 
         String ingredient_name = ingredientName.get(position);
 
-        iv_ingredient_image.setImageResource(R.drawable.ic_menu_camera);
+
+        String tmp = "ingid"+ingredientID.get(position);
+        Context context = iv_ingredient_image.getContext();
+        int id = context.getResources().getIdentifier(tmp, "drawable", context.getPackageName());
+        iv_ingredient_image.setImageResource(id);
+
         tv_ingredient_name.setText(ingredient_name);
 
         return v;
