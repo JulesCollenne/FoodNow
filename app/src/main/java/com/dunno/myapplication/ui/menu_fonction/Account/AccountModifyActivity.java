@@ -146,13 +146,23 @@ public class AccountModifyActivity extends AppCompatActivity {
                                                             .create()
                                                             .show();
                                                 }
-                                                // Sinon erreur anormale
+                                                //sinon, si l'erreur vient du fait que l'email est déjà utilisé, previent l'utilisateur
                                                 else {
-                                                    AlertDialog.Builder builder = new AlertDialog.Builder(AccountModifyActivity.this);
-                                                    builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
-                                                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                                                            .create()
-                                                            .show();
+                                                    if(jsonResponse.has("emailAvailability")){
+                                                        AlertDialog.Builder builder = new AlertDialog.Builder(AccountModifyActivity.this);
+                                                        builder.setMessage(R.string.inscription_alert_dialog_email_deja_utilise)
+                                                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                                                .create()
+                                                                .show();
+                                                    }
+                                                    // Sinon erreur anormale
+                                                    else {
+                                                        AlertDialog.Builder builder = new AlertDialog.Builder(AccountModifyActivity.this);
+                                                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                                                .create()
+                                                                .show();
+                                                    }
                                                 }
                                             }
                                         } catch (JSONException e) {
@@ -162,7 +172,7 @@ public class AccountModifyActivity extends AppCompatActivity {
                                 };
 
                                 // Création et envoie de la requête
-                                AccountModifyRequest accountModifyRequest = new AccountModifyRequest(username, newEmail, newUsername, newPassword, responseListener);
+                                AccountModifyRequest accountModifyRequest = new AccountModifyRequest(username, email, newEmail, newUsername, newPassword, responseListener);
                                 RequestQueue queue = Volley.newRequestQueue(AccountModifyActivity.this);
                                 queue.add(accountModifyRequest);
 

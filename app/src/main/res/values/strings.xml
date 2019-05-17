@@ -177,6 +177,8 @@
         <string name="inscription_alert_dialog_pseudo_non_valide">Le pseudo n\'est pas valide (au moins 3 caractères)</string>
         <string name="inscription_alert_dialog_email_non_valide">Veuillez entrer une adresse eMail valide</string>
         <string name="inscription_alert_dialog_pseudo_deja_utilise">Le pseudo est déjà utilisé, essayez en un autre</string>
+        <string name="inscription_alert_dialog_email_deja_utilise">Il y a déjà un compte utilisant cette adresse email</string>
+
 
     /* Inscription */
 
