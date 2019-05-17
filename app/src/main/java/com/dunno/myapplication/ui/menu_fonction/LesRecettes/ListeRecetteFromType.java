@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
     ArrayList<Integer> recipeID = new ArrayList<>();
     ArrayList<String> recipeName = new ArrayList<>();
     String type;
+    String restriction = "Aucune";
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -45,9 +48,15 @@ public class ListeRecetteFromType extends AppCompatActivity {
         final ImageButton retourBtn = findViewById(R.id.btn_retour_8);
         TextView tvTitle = findViewById(R.id.tv_list_all_recipe);
 
+        final CheckBox vegetarien = findViewById(R.id.cb_vege);
+        final CheckBox vegan = findViewById(R.id.cb_vegan);
 
-
-
+        if(vegetarien.isChecked()){
+            restriction = "Végétarien";
+        }
+        if(vegan.isChecked()){
+            restriction = "Végan";
+        }
 
         String typeTitle;
 
@@ -86,7 +95,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
         else {
 
 
-            Response.Listener<String> responseListener = new Response.Listener<String>() {
+            final Response.Listener<String> responseListener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
@@ -142,9 +151,29 @@ public class ListeRecetteFromType extends AppCompatActivity {
                 }
             };
 
-            getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, responseListener);
+            getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type,restriction, responseListener);
             RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
             queue.add(getRecipeRequest);
+
+            vegetarien.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                    restriction = "Végétarien";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type,restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+            });
+
+            vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                    restriction = "Végan";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type,restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+            });
 
         }
 
