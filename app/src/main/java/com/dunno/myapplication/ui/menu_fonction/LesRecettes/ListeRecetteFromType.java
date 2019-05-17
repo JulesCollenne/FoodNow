@@ -86,6 +86,64 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
         tvTitle.setText(typeTitle);
 
+        final Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+
+                    if (success) {
+
+                        lv_recipe.setAdapter(null);
+                        recipeID.clear();
+                        recipeName.clear();
+
+                        for(int i = 0; i < jsonResponse.length()/2; i++) {
+                            recipeName.add(jsonResponse.getString("name"+i));
+                            recipeID.add(jsonResponse.getInt("ID"+i));
+                        }
+
+
+                        final RecipeAdapter recipeAdapter = new RecipeAdapter(getApplicationContext(), recipeID, recipeName);
+                        lv_recipe.setAdapter(recipeAdapter);
+
+                        lv_recipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
+                                if(getIntent().hasExtra("username"))
+                                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
+                                startActivity(printRecipeIntent);
+
+                            }
+
+                        });
+
+                        retourBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                ListeRecetteFromType.this.finish();
+
+                            }
+                        });
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListeRecetteFromType.this);
+                        builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
+                                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                                .create()
+                                .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
         if(getIntent().hasExtra("liste_recipe_id")){
 
             recipeID = getIntent().getExtras().getIntegerArrayList("liste_recipe_id");
@@ -94,88 +152,65 @@ public class ListeRecetteFromType extends AppCompatActivity {
         }
         else {
 
-
-            final Response.Listener<String> responseListener = new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-
-                    try {
-                        JSONObject jsonResponse = new JSONObject(response);
-                        boolean success = jsonResponse.getBoolean("success");
-
-                        if (success) {
-
-
-                            for(int i = 0; i < jsonResponse.length()/2; i++) {
-                                recipeName.add(jsonResponse.getString("name"+i));
-                                recipeID.add(jsonResponse.getInt("ID"+i));
-                            }
-
-
-                            final RecipeAdapter recipeAdapter = new RecipeAdapter(getApplicationContext(), recipeID, recipeName);
-                            lv_recipe.setAdapter(recipeAdapter);
-
-                            lv_recipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                                    Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
-                                    if(getIntent().hasExtra("username"))
-                                        printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
-                                    printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
-                                    startActivity(printRecipeIntent);
-
-                                }
-
-                            });
-
-
-                            retourBtn.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-
-                                    ListeRecetteFromType.this.finish();
-
-                                }
-                            });
-                        } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(ListeRecetteFromType.this);
-                            builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
-                                    .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                                    .create()
-                                    .show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-
             getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type,restriction, responseListener);
             RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
             queue.add(getRecipeRequest);
-
-            vegetarien.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
-                    restriction = "Végétarien";
-                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type,restriction, responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
-                    queue.add(getRecipeRequest);
-                }
-            });
-
-            vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
-                    restriction = "Végan";
-                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type,restriction, responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
-                    queue.add(getRecipeRequest);
-                }
-            });
-
         }
 
+        vegetarien.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                lv_recipe.setAdapter(null);
+                recipeID.clear();
+                recipeName.clear();
+                if(vegan.isChecked()) {
+                    restriction = "Végan";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+                else if(vegetarien.isChecked()){
+                    restriction = "Végétarien";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+                else{
+                    restriction = "Aucune";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+
+            }
+        });
+
+        vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                lv_recipe.setAdapter(null);
+                recipeID.clear();
+                recipeName.clear();
+                if(isChecked) {
+                    restriction = "Végan";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+                else if(vegetarien.isChecked()){
+                    restriction = "Végétarien";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+                else{
+                    restriction = "Aucune";
+                    getRecipeFromTypeRequest getRecipeRequest = new getRecipeFromTypeRequest(type, restriction, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(ListeRecetteFromType.this);
+                    queue.add(getRecipeRequest);
+                }
+
+            }
+        });
     }
 }
