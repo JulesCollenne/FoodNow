@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = findViewById(R.id.etPassword);
         final TextView tvRegisterLink = findViewById(R.id.tvRegisterLink);
         final Button bLogin = findViewById(R.id.bSignIn);
-        final Button bRetour = findViewById(R.id.btn_retour_5);
+        final ImageButton bRetour = findViewById(R.id.btn_retour_5);
 
 
 
@@ -86,6 +87,26 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
+
+                if(username.length() < 3){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage(R.string.pseudo_non_conforme_alert_dialog)
+                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                            .create()
+                            .show();
+
+                    return;
+                }
+
+                if(password.length() < 3){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage(R.string.mot_de_passe_non_conforme_alert_dialog)
+                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                            .create()
+                            .show();
+
+                    return;
+                }
 
                 //Fonction qui reçoit la réponse du serveur
                 Response.Listener<String> responseListener = new Response.Listener<String>() {

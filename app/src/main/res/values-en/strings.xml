@@ -51,6 +51,8 @@
     <string name="login_login_bouton">Log in</string>
     <string name="login_title">Log in</string>
     <string name="login_toInscription_bouton">"No account yet? Register here. "</string>
+    <string name="mot_de_passe_non_conforme_alert_dialog">The password is not valid</string>
+    <string name="pseudo_non_conforme_alert_dialog">The username is not valid</string>
     <string name="main_title_account">Food Now! - My account</string>
     <string name="main_title_conseil">"Food Now! - Chef Sashimi "</string>
     <string name="main_title_favoris">Food Now! - My favourites</string>
@@ -89,6 +91,8 @@
     <string name="recette_entrée">Opening</string>
     <string name="recette_plat">Dish</string>
     <string name="recette_hint_search">Search a recipe</string>
+    <string name="list_recette_vegan">Vegan</string>
+    <string name="liste_recette_vegetarien">Vegetarian</string>
     <string name="resultat_recettes_changer_ingredient_bouton">Change the list of ingredients</string>
     <string name="resultat_recettes_titre">Recipes available from selected ingredients</string>
     <string name="resultat_recettes_hint_search">Search an ingredient</string>

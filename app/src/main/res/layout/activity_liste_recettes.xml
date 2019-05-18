@@ -9,21 +9,25 @@
 
     <ListView
         android:id="@+id/lv_all_recipe"
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_retour_8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_vege" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_vegan"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tv_list_all_recipe"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
@@ -51,35 +55,36 @@
         android:id="@+id/cb_vege"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginLeft="220dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Végétarien"
-        app:layout_constraintStart_toStartOf="@+id/tv_list_all_recipe"
-        app:layout_constraintTop_toBottomOf="@+id/tv_list_all_recipe" />
+        android:text="@string/liste_recette_vegetarien"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchRecipe" />
 
     <CheckBox
         android:id="@+id/cb_vegan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Végan"
-        app:layout_constraintEnd_toEndOf="@+id/tv_list_all_recipe"
-        app:layout_constraintTop_toBottomOf="@+id/tv_list_all_recipe" />
-
-    <SearchView
-        android:id="@+id/searchRecipe"
-        android:layout_width="212dp"
-        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:text="@string/list_recette_vegan"
+        app:layout_constraintStart_toEndOf="@+id/cb_vege"
+        app:layout_constraintTop_toBottomOf="@+id/searchRecipe" />
+
+    <SearchView
+        android:id="@+id/searchRecipe"
+        android:layout_width="fill_parent"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:queryHint="@string/recette_hint_search"
-        app:layout_constraintBottom_toTopOf="@+id/lv_all_recipe"
-        app:layout_constraintEnd_toStartOf="@+id/cb_vege"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_list_all_recipe" />
 
