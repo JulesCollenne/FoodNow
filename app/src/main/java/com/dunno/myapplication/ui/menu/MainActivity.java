@@ -105,11 +105,8 @@ public class MainActivity extends AppCompatActivity
 
                         TextView tvName;
                         ImageButton ibrecette;
-                        /*
 
-                        TODO: Faire en sorte que la recette du jour ne change pas quand on se connecte.
 
-                         */
                         if(loggedin){
                             tvName = findViewById(R.id.tv_recettedujour2);
                             ibrecette = findViewById(R.id.iv_recettedujour2);

@@ -13,11 +13,12 @@
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
+        android:background="@color/colorWhite"
+        android:contentDescription="@null"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@null" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/recipe_name"

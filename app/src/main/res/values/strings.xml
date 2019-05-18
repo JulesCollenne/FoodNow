@@ -1,6 +1,7 @@
 <resources>
 
-/* ------------------------------------------- XML -----------------------------------------------------*/
+    /* ------------------------------------------- XML
+    -----------------------------------------------------*/
 
 
     <string name="nom_application">Food Now!</string>
@@ -14,173 +15,170 @@
     <string name="main_title_conseil">Food Now!  -  Chef Sashimi</string>
 
 
-
     <string name="bouton_retour">Retour</string>
 
     /* Accueil */
 
-        <string name="titre_recetteDuJour">Recette du jour !</string>
+    <string name="titre_recetteDuJour">Recette du jour !</string>
 
-        /* Menu déroulant */
+    /* Menu déroulant */
 
-            /* Truc au dessus */
+    /* Truc au dessus */
 
-                <string name="menu_deroulant_nav_titre">Accueil</string>
+    <string name="menu_deroulant_nav_titre">Accueil</string>
 
-            /* Truc au dessus */
+    /* Truc au dessus */
 
-            <string name="menu_deroulant_accueil">Accueil</string>
-            <string name="menu_deroulant_frigo">Mon Frigo</string>
-            <string name="menu_deroulant_recettes">Les Recettes</string>
-            <string name="menu_deroulant_roucette">La Roucette</string>
-            <string name="menu_deroulant_favoris">Mes Favoris</string>
-            <string name="menu_deroulant_compte">Mon Compte</string>
-            <string name="menu_deroulant_déconnexion">Se Déconnecter</string>
-            <string name="menu_deroulant_contact">Nous contacter</string>
-            <string name="menu_deroulant_email">FoodNowSupport@gmail.com</string>
+    <string name="menu_deroulant_accueil">Accueil</string>
+    <string name="menu_deroulant_frigo">Mon Frigo</string>
+    <string name="menu_deroulant_recettes">Les Recettes</string>
+    <string name="menu_deroulant_roucette">La Roucette</string>
+    <string name="menu_deroulant_favoris">Mes Favoris</string>
+    <string name="menu_deroulant_compte">Mon Compte</string>
+    <string name="menu_deroulant_déconnexion">Se Déconnecter</string>
+    <string name="menu_deroulant_contact">Nous contacter</string>
+    <string name="menu_deroulant_email">FoodNowSupport@gmail.com</string>
 
-        /* Menu déroulant */
+    /* Menu déroulant */
 
-        <string name="menu_paramètres">Paramètres</string>
-        <string name="menu_recette_du_jour">Recette du jour</string>
-        <string name="menu_connection">Se connecter</string>
+    <string name="menu_paramètres">Paramètres</string>
+    <string name="menu_recette_du_jour">Recette du jour</string>
+    <string name="menu_connection">Se connecter</string>
 
     /* Accueil */
 
 
     /* Connection */
 
-        <string name="login_title">Se connecter</string>
-        <string name="login_hint_pseudo">Pseudonyme</string>
-        <string name="login_hint_mdp">Mot de passe</string>
-        <string name="login_login_bouton">Se connecter</string>
-        <string name="login_toInscription_bouton">Pas encore de compte ?           Inscrivez vous ici.</string>
+    <string name="login_title">Se connecter</string>
+    <string name="login_hint_pseudo">Pseudonyme</string>
+    <string name="login_hint_mdp">Mot de passe</string>
+    <string name="login_login_bouton">Se connecter</string>
+    <string name="login_toInscription_bouton">Pas encore de compte ?           Inscrivez vous ici.</string>
 
     /* Connection */
 
 
     /* Inscription */
 
-        <string name="inscription_hint_email">Email</string>
-        <string name="inscription_hint_pseudo">Pseudonyme</string>
-        <string name="inscription_hint_mdp">Mot de Passe</string>
-        <string name="inscription_verif_mdp">Vérification du MDP</string>
+    <string name="inscription_hint_email">Email</string>
+    <string name="inscription_hint_pseudo">Pseudonyme</string>
+    <string name="inscription_hint_mdp">Mot de Passe</string>
+    <string name="inscription_verif_mdp">Vérification du MDP</string>
 
-        <string name="inscription_inscription_bouton">S\'inscrire</string>
-        <string name="inscription_toConnection_bouton">Vous avez déjà un compte ? Connectez vous.</string>
+    <string name="inscription_inscription_bouton">S\'inscrire</string>
+    <string name="inscription_toConnection_bouton">Vous avez déjà un compte ? Connectez vous.</string>
 
     /* Inscription */
 
 
     /* Mon Frigo */
 
-        <string name="frigo_explication">Cliquez sur un ingrédient pour l\'enlever</string>
-        <string name="frigo_add">Ajouter un ingrédient</string>
-        <string name="frigo_find">Trouver des recettes</string>
+    <string name="frigo_explication">Cliquez sur un ingrédient pour l\'enlever</string>
+    <string name="frigo_add">Ajouter un ingrédient</string>
+    <string name="frigo_find">Trouver des recettes</string>
 
-        /* Choix type ingrédient */
+    /* Choix type ingrédient */
 
-            <string name="choix_ingredient_type_oeufsetfromage">Oeufs et Fromages</string>
-            <string name="choix_ingredient_type_céréales">Céréales</string>
-            <string name="choix_ingredient_type_viandes">Viandes</string>
-            <string name="choix_ingredient_type_fruits">Fruits</string>
-            <string name="choix_ingredient_type_légumes">Légumes</string>
-            <string name="choix_ingredient_type_condiments">Condiments</string>
+    <string name="choix_ingredient_type_oeufsetfromage">Oeufs et Fromages</string>
+    <string name="choix_ingredient_type_céréales">Céréales</string>
+    <string name="choix_ingredient_type_viandes">Viandes</string>
+    <string name="choix_ingredient_type_fruits">Fruits</string>
+    <string name="choix_ingredient_type_légumes">Légumes</string>
+    <string name="choix_ingredient_type_condiments">Condiments</string>
 
-        /* Choix type ingrédient */
+    /* Choix type ingrédient */
 
-        /* Resultat recettes par rapport aux ingrédients */
+    /* Resultat recettes par rapport aux ingrédients */
 
-            <string name="resultat_recettes_hint_search">Chercher un ingrédient</string>
-            <string name="resultat_recettes_titre">Recettes disponibles à partir des ingrédients choisis</string>
-            <string name="resultat_recettes_changer_ingredient_bouton">Changer la liste d\'ingrédients</string>
+    <string name="resultat_recettes_hint_search">Chercher un ingrédient</string>
+    <string name="resultat_recettes_titre">Recettes disponibles à partir des ingrédients choisis</string>
+    <string name="resultat_recettes_changer_ingredient_bouton">Changer la liste d\'ingrédients</string>
 
-        /* Resultat recettes par rapport aux ingrédients */
+    /* Resultat recettes par rapport aux ingrédients */
 
     /* Mon Frigo */
 
 
     /* Les Recettes */
 
-        <string name="recette_entrée">Entrées</string>
-        <string name="recette_plat">Plats</string>
-        <string name="recette_dessert">Desserts</string>
+    <string name="recette_entrée">Entrées</string>
+    <string name="recette_plat">Plats</string>
+    <string name="recette_dessert">Desserts</string>
 
-        <string name="recette_hint_search">Chercher une recette</string>
+    <string name="recette_hint_search">Chercher une recette</string>
 
     /* Les Recettes */
 
 
     /* Roucette */
 
-        <string name="roucette_tourner_bouton">Tourner la Roucette</string>
+    <string name="roucette_tourner_bouton">Tourner la Roucette</string>
 
     /* Roucette */
 
 
     /* Favoris */
 
-        <string name="favoris_titre">Mes Favoris</string>
+    <string name="favoris_titre">Mes Favoris</string>
 
     /* Favoris */
 
 
     /* Compte */
 
-        <string name="compte_email">Votre adresse mail:</string>
-        <string name="compte_pseudo">Votre pseudonyme:</string>
-        <string name="compte_tomodifier">Modifier les informations</string>
+    <string name="compte_email">Votre adresse mail:</string>
+    <string name="compte_pseudo">Votre pseudonyme:</string>
+    <string name="compte_tomodifier">Modifier les informations</string>
 
-        /* Modification Compte */
+    /* Modification Compte */
 
-            <string name="modif_compte_hint_mdp_actuel">Mot de passe actuel</string>
-            <string name="modif_compte_hint_email">Nouvel email</string>
-            <string name="modif_compte_hint_pseudo">Nouveau pseudo</string>
-            <string name="modif_compte_hint_mdp">Nouveau mot de passe</string>
-            <string name="modif_compte_hint_verif_mdp">Confirmer le nouveau mot de passe</string>
-            <string name="modif_compte_modifier">Modifier</string>
+    <string name="modif_compte_hint_mdp_actuel">Mot de passe actuel</string>
+    <string name="modif_compte_hint_email">Nouvel email</string>
+    <string name="modif_compte_hint_pseudo">Nouveau pseudo</string>
+    <string name="modif_compte_hint_mdp">Nouveau mot de passe</string>
+    <string name="modif_compte_hint_verif_mdp">Confirmer le nouveau mot de passe</string>
+    <string name="modif_compte_modifier">Modifier</string>
 
-        /* Modification Compte */
+    /* Modification Compte */
 
     /* Compte */
 
 
     /* Conseil */
 
-        <string name="conseil_image_desc">Un sashimi moustachu</string>
+    <string name="conseil_image_desc">Un sashimi moustachu</string>
 
     /* Conseil */
 
 
-
-/* ------------------------------------------- XML -----------------------------------------------------*/
-
-
+    /* ------------------------------------------- XML
+    -----------------------------------------------------*/
 
 
-
-/* ------------------------------------------- Activity java -----------------------------------------------------*/
+    /* ------------------------------------------- Activity java
+    -----------------------------------------------------*/
 
     /* Général */
 
-        <string name="alert_dialog_erreur_base_de_donnée">Erreur lors de l\'accès à la base de donnée</string>
-        <string name="alert_dialog_reesayer">Réesayer</string>
-        <string name="alert_dialog_déconnection">Déconnecté</string>
-        <string name="alert_dialog_ok">OK</string>
-        <string name="alert_dialog_oui">Oui</string>
-        <string name="alert_dialog_non">Non</string>
+    <string name="alert_dialog_erreur_base_de_donnée">Erreur lors de l\'accès à la base de donnée</string>
+    <string name="alert_dialog_reesayer">Réesayer</string>
+    <string name="alert_dialog_déconnection">Déconnecté</string>
+    <string name="alert_dialog_ok">OK</string>
+    <string name="alert_dialog_oui">Oui</string>
+    <string name="alert_dialog_non">Non</string>
 
     /* Général */
 
 
     /* Inscription */
 
-        <string name="inscription_alert_dialog_mdp_different">Les mots de passe sont différents</string>
-        <string name="inscription_alert_dialog_mdp_non_valide">Le mot de passe n\'est pas valide (au moins 3 caractères)</string>
-        <string name="inscription_alert_dialog_pseudo_non_valide">Le pseudo n\'est pas valide (au moins 3 caractères)</string>
-        <string name="inscription_alert_dialog_email_non_valide">Veuillez entrer une adresse eMail valide</string>
-        <string name="inscription_alert_dialog_pseudo_deja_utilise">Le pseudo est déjà utilisé, essayez en un autre</string>
-        <string name="inscription_alert_dialog_email_deja_utilise">Il y a déjà un compte utilisant cette adresse email</string>
+    <string name="inscription_alert_dialog_mdp_different">Les mots de passe sont différents</string>
+    <string name="inscription_alert_dialog_mdp_non_valide">Le mot de passe n\'est pas valide (au moins 3 caractères)</string>
+    <string name="inscription_alert_dialog_pseudo_non_valide">Le pseudo n\'est pas valide (au moins 3 caractères)</string>
+    <string name="inscription_alert_dialog_email_non_valide">Veuillez entrer une adresse eMail valide</string>
+    <string name="inscription_alert_dialog_pseudo_deja_utilise">Le pseudo est déjà utilisé, essayez en un autre</string>
+    <string name="inscription_alert_dialog_email_deja_utilise">Il y a déjà un compte utilisant cette adresse email</string>
 
 
     /* Inscription */
@@ -188,62 +186,60 @@
 
     /* Login */
 
-        <string name="connection_inscription_reussit_alert_dialog_part_1">Votre compte</string>
-        <string name="connection_inscription_reussit_alert_dialog_part_2">a bien été crée.
+    <string name="connection_inscription_reussit_alert_dialog_part_1">Votre compte</string>
+    <string name="connection_inscription_reussit_alert_dialog_part_2">a bien été crée.
 Vous pouvez vous connecter.</string>
-        <string name="connection_reussit_alert_dialog">Connection réussie</string>
-        <string name="connection_échouée_alert_dialog">Connection échouée: Le pseudonyme ou le mot de passe entrée est mauvais</string>
+    <string name="connection_reussit_alert_dialog">Connection réussie</string>
+    <string name="connection_échouée_alert_dialog">Connection échouée: Le pseudonyme ou le mot de passe entrée est mauvais</string>
 
     /* Login */
 
 
     /* AccountModify */
 
-        <string name="account_email">Votre adresse mail:</string>
-        <string name="account_pseudo">Votre pseudonyme:</string>
+    <string name="account_email">Votre adresse mail:</string>
+    <string name="account_pseudo">Votre pseudonyme:</string>
 
 
+    <string name="account_modify_mdp_incorrect">Le mot de passe actuel que vous avez entré est incorrect, veuillez entrer votre mot de passe actuel</string>
+    <string name="account_modify_mdp_different">Votre nouveau mot de passe est différent de celui entré dans la confirmation, veuillez entrer le même mot de passe</string>
 
-        <string name="account_modify_mdp_incorrect">Le mot de passe actuel que vous avez entré est incorrect, veuillez entrer votre mot de passe actuel</string>
-        <string name="account_modify_mdp_different">Votre nouveau mot de passe est différent de celui entré dans la confirmation, veuillez entrer le même mot de passe</string>
-
-        <string name="account_modify_confirmation_part_1">Voulez vous vraiment modifier votre compte ainsi:
+    <string name="account_modify_confirmation_part_1">Voulez vous vraiment modifier votre compte ainsi:
 email:</string>
-        <string name="account_modify_confirmation_part_2">Pseudo:</string>
-        <string name="account_modify_confirmation_part_3">Mot de passe:</string>
-        <string name="account_modify_success">Modification réussie</string>
+    <string name="account_modify_confirmation_part_2">Pseudo:</string>
+    <string name="account_modify_confirmation_part_3">Mot de passe:</string>
+    <string name="account_modify_success">Modification réussie</string>
 
     /* AccountModify */
 
 
     /* ListeRecetteFromType */
 
-        <string name="type_recette_entrée">Entrées</string>
-        <string name="type_recette_plat">Plats</string>
-        <string name="type_recette_dessert">Desserts</string>
+    <string name="type_recette_entrée">Entrées</string>
+    <string name="type_recette_plat">Plats</string>
+    <string name="type_recette_dessert">Desserts</string>
 
     /* ListeRecetteFromType */
 
 
     /* AddIngredient */
 
-        <string name="add_ingredient_0">Vous devez ajouter au moins 1 ingrédient</string>
-        <string name="mon_frigo_type_deja_ajouté">Vous avez déjà ajouté cet ingrédient</string>
+    <string name="add_ingredient_0">Vous devez ajouter au moins 1 ingrédient</string>
+    <string name="mon_frigo_type_deja_ajouté">Vous avez déjà ajouté cet ingrédient</string>
 
     /* AddIngredient */
 
 
     /* PrintRecipe */
 
-        <string name="print_recipe_time">Temps:</string>
-        <string name="print_recipe_personnes">personne(s)</string>
+    <string name="print_recipe_time">Temps:</string>
+    <string name="print_recipe_personnes">personne(s)</string>
 
     /* PrintRecipe */
 
 
-
-
-/* ------------------------------------------- Activity Java -----------------------------------------------------*/
+    /* ------------------------------------------- Activity Java
+    -----------------------------------------------------*/
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
