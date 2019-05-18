@@ -3,6 +3,7 @@ package com.dunno.myapplication.ui.menu;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -118,7 +119,11 @@ public class MainActivity extends AppCompatActivity
                         }
 
                         tvName.setText(nameRecipe);
-                        ibrecette.setImageResource(R.drawable.ic_menu_camera);
+
+                        String tmp = "recid"+idRecipe;
+                        Context context = ibrecette.getContext();
+                        int id = context.getResources().getIdentifier(tmp, "drawable", context.getPackageName());
+                        ibrecette.setImageResource(id);
 
                         ibrecette.setOnClickListener(new View.OnClickListener() {
                             @Override
