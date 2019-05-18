@@ -11,7 +11,7 @@
         android:layout_height="139dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="63dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#F8F8F9"
@@ -22,7 +22,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/entrées" />
+        app:srcCompat="@drawable/entrees" />
 
     <ImageButton
         android:id="@+id/platButton"
