@@ -26,7 +26,7 @@
         <RelativeLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
 
             <ImageButton
@@ -40,67 +40,66 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="30dp"
                 android:background="#F9F9F9"
+                android:contentDescription="@null"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/sashimii"
-                android:contentDescription="@null" />
+                app:srcCompat="@drawable/sashimii" />
 
             <ImageButton
                 android:id="@+id/iv_recettedujour2"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
+                android:layout_below="@+id/textView4"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginRight="6dp"
-                android:layout_marginBottom="390dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:background="#F9F9F9"
+                android:contentDescription="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:srcCompat="@tools:sample/avatars"
-                android:contentDescription="@null" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/tv_recettedujour2"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
+                android:layout_below="@+id/iv_recettedujour2"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
+                android:layout_marginTop="11dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginRight="0dp"
-                android:layout_marginBottom="324dp"
                 android:gravity="center"
                 android:textSize="23sp" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="37dp"
+                android:layout_width="266dp"
+                android:layout_height="40dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="130dp"
-                android:layout_marginLeft="130dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginLeft="72dp"
                 android:layout_marginTop="29dp"
-                android:layout_marginEnd="122dp"
-                android:layout_marginRight="122dp"
+                android:layout_marginEnd="73dp"
+                android:layout_marginRight="73dp"
+                android:gravity="center"
                 android:text="@string/titre_recetteDuJour"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toTopOf="@+id/platButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent" />
-
 
 
         </RelativeLayout>
