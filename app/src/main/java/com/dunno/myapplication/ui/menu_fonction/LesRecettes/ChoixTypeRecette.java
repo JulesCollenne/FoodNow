@@ -68,9 +68,7 @@ public class ChoixTypeRecette extends AppCompatActivity {
         retourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 ChoixTypeRecette.this.finish();
-
             }
         });
     }

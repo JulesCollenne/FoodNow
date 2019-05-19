@@ -45,7 +45,6 @@ public class ListeRecetteFromType extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_recettes);
 
-
         type = Objects.requireNonNull(getIntent().getExtras()).getString("type");
 
         final ListView lv_recipe = findViewById(R.id.lv_all_recipe);
@@ -153,7 +152,6 @@ public class ListeRecetteFromType extends AppCompatActivity {
                         });
 
 
-
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(ListeRecetteFromType.this);
                         builder.setMessage(R.string.alert_dialog_erreur_base_de_donnée)
@@ -236,6 +234,11 @@ public class ListeRecetteFromType extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     *This function is used while searching a recipe by name
+     * @param query : The name of the recipe that the user is searching
+     */
 
     public void getRecipe(String query) {
 
