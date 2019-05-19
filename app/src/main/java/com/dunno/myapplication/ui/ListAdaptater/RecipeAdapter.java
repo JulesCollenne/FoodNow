@@ -12,7 +12,7 @@ import com.dunno.myapplication.R;
 
 import java.util.ArrayList;
 
-/*
+/**
  * Classe permettant de personnaliser la liste de recette: Une image et un nom pour chaque élément
  */
 

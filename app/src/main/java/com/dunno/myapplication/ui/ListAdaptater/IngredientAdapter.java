@@ -18,7 +18,7 @@ import com.dunno.myapplication.R;
 import java.util.List;
 
 
-/*
+/**
  * Classe permettant de personnaliser la liste d'ingrédient: Une image et un nom pour chaque élément
  */
 

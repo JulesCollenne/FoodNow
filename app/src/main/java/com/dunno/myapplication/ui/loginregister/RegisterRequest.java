@@ -6,7 +6,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
+/**
  * Params: email, username, password
  *  Requête: Essaye de créer un nouveau compte avec les informations en paramètres, vérifie que le pseudo n'est pas déjà utilisé
  *  Return: Succès, pseudo déjà utilisé ou erreur

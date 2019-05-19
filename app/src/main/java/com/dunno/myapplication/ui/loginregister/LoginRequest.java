@@ -7,8 +7,8 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
- * Params: username, password
+/**
+ *  Params: username, password
  *  Requête: Vérifie que le couple username-password existe
  *  Return: Réussite ou non
  */

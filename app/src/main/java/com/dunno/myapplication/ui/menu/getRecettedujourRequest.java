@@ -6,7 +6,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
+/**
  * Params: none
  *  Requête: Récupère une recette au hasard (pour le moment) de la base de donnée
  *  Return: une recette aléatoire

@@ -40,13 +40,12 @@ import org.json.JSONObject;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    boolean loggedin = false; //ajout
-    String email = null;
-    String username = null;
-    String password = null;
+    private boolean loggedin = false;
+    private String email = null;
+    private String username = null;
+    private String password = null;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

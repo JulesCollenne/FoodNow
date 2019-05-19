@@ -26,13 +26,16 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 
-/*
- *
+/**
  *  Gère tout ce qui est lié à la connection à un compte existant
- *
  */
 
 public class LoginActivity extends AppCompatActivity {
+    private EditText etUsername, etPassword;
+    private TextView tvRegisterLink;
+    private Button bLogin;
+    private ImageButton bRetour;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,33 +43,29 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        //Appel la fonction lorsqu'on arrive d'une inscription réussie
+        /** Appel la fonction lorsqu'on arrive d'une inscription réussie */
         if(getIntent().hasExtra("Registered")){
             promptRegisterSuccessful();
         }
 
 
-        final EditText etUsername = findViewById(R.id.etUsername);
-        final EditText etPassword = findViewById(R.id.etPassword);
-        final TextView tvRegisterLink = findViewById(R.id.tvRegisterLink);
-        final Button bLogin = findViewById(R.id.bSignIn);
-        final ImageButton bRetour = findViewById(R.id.btn_retour_5);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        tvRegisterLink = findViewById(R.id.tvRegisterLink);
+        bLogin = findViewById(R.id.bSignIn);
+        bRetour = findViewById(R.id.btn_retour_5);
 
 
 
-        //Bouton retour: Supprime l'activité courante (retour au menu)
+        /** Bouton retour: Supprime l'activité courante (retour au menu) */
         bRetour.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                LoginActivity.this.finish();
-
-            }
+            public void onClick(View v) { LoginActivity.this.finish(); }
         });
 
 
 
-        //Bouton vers l'inscription: Crée une activité Register
+        /** Bouton vers l'inscription: Crée une activité Register */
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        /* Bouton de tentative de connection: Vérifie via la requête LoginRequest que le pseudo et le mdp sont bon.
+        /**
+         * Bouton de tentative de connection: Vérifie via la requête LoginRequest que le pseudo et le mdp sont bon.
          * Si oui: Affiche un alertDialog indiquant la réussite, puis crée une nouvelle activité main avec les informations de comptes.
          * Sinon affiche un message d'erreur et attent une nouvelle demande
          */
@@ -89,26 +89,18 @@ public class LoginActivity extends AppCompatActivity {
                 final String password = etPassword.getText().toString();
 
                 if(username.length() < 3){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage(R.string.pseudo_non_conforme_alert_dialog)
-                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                            .create()
-                            .show();
+                    usernameFailAlert();
 
                     return;
                 }
 
                 if(password.length() < 3){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage(R.string.mot_de_passe_non_conforme_alert_dialog)
-                            .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                            .create()
-                            .show();
+                    passwordFailAlert();
 
                     return;
                 }
 
-                //Fonction qui reçoit la réponse du serveur
+                /** Fonction qui reçoit la réponse du serveur */
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -132,11 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(loggedIn);
 
                             } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                builder.setMessage(R.string.connection_échouée_alert_dialog)
-                                        .setNegativeButton(R.string.alert_dialog_reesayer, null)
-                                        .create()
-                                        .show();
+                                connectionFailAlert();
                             }
 
                         } catch (JSONException e) { //JSON
@@ -145,16 +133,48 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
-                //Création et envoie de la requête
-                LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                queue.add(loginRequest);
+                /** Création et envoie de la requête */
+                loginRequest(username, password, responseListener);
             }
         });
     }
 
+    /** Message d'alerte en cas de non conformité du nom d'utilisateur */
+    public void usernameFailAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setMessage(R.string.pseudo_non_conforme_alert_dialog)
+                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                .create()
+                .show();
+    }
 
-    /*
+    /** Message d'alerte en cas de non conformité du mot de passe */
+    public void passwordFailAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setMessage(R.string.mot_de_passe_non_conforme_alert_dialog)
+                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                .create()
+                .show();
+    }
+
+    /** Message d'alerte en cas d'erreur lors de la connexion */
+    public void connectionFailAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setMessage(R.string.connection_échouée_alert_dialog)
+                .setNegativeButton(R.string.alert_dialog_reesayer, null)
+                .create()
+                .show();
+    }
+
+    /** Requête de vérification et connexion de l'utilisateur */
+    public void loginRequest(String username, String password, Response.Listener<String> listener) {
+        LoginRequest loginRequest = new LoginRequest(username, password, listener);
+        RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+        queue.add(loginRequest);
+    }
+
+
+    /**
         Params: None
         Return: None
         Fonction: Affiche un message via AlertDialog indiquant que l'inscription a été réussit

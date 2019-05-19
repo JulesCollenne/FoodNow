@@ -19,30 +19,30 @@ import org.json.JSONObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*
- *
+/**
  *  Gère tout ce qui est lié à l'inscription d'un nouveau compte
- *
  */
 
 public class RegisterActivity extends AppCompatActivity {
+    private EditText etEmail, etUsername, etPassword, etPasswordVerif;
+    private Button bRegister, bRetour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        final EditText etEmail = findViewById(R.id.etEmail);
-        final EditText etUsername = findViewById(R.id.etUsername);
-        final EditText etPassword = findViewById(R.id.etPassword2);
-        final EditText etPasswordVerif = findViewById(R.id.etPasswordVerif);
+        etEmail = findViewById(R.id.etEmail);
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword2);
+        etPasswordVerif = findViewById(R.id.etPasswordVerif);
 
-        final Button bRegister = findViewById(R.id.bRegister);
-        final Button bRetour = findViewById(R.id.btn_retour_6);
+        bRegister = findViewById(R.id.bRegister);
+        bRetour = findViewById(R.id.btn_retour_6);
 
 
 
-        // Bouton retour: Termine l'activité courante et crée une nouvelle activité Login
+        /** Bouton retour: Termine l'activité courante et crée une nouvelle activité Login */
         bRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        // Bouton d'inscription: Essaye d'inscrire le nouveau compte entré par l'utilisateur
+        /** Bouton d'inscription: Essaye d'inscrire le nouveau compte entré par l'utilisateur */
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password = etPassword.getText().toString();
                 final String passwordVerif = etPasswordVerif.getText().toString();
 
-                //Fonctions détaillées plus bas
+
                 if(!verifPasswordEquals(password, passwordVerif))
                     return;
                 if(!verifPassword(password))
@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
 
 
-                // Attente de la réponse du serveur
+                /** Attente de la réponse du serveur */
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -125,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
-                // Création et envoie de la requête
+                /** Création et envoie de la requête */
                 RegisterRequest registerRequest = new RegisterRequest(email, username, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
@@ -136,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    /*
+    /**
      *  Params: Mot de passe et confirmation de mot de passe entrés par l'utilisateur
      *  Returns: Boolean
      *  Vérifie que les 2 mots de passes sont bien identiques
@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    /*
+    /**
      *  Params: Mot de passe entré par l'utilisateur
      *  Returns: Boolean
      *  Vérifie que le mot de passe fait plus de 3 caractères
@@ -175,7 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    /*
+    /**
      *  Params: Pseudo entré par l'utilisateur
      *  Returns: Boolean
      *  Vérifie que le pseudo fait plus de 3 caractères
@@ -195,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    /*
+    /**
      *  Params: email entré par l'utilisateur
      *  Returns: Boolean
      *  Vérifie que l'email est sous le bon format
