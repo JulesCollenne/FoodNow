@@ -78,6 +78,7 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginEnd="0dp"
+                app:fontFamily="sans-serif-medium"
                 android:layout_marginRight="0dp"
                 android:gravity="center"
                 android:textSize="23sp" />
@@ -88,6 +89,7 @@
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
+                app:fontFamily="sans-serif-medium"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -127,6 +129,7 @@
                 android:layout_toStartOf="@+id/ib_conseil"
                 android:layout_toLeftOf="@+id/ib_conseil"
                 android:gravity="center"
+                app:fontFamily="sans-serif-medium"
                 android:text="@string/besoin_de_conseil_appuie_sur_moi"
                 android:textSize="14sp" />
 

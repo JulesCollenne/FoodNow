@@ -2,11 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--Paramètres
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/menu_paramètres"
-        app:showAsAction="never" />
+        app:showAsAction="never" />   -->
 
     <item
         android:id="@+id/action_login"
