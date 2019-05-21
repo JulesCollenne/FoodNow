@@ -250,7 +250,7 @@ email:</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Food Now!</string>
     <string name="nav_header_desc">Navigation header</string>
-
+    <string name="besoin_de_conseil_appuie_sur_moi">Besoin de conseil ? Appuie sur moi !</string>
 
 
 </resources>

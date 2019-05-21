@@ -39,13 +39,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginEnd="-20dp"
+                android:layout_marginRight="-20dp"
+                android:layout_marginBottom="12dp"
                 android:background="#F9F9F9"
+                android:contentDescription="@null"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/sashimii"
-                android:contentDescription="@null" />
+                app:srcCompat="@drawable/sashimii" />
 
             <ImageButton
                 android:id="@+id/iv_recettedujour"
@@ -113,7 +113,7 @@
                 android:layout_marginEnd="-22dp"
                 android:layout_marginRight="-22dp"
                 android:layout_marginBottom="-20dp"
-                android:background="#F9F9F9"
+                android:background="@null"
                 app:srcCompat="@drawable/bulle" />
 
             <TextView
@@ -121,13 +121,13 @@
                 android:layout_width="137dp"
                 android:layout_height="76dp"
                 android:layout_above="@+id/ib_conseil"
-                android:layout_marginEnd="-30dp"
-                android:layout_marginRight="-30dp"
-                android:layout_marginBottom="-1dp"
+                android:layout_marginEnd="-47dp"
+                android:layout_marginRight="-47dp"
+                android:layout_marginBottom="-10dp"
                 android:layout_toStartOf="@+id/ib_conseil"
                 android:layout_toLeftOf="@+id/ib_conseil"
                 android:gravity="center"
-                android:text="Besoin de conseil ? Appuie sur moi !"
+                android:text="@string/besoin_de_conseil_appuie_sur_moi"
                 android:textSize="14sp" />
 
         </RelativeLayout>
@@ -135,6 +135,7 @@
 
 
     </LinearLayout>
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
