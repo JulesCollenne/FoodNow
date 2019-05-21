@@ -103,8 +103,32 @@
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="185dp"
+                android:layout_height="107dp"
+                android:layout_alignEnd="@+id/toucheMoi"
+                android:layout_alignRight="@+id/toucheMoi"
+                android:layout_alignBottom="@+id/toucheMoi"
+                android:layout_marginEnd="-22dp"
+                android:layout_marginRight="-22dp"
+                android:layout_marginBottom="-20dp"
+                android:background="#F9F9F9"
+                app:srcCompat="@drawable/bulle" />
 
-
+            <TextView
+                android:id="@+id/toucheMoi"
+                android:layout_width="137dp"
+                android:layout_height="76dp"
+                android:layout_above="@+id/ib_conseil"
+                android:layout_marginEnd="-30dp"
+                android:layout_marginRight="-30dp"
+                android:layout_marginBottom="-1dp"
+                android:layout_toStartOf="@+id/ib_conseil"
+                android:layout_toLeftOf="@+id/ib_conseil"
+                android:gravity="center"
+                android:text="Besoin de conseil ? Appuie sur moi !"
+                android:textSize="14sp" />
 
         </RelativeLayout>
 
@@ -121,8 +145,5 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
         tools:visibility="visible" />
-
-
-
 
 </android.support.v4.widget.DrawerLayout>

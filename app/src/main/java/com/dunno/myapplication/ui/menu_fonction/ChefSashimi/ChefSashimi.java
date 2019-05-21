@@ -3,6 +3,7 @@ package com.dunno.myapplication.ui.menu_fonction.ChefSashimi;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -49,6 +50,7 @@ public class ChefSashimi extends AppCompatActivity {
                             if (success) {
 
                                 TextView tv_advice = findViewById(R.id.tv_advice);
+                                tv_advice.setMovementMethod(new ScrollingMovementMethod());
 
                                 tv_advice.setText(jsonResponse.getString("conseil"));
 

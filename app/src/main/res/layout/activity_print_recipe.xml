@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9F9F9"
     tools:context=".ui.menu_fonction.PrintRecipe.PrintRecipe">
 
     <TextView
@@ -27,7 +28,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#F9F9F9"
+        android:background="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/boutonretour" />
@@ -42,12 +43,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#3EFFFFFF"
+        android:contentDescription="@null"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_recipeName"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@null" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/iv_time"
@@ -84,6 +85,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:scrollbars="horizontal|vertical"
+        android:textSize="16sp"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toTopOf="@+id/btn_retour_7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

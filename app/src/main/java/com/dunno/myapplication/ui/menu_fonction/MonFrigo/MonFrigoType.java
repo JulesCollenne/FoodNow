@@ -3,23 +3,21 @@ package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
-import com.dunno.myapplication.ui.loginregister.LoginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,60 +51,51 @@ public class MonFrigoType extends AppCompatActivity {
         ingredientAdded = getIntent().getExtras().getStringArrayList("liste_ingredient");
         ingredientAddedID = getIntent().getExtras().getStringArrayList("liste_ingredient_id");
 
-        String typeName;
-
-
-        TextView tv_type = findViewById(R.id.tv_ingredientType);
+        ImageView iv_type = findViewById(R.id.iv_ingredientType);
 
         assert type != null;
         switch(type) {
 
             case "Viande":
-                typeName = getString(R.string.choix_ingredient_type_viandes);
+                iv_type.setImageResource(R.drawable.buton_viandes);
                 break;
 
             case "Légume":
-                typeName = getString(R.string.choix_ingredient_type_légumes);
+                iv_type.setImageResource(R.drawable.button_leg);
                 break;
 
             case "Fruit":
-                typeName = getString(R.string.choix_ingredient_type_fruits);
+                iv_type.setImageResource(R.drawable.buton_fruits);
                 break;
 
             case "Condiment":
-                typeName = getString(R.string.choix_ingredient_type_condiments);
+                iv_type.setImageResource(R.drawable.buton_condi);
                 break;
 
             case "Oeufs et fromages":
-                typeName = getString(R.string.choix_ingredient_type_oeufsetfromage);
+                iv_type.setImageResource(R.drawable.buton_fromage);
                 break;
 
             case "Céréales":
-                typeName = getString(R.string.choix_ingredient_type_céréales);
+                iv_type.setImageResource(R.drawable.button_cere);
                 break;
 
             case "Autres":
-                typeName = "Autres";
+                iv_type.setImageResource(R.drawable.buton_autre);
                 break;
 
             case "Pains":
-                typeName = "Pains";
+                iv_type.setImageResource(R.drawable.buton_pains);
                 break;
 
             case "Poisson et fruit de mer":
-                typeName = "Poissons et fruits de mer";
-                tv_type.setTextSize(25);
+                iv_type.setImageResource(R.drawable.buton_fish);
                 break;
 
             default:
-                typeName = "TYPE";
+
 
         }
-
-
-        tv_type.setText(typeName);
-
-
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -140,7 +129,7 @@ public class MonFrigoType extends AppCompatActivity {
                                 choiceIngredientTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                                 choiceIngredientTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                                 if(getIntent().hasExtra("username"))
-                                    choiceIngredientTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    choiceIngredientTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                 MonFrigoType.this.finish();
                                 startActivity(choiceIngredientTypeIntent);
 
@@ -195,7 +184,7 @@ public class MonFrigoType extends AppCompatActivity {
                                 choiceIngredientTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                                 choiceIngredientTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                                 if(getIntent().hasExtra("username"))
-                                    choiceIngredientTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    choiceIngredientTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                 startActivity(choiceIngredientTypeIntent);
 
                             }
