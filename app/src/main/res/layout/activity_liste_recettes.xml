@@ -57,11 +57,12 @@
         android:id="@+id/cb_vege"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fontFamily="sans-serif-medium"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:checked="false"
         android:text="@string/liste_recette_vegetarien"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchRecipe" />
 
@@ -69,8 +70,8 @@
         android:id="@+id/cb_vegan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fontFamily="sans-serif-medium"
         android:layout_marginStart="8dp"
+        app:fontFamily="sans-serif-medium"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/list_recette_vegan"
