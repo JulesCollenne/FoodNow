@@ -23,6 +23,7 @@
 
     <TextView
         android:layout_width="wrap_content"
+        app:fontFamily="sans-serif-medium"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/menu_deroulant_nav_titre"
