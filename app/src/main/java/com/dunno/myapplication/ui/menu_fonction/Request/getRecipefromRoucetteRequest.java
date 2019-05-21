@@ -1,4 +1,4 @@
-package com.dunno.myapplication.ui.menu_fonction.Roucette;
+package com.dunno.myapplication.ui.menu_fonction.Request;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -18,7 +18,7 @@ public class getRecipefromRoucetteRequest extends StringRequest {
 
     private Map<String, String> params;
 
-    getRecipefromRoucetteRequest(Response.Listener<String> listener) {
+    public getRecipefromRoucetteRequest(Response.Listener<String> listener) {
         super(Method.POST, REQUEST_ROUCETTE, listener, null);
         params = new HashMap<>();
     }

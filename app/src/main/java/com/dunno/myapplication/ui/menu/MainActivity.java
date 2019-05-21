@@ -33,6 +33,7 @@ import com.dunno.myapplication.ui.menu_fonction.Favoris.FavoriteActivity;
 import com.dunno.myapplication.ui.menu_fonction.LesRecettes.ChoixTypeRecette;
 import com.dunno.myapplication.ui.menu_fonction.MonFrigo.AddIngredient;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
+import com.dunno.myapplication.ui.menu_fonction.Request.getRecettedujourRequest;
 import com.dunno.myapplication.ui.menu_fonction.Roucette.RoucetteActivity;
 
 import org.json.JSONException;

@@ -20,6 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.menu_fonction.Favoris.FavoriteActivity;
+import com.dunno.myapplication.ui.menu_fonction.Request.ChangeRecipeStateInFavoriteRequest;
+import com.dunno.myapplication.ui.menu_fonction.Request.getRecipeFromIDRequest;
+import com.dunno.myapplication.ui.menu_fonction.Request.isRecipeFavoriteRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

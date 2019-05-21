@@ -1,4 +1,4 @@
-package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
+package com.dunno.myapplication.ui.menu_fonction.Request;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -17,7 +17,7 @@ public class getIngredientPerTypeRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getIngredientPerType.php";
     private Map<String, String> params;
 
-    getIngredientPerTypeRequest(String type, Response.Listener<String> listener) {
+    public getIngredientPerTypeRequest(String type, Response.Listener<String> listener) {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("type", type);

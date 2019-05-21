@@ -16,54 +16,54 @@
         <activity
             android:name=".ui.menu_fonction.Favoris.FavoriteActivity"
             android:label="@string/main_title_favoris"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.menu_fonction.MonFrigo.RecipeFromIngredient"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_frigo" />
+            android:label="@string/main_title_frigo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.MonFrigo.AddIngredient"
-            android:screenOrientation="portrait"
-            android:label="Food Now!  -  Mon Frigo" />
+            android:label="Food Now!  -  Mon Frigo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.MonFrigo.MonFrigoType"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_frigo" />
+            android:label="@string/main_title_frigo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_frigo" />
+            android:label="@string/main_title_frigo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.Account.AccountModifyActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_account" />
+            android:label="@string/main_title_account"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.Account.AccountActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_account" />
+            android:label="@string/main_title_account"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.Roucette.RoucetteActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_roucette" />
-        <activity android:name=".ui.menu_fonction.PrintRecipe.PrintRecipe"
-            android:screenOrientation="portrait"/>
+            android:label="@string/main_title_roucette"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.menu_fonction.PrintRecipe.PrintRecipe"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.LesRecettes.ListeRecetteFromType"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_recettes" />
+            android:label="@string/main_title_recettes"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.loginregister.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_inscription" />
+            android:label="@string/main_title_inscription"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.loginregister.LoginActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/login_login_bouton" />
+            android:label="@string/login_login_bouton"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu.MainActivity"
-            android:screenOrientation="portrait"
             android:label="@string/nom_application"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,12 +73,12 @@
         </activity>
         <activity
             android:name=".ui.menu_fonction.LesRecettes.ChoixTypeRecette"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_recettes" />
+            android:label="@string/main_title_recettes"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu_fonction.ChefSashimi.ChefSashimi"
-            android:screenOrientation="portrait"
-            android:label="@string/main_title_conseil" />
+            android:label="@string/main_title_conseil"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

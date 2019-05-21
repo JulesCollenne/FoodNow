@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
+import com.dunno.myapplication.ui.menu_fonction.Request.getFavoriteRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,6 +32,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
     ArrayList<String> recipesName = new ArrayList<>();
     ArrayList<Integer> recipesID = new ArrayList<>();
+    private ImageButton btnRetour;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -39,7 +41,7 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorite);
 
 
-        ImageButton btnRetour = findViewById(R.id.btn_retour_12);
+        btnRetour = findViewById(R.id.btn_retour_12);
         btnRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
