@@ -7,6 +7,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    Permet d'avoir la liste des favoris de l'utilisateur connecté
+ */
 public class isRecipeFavoriteRequest extends StringRequest {
 
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/IsRecipeFavorite.php";

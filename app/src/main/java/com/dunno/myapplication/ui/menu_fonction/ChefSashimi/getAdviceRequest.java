@@ -7,6 +7,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Requete qui permet de récuperer un conseil aléatoire
+ */
 public class getAdviceRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getAdvice.php";
     private Map<String, String> params;

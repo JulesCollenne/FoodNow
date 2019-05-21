@@ -2,11 +2,10 @@ package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -92,7 +91,7 @@ public class AddIngredient extends AppCompatActivity {
                 AddIngredient.this.finish();
                 Intent addIngredient = new Intent(getApplicationContext(), MonFrigoTypeChoice.class);
                 if(getIntent().hasExtra("username"))
-                    addIngredient.putExtra("username", getIntent().getExtras().getString("username"));
+                    addIngredient.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 addIngredient.putExtra("liste_ingredient", ingredientAdded);
                 addIngredient.putExtra("liste_ingredient_id", ingredientAddedID);
                 startActivity(addIngredient);
@@ -144,7 +143,7 @@ public class AddIngredient extends AppCompatActivity {
 
                                 Intent searchRecipeIntent = new Intent(getApplicationContext(), RecipeFromIngredient.class);
                                 if(getIntent().hasExtra("username"))
-                                    searchRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    searchRecipeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                 searchRecipeIntent.putExtra("liste_recipe_id", recipeID);
                                 searchRecipeIntent.putExtra("liste_recipe_name", recipeName);
                                 startActivity(searchRecipeIntent);

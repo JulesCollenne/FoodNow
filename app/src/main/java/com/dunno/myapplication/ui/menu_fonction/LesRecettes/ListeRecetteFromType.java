@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -20,7 +19,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
-import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
 import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 
@@ -30,6 +28,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Liste des recettes en fonction de si elles sont une entrée, un plat ou un dessert
+ */
 public class ListeRecetteFromType extends AppCompatActivity {
 
     ArrayList<Integer> recipeID = new ArrayList<>();
@@ -134,7 +135,7 @@ public class ListeRecetteFromType extends AppCompatActivity {
 
                                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
                                 if(getIntent().hasExtra("username"))
-                                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    printRecipeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                 printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
                                 startActivity(printRecipeIntent);
 

@@ -6,6 +6,10 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Requete permettant de trouver les favoris de l'utilisateur connecté
+ */
+
 public class getFavoriteRequest extends StringRequest {
     private static final String LOGIN_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getFavoriteByID.php";
     private Map<String, String> params;

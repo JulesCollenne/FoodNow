@@ -54,7 +54,7 @@
     <string name="login_hint_pseudo">Pseudonyme</string>
     <string name="login_hint_mdp">Mot de passe</string>
     <string name="login_login_bouton">Se connecter</string>
-    <string name="login_toInscription_bouton">Pas encore de compte ?           Inscrivez vous ici.</string>
+    <string name="login_toInscription_bouton">Pas encore de compte ?           Cliquez ici pour vous inscrire.</string>
 
     /* Connection */
 

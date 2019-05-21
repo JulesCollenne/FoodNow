@@ -63,7 +63,7 @@ public class RecipeFromIngredient extends AppCompatActivity {
 
                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
                 if(getIntent().hasExtra("username"))
-                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    printRecipeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 printRecipeIntent.putExtra("id_recipe", (int) lv_recipe.getAdapter().getItem(position));
                 startActivity(printRecipeIntent);
 

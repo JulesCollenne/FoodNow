@@ -2,11 +2,10 @@ package com.dunno.myapplication.ui.menu_fonction.MonFrigo;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.dunno.myapplication.R;
@@ -60,7 +59,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -77,7 +76,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -94,7 +93,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -111,7 +110,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -128,7 +127,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -145,7 +144,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -160,7 +159,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 AddIngredientIntent.putExtra("liste_ingredient", ingredientAdded);
                 AddIngredientIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    AddIngredientIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    AddIngredientIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(AddIngredientIntent);
 
             }
@@ -176,7 +175,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -192,7 +191,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }
@@ -208,7 +207,7 @@ public class MonFrigoTypeChoice extends AppCompatActivity {
                 monFrigoTypeIntent.putExtra("liste_ingredient", ingredientAdded);
                 monFrigoTypeIntent.putExtra("liste_ingredient_id", ingredientAddedID);
                 if(getIntent().hasExtra("username"))
-                    monFrigoTypeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                    monFrigoTypeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                 startActivity(monFrigoTypeIntent);
 
             }

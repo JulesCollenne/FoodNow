@@ -2,14 +2,12 @@ package com.dunno.myapplication.ui.menu_fonction.Favoris;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -26,6 +24,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Page des favoris de l'utilisateur connecté
+ */
 public class FavoriteActivity extends AppCompatActivity {
 
     ArrayList<String> recipesName = new ArrayList<>();
@@ -82,7 +83,7 @@ public class FavoriteActivity extends AppCompatActivity {
                                 Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
                                 printRecipeIntent.putExtra("favoris", "salut");
                                 if (getIntent().hasExtra("username"))
-                                    printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                    printRecipeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                 printRecipeIntent.putExtra("id_recipe", recipeID);
                                 FavoriteActivity.this.finish();
                                 startActivity(printRecipeIntent);

@@ -6,6 +6,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    Requete qui récupère une recette aléatoire pour la Roucette
+ */
 public class getRecipefromRoucetteRequest extends StringRequest {
 
     /* Cette partie du code permet de réaliser la requête avec le serveur et la base de donnée pour

@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,13 +24,14 @@ import com.dunno.myapplication.ui.menu_fonction.Favoris.FavoriteActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
+/*
+    Page qui affiche une recette en particulier ( image, temps de préparations, étaps, nb de personnes... )
+ */
 public class PrintRecipe extends AppCompatActivity {
 
     private ImageView btnFavorite;
-    private boolean loggedIn;
     private int recipeID;
     private int userID;
     private boolean isFavorite;
@@ -95,7 +95,7 @@ public class PrintRecipe extends AppCompatActivity {
 
                                     Intent favorisIntent = new Intent(getApplicationContext(), FavoriteActivity.class);
                                     if (getIntent().hasExtra("username"))
-                                        favorisIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                        favorisIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                     PrintRecipe.this.finish();
                                     startActivity(favorisIntent);
 
@@ -142,7 +142,6 @@ public class PrintRecipe extends AppCompatActivity {
         /* On vérifie si l'utilisateur est connecté */
         if(getIntent().hasExtra("username")) {
             String pseudo = getIntent().getExtras().getString("username");
-            this.loggedIn = true;
             btnFavorite.setVisibility(View.VISIBLE);
             btnFavorite.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -252,8 +251,6 @@ public class PrintRecipe extends AppCompatActivity {
             RequestQueue queue2 = Volley.newRequestQueue(PrintRecipe.this);
             queue2.add(isRecipeFavorite);
         }
-        else { this.loggedIn = false; }
-
     }
 }
 

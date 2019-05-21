@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,6 +15,11 @@ import com.dunno.myapplication.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+/**
+ * Page dans laquelle le Chef Sashimi donne ses conseils
+ * Lorsque l'on clique sur lui, il donne des conseils
+ */
 
 public class ChefSashimi extends AppCompatActivity {
 

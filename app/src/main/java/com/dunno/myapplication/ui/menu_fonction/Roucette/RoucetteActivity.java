@@ -4,8 +4,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -20,7 +21,11 @@ import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
 
+/*
+    Page de la roucette, on peut la tourner pour avoir une recette aléatoire.
+ */
 public class RoucetteActivity extends AppCompatActivity {
 
     ImageButton button;
@@ -76,6 +81,7 @@ public class RoucetteActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animator animation) {
 
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                             @Override
                             public void onResponse(String response) {
                                 try {
@@ -87,7 +93,7 @@ public class RoucetteActivity extends AppCompatActivity {
                                     if (success) {
                                             Intent printRecipeIntent = new Intent(getApplicationContext(), PrintRecipe.class);
                                             if(getIntent().hasExtra("username"))
-                                                printRecipeIntent.putExtra("username", getIntent().getExtras().getString("username"));
+                                                printRecipeIntent.putExtra("username", Objects.requireNonNull(getIntent().getExtras()).getString("username"));
                                             printRecipeIntent.putExtra("id_recipe", IDrecipe);
                                             startActivity(printRecipeIntent);
 
