@@ -2,164 +2,167 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.menu_fonction.MonFrigo.MonFrigoTypeChoice">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="28dp">
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        <ImageButton
-            android:id="@+id/btn_retour_9"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_viande"
-            app:layout_constraintTop_toBottomOf="@+id/btn_condiment"
-            app:srcCompat="@drawable/boutonretour" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <ImageButton
-            android:id="@+id/btn_viande"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/typeviandes" />
-
-        <ImageButton
-            android:id="@+id/btn_pain"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_fruit"
-            app:srcCompat="@drawable/typepains" />
-
-        <ImageButton
-            android:id="@+id/btn_fromage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_pain"
-            app:srcCompat="@drawable/fromages" />
-
-        <ImageButton
-            android:id="@+id/btn_autre"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_fromage"
-            app:srcCompat="@drawable/typeautres" />
-
-        <ImageButton
-            android:id="@+id/btn_fruit"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_viande"
-            app:srcCompat="@drawable/typefruits" />
-
-        <ImageButton
-            android:id="@+id/btn_poisson"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_viande"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/typepoisson" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:id="@+id/btn_cereal"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_viande"
-            app:layout_constraintTop_toBottomOf="@+id/btn_legume"
-            app:srcCompat="@drawable/typecereales" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
-        <ImageButton
-            android:id="@+id/btn_condiment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_viande"
-            app:layout_constraintTop_toBottomOf="@+id/btn_cereal"
-            app:srcCompat="@drawable/typecondiment" />
+            <ImageButton
+                android:id="@+id/btn_viande"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/typeviandes" />
 
-        <ImageButton
-            android:id="@+id/btn_legume"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#F9F9F9"
-            android:scaleType="centerInside"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_viande"
-            app:layout_constraintTop_toBottomOf="@+id/btn_poisson"
-            app:srcCompat="@drawable/typelegume" />
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+            <ImageButton
+                android:id="@+id/btn_pain"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_fruit"
+                app:srcCompat="@drawable/typepains" />
+
+            <ImageButton
+                android:id="@+id/btn_fromage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_pain"
+                app:srcCompat="@drawable/fromages" />
+
+            <ImageButton
+                android:id="@+id/btn_autre"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_fromage"
+                app:srcCompat="@drawable/typeautres" />
+
+            <ImageButton
+                android:id="@+id/btn_fruit"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_viande"
+                app:srcCompat="@drawable/typefruits" />
+
+            <ImageButton
+                android:id="@+id/btn_poisson"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_viande"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/typepoisson" />
+
+            <ImageButton
+                android:id="@+id/btn_cereal"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_viande"
+                app:layout_constraintTop_toBottomOf="@+id/btn_legume"
+                app:srcCompat="@drawable/typecereales" />
+
+            <ImageButton
+                android:id="@+id/btn_condiment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_viande"
+                app:layout_constraintTop_toBottomOf="@+id/btn_cereal"
+                app:srcCompat="@drawable/typecondiment" />
+
+            <ImageButton
+                android:id="@+id/btn_retour_9"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_viande"
+                app:layout_constraintTop_toBottomOf="@+id/btn_condiment"
+                app:srcCompat="@drawable/ingredient" />
+
+            <ImageButton
+                android:id="@+id/btn_legume"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#F9F9F9"
+                android:scaleType="centerInside"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btn_viande"
+                app:layout_constraintTop_toBottomOf="@+id/btn_poisson"
+                app:srcCompat="@drawable/typelegume" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
