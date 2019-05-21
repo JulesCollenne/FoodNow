@@ -1,4 +1,4 @@
-package com.dunno.myapplication.ui.menu_fonction.PrintRecipe;
+package com.dunno.myapplication.ui.menu_fonction.Request;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -17,7 +17,7 @@ public class getRecipeFromIDRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getRecipeFromID.php";
     private Map<String, String> params;
 
-    getRecipeFromIDRequest(String recipeID, Response.Listener<String> listener) {
+    public getRecipeFromIDRequest(String recipeID, Response.Listener<String> listener) {
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("recipeID", recipeID);

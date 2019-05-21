@@ -2,7 +2,6 @@
 package com.dunno.myapplication.ui.loginregister;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.menu.MainActivity;
+import com.dunno.myapplication.ui.menu_fonction.Request.LoginRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

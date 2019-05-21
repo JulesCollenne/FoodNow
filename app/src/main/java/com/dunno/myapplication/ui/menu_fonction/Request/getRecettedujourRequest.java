@@ -1,4 +1,4 @@
-package com.dunno.myapplication.ui.menu;
+package com.dunno.myapplication.ui.menu_fonction.Request;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -16,7 +16,7 @@ public class getRecettedujourRequest extends StringRequest {
     private static final String LOGIN_REQUEST_URL = "https://foodnowdb.000webhostapp.com/getDayRecipe.php";
     private Map<String, String> params;
 
-    getRecettedujourRequest(Response.Listener<String> listener) {
+    public getRecettedujourRequest(Response.Listener<String> listener) {
         super(Method.POST, LOGIN_REQUEST_URL, listener, null);
         params = new HashMap<>();
     }

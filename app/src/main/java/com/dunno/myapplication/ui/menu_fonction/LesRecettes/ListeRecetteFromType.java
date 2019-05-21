@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.RecipeAdapter;
 import com.dunno.myapplication.ui.menu_fonction.PrintRecipe.PrintRecipe;
+import com.dunno.myapplication.ui.menu_fonction.Request.getRecipeFromTypeRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;

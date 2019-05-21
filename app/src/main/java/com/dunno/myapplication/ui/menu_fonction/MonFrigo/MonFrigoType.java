@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.dunno.myapplication.R;
 import com.dunno.myapplication.ui.ListAdaptater.IngredientAdapter;
+import com.dunno.myapplication.ui.menu_fonction.Request.getIngredientPerTypeRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
