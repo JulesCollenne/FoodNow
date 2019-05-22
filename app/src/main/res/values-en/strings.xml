@@ -101,5 +101,8 @@
     <string name="type_recette_dessert">Desserts</string>
     <string name="type_recette_entrée">Openings</string>
     <string name="type_recette_plat">Dishes</string>
+    <string name="besoin_de_conseil_appuie_sur_moi">Need any tips ? Click on me !</string>
+
+
 
 </resources>
