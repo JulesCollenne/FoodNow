@@ -46,6 +46,7 @@ public class AccountActivity extends AppCompatActivity {
         tmp = getString(R.string.account_pseudo) + "\n" + username;
         tvUsername.setText(tmp);
 
+
         Button bModify = findViewById(R.id.button_account_modify);
         ImageButton bRetour = findViewById(R.id.btn_retour_3);
 
