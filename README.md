@@ -1,5 +1,5 @@
 # FoodNow
-What will you eat today ?
+What will you eat today ? FoodNow is an app that answer this quesiton just for you. Made using Android Studio, Java, PHP and MySQL, you'll have access to hundreds of recipes, tips from the Sushi Chief and much more !
 
 Manuel d'utilisation.
 
